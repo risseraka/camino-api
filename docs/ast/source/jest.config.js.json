@@ -1,0 +1,6655 @@
+{
+  "type": "File",
+  "start": 0,
+  "end": 5912,
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 181,
+      "column": 0
+    }
+  },
+  "program": {
+    "type": "Program",
+    "start": 0,
+    "end": 5912,
+    "loc": {
+      "start": {
+        "line": 1,
+        "column": 0
+      },
+      "end": {
+        "line": 181,
+        "column": 0
+      }
+    },
+    "sourceType": "module",
+    "body": [
+      {
+        "type": "ExportDefaultDeclaration",
+        "start": 125,
+        "end": 5911,
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 0
+          },
+          "end": {
+            "line": 180,
+            "column": 1
+          }
+        },
+        "declaration": {
+          "type": "ObjectExpression",
+          "start": 140,
+          "end": 5911,
+          "loc": {
+            "start": {
+              "line": 4,
+              "column": 15
+            },
+            "end": {
+              "line": 180,
+              "column": 1
+            }
+          },
+          "properties": [
+            {
+              "type": "ObjectProperty",
+              "start": 623,
+              "end": 639,
+              "loc": {
+                "start": {
+                  "line": 18,
+                  "column": 2
+                },
+                "end": {
+                  "line": 18,
+                  "column": 18
+                }
+              },
+              "method": false,
+              "shorthand": false,
+              "computed": false,
+              "key": {
+                "type": "Identifier",
+                "start": 623,
+                "end": 633,
+                "loc": {
+                  "start": {
+                    "line": 18,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 18,
+                    "column": 12
+                  },
+                  "identifierName": "clearMocks"
+                },
+                "name": "clearMocks",
+                "leadingComments": null
+              },
+              "value": {
+                "type": "BooleanLiteral",
+                "start": 635,
+                "end": 639,
+                "loc": {
+                  "start": {
+                    "line": 18,
+                    "column": 14
+                  },
+                  "end": {
+                    "line": 18,
+                    "column": 18
+                  }
+                },
+                "value": true
+              },
+              "leadingComments": [
+                {
+                  "type": "CommentLine",
+                  "value": " All imported modules in your tests should be mocked automatically",
+                  "start": 144,
+                  "end": 212,
+                  "loc": {
+                    "start": {
+                      "line": 5,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 5,
+                      "column": 70
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " automock: false,",
+                  "start": 215,
+                  "end": 234,
+                  "loc": {
+                    "start": {
+                      "line": 6,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 6,
+                      "column": 21
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Stop running tests after the first failure",
+                  "start": 238,
+                  "end": 283,
+                  "loc": {
+                    "start": {
+                      "line": 8,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 8,
+                      "column": 47
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " bail: false,",
+                  "start": 286,
+                  "end": 301,
+                  "loc": {
+                    "start": {
+                      "line": 9,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 9,
+                      "column": 17
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Respect \"browser\" field in package.json when resolving modules",
+                  "start": 305,
+                  "end": 370,
+                  "loc": {
+                    "start": {
+                      "line": 11,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 11,
+                      "column": 67
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " browser: false,",
+                  "start": 373,
+                  "end": 391,
+                  "loc": {
+                    "start": {
+                      "line": 12,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 12,
+                      "column": 20
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " The directory where Jest should store its cached dependency information",
+                  "start": 395,
+                  "end": 469,
+                  "loc": {
+                    "start": {
+                      "line": 14,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 14,
+                      "column": 76
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " cacheDirectory: \"/var/folders/k1/qn_ccxjn65lgnjx5d1xh31dm0000gn/T/jest_dx\",",
+                  "start": 472,
+                  "end": 550,
+                  "loc": {
+                    "start": {
+                      "line": 15,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 15,
+                      "column": 80
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Automatically clear mock calls and instances between every test",
+                  "start": 554,
+                  "end": 620,
+                  "loc": {
+                    "start": {
+                      "line": 17,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 17,
+                      "column": 68
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "ObjectProperty",
+              "start": 971,
+              "end": 1000,
+              "loc": {
+                "start": {
+                  "line": 27,
+                  "column": 2
+                },
+                "end": {
+                  "line": 27,
+                  "column": 31
+                }
+              },
+              "method": false,
+              "shorthand": false,
+              "computed": false,
+              "key": {
+                "type": "Identifier",
+                "start": 971,
+                "end": 988,
+                "loc": {
+                  "start": {
+                    "line": 27,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 27,
+                    "column": 19
+                  },
+                  "identifierName": "coverageDirectory"
+                },
+                "name": "coverageDirectory",
+                "leadingComments": null
+              },
+              "value": {
+                "type": "StringLiteral",
+                "start": 990,
+                "end": 1000,
+                "loc": {
+                  "start": {
+                    "line": 27,
+                    "column": 21
+                  },
+                  "end": {
+                    "line": 27,
+                    "column": 31
+                  }
+                },
+                "extra": {
+                  "rawValue": "coverage",
+                  "raw": "'coverage'"
+                },
+                "value": "coverage"
+              },
+              "leadingComments": [
+                {
+                  "type": "CommentLine",
+                  "value": " Indicates whether the coverage information should be collected while executing the test",
+                  "start": 644,
+                  "end": 734,
+                  "loc": {
+                    "start": {
+                      "line": 20,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 20,
+                      "column": 92
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " collectCoverage: false,",
+                  "start": 737,
+                  "end": 763,
+                  "loc": {
+                    "start": {
+                      "line": 21,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 21,
+                      "column": 28
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " An array of glob patterns indicating a set of files for which coverage information should be collected",
+                  "start": 767,
+                  "end": 872,
+                  "loc": {
+                    "start": {
+                      "line": 23,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 23,
+                      "column": 107
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " collectCoverageFrom: null,",
+                  "start": 875,
+                  "end": 904,
+                  "loc": {
+                    "start": {
+                      "line": 24,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 24,
+                      "column": 31
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " The directory where Jest should output its coverage files",
+                  "start": 908,
+                  "end": 968,
+                  "loc": {
+                    "start": {
+                      "line": 26,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 26,
+                      "column": 62
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "ObjectProperty",
+              "start": 4088,
+              "end": 4111,
+              "loc": {
+                "start": {
+                  "line": 127,
+                  "column": 2
+                },
+                "end": {
+                  "line": 127,
+                  "column": 25
+                }
+              },
+              "method": false,
+              "shorthand": false,
+              "computed": false,
+              "key": {
+                "type": "Identifier",
+                "start": 4088,
+                "end": 4103,
+                "loc": {
+                  "start": {
+                    "line": 127,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 127,
+                    "column": 17
+                  },
+                  "identifierName": "testEnvironment"
+                },
+                "name": "testEnvironment",
+                "leadingComments": null
+              },
+              "value": {
+                "type": "StringLiteral",
+                "start": 4105,
+                "end": 4111,
+                "loc": {
+                  "start": {
+                    "line": 127,
+                    "column": 19
+                  },
+                  "end": {
+                    "line": 127,
+                    "column": 25
+                  }
+                },
+                "extra": {
+                  "rawValue": "node",
+                  "raw": "'node'"
+                },
+                "value": "node",
+                "leadingComments": null,
+                "trailingComments": null
+              },
+              "leadingComments": [
+                {
+                  "type": "CommentLine",
+                  "value": " An array of regexp pattern strings used to skip coverage collection",
+                  "start": 1005,
+                  "end": 1075,
+                  "loc": {
+                    "start": {
+                      "line": 29,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 29,
+                      "column": 72
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " coveragePathIgnorePatterns: [",
+                  "start": 1078,
+                  "end": 1110,
+                  "loc": {
+                    "start": {
+                      "line": 30,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 30,
+                      "column": 34
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": "   \"/node_modules/\"",
+                  "start": 1113,
+                  "end": 1134,
+                  "loc": {
+                    "start": {
+                      "line": 31,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 31,
+                      "column": 23
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " ],",
+                  "start": 1137,
+                  "end": 1142,
+                  "loc": {
+                    "start": {
+                      "line": 32,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 32,
+                      "column": 7
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " A list of reporter names that Jest uses when writing coverage reports",
+                  "start": 1146,
+                  "end": 1218,
+                  "loc": {
+                    "start": {
+                      "line": 34,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 34,
+                      "column": 74
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " coverageReporters: [",
+                  "start": 1221,
+                  "end": 1244,
+                  "loc": {
+                    "start": {
+                      "line": 35,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 35,
+                      "column": 25
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": "   \"json\",",
+                  "start": 1247,
+                  "end": 1259,
+                  "loc": {
+                    "start": {
+                      "line": 36,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 36,
+                      "column": 14
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": "   \"text\",",
+                  "start": 1262,
+                  "end": 1274,
+                  "loc": {
+                    "start": {
+                      "line": 37,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 37,
+                      "column": 14
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": "   \"lcov\",",
+                  "start": 1277,
+                  "end": 1289,
+                  "loc": {
+                    "start": {
+                      "line": 38,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 38,
+                      "column": 14
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": "   \"clover\"",
+                  "start": 1292,
+                  "end": 1305,
+                  "loc": {
+                    "start": {
+                      "line": 39,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 39,
+                      "column": 15
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " ],",
+                  "start": 1308,
+                  "end": 1313,
+                  "loc": {
+                    "start": {
+                      "line": 40,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 40,
+                      "column": 7
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " An object that configures minimum threshold enforcement for coverage results",
+                  "start": 1317,
+                  "end": 1396,
+                  "loc": {
+                    "start": {
+                      "line": 42,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 42,
+                      "column": 81
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " coverageThreshold: null,",
+                  "start": 1399,
+                  "end": 1426,
+                  "loc": {
+                    "start": {
+                      "line": 43,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 43,
+                      "column": 29
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Make calling deprecated APIs throw helpful error messages",
+                  "start": 1430,
+                  "end": 1490,
+                  "loc": {
+                    "start": {
+                      "line": 45,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 45,
+                      "column": 62
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " errorOnDeprecated: false,",
+                  "start": 1493,
+                  "end": 1521,
+                  "loc": {
+                    "start": {
+                      "line": 46,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 46,
+                      "column": 30
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Force coverage collection from ignored files usin a array of glob patterns",
+                  "start": 1525,
+                  "end": 1602,
+                  "loc": {
+                    "start": {
+                      "line": 48,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 48,
+                      "column": 79
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " forceCoverageMatch: [],",
+                  "start": 1605,
+                  "end": 1631,
+                  "loc": {
+                    "start": {
+                      "line": 49,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 49,
+                      "column": 28
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " A path to a module which exports an async function that is triggered once before all test suites",
+                  "start": 1635,
+                  "end": 1734,
+                  "loc": {
+                    "start": {
+                      "line": 51,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 51,
+                      "column": 101
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " globalSetup: null,",
+                  "start": 1737,
+                  "end": 1758,
+                  "loc": {
+                    "start": {
+                      "line": 52,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 52,
+                      "column": 23
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " A path to a module which exports an async function that is triggered once after all test suites",
+                  "start": 1762,
+                  "end": 1860,
+                  "loc": {
+                    "start": {
+                      "line": 54,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 54,
+                      "column": 100
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " globalTeardown: null,",
+                  "start": 1863,
+                  "end": 1887,
+                  "loc": {
+                    "start": {
+                      "line": 55,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 55,
+                      "column": 26
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " A set of global variables that need to be available in all test environments",
+                  "start": 1891,
+                  "end": 1970,
+                  "loc": {
+                    "start": {
+                      "line": 57,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 57,
+                      "column": 81
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " globals: {},",
+                  "start": 1973,
+                  "end": 1988,
+                  "loc": {
+                    "start": {
+                      "line": 58,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 58,
+                      "column": 17
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " An array of directory names to be searched recursively up from the requiring module's location",
+                  "start": 1992,
+                  "end": 2089,
+                  "loc": {
+                    "start": {
+                      "line": 60,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 60,
+                      "column": 99
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " moduleDirectories: [",
+                  "start": 2092,
+                  "end": 2115,
+                  "loc": {
+                    "start": {
+                      "line": 61,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 61,
+                      "column": 25
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": "   \"node_modules\"",
+                  "start": 2118,
+                  "end": 2137,
+                  "loc": {
+                    "start": {
+                      "line": 62,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 62,
+                      "column": 21
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " ],",
+                  "start": 2140,
+                  "end": 2145,
+                  "loc": {
+                    "start": {
+                      "line": 63,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 63,
+                      "column": 7
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " An array of file extensions your modules use",
+                  "start": 2149,
+                  "end": 2196,
+                  "loc": {
+                    "start": {
+                      "line": 65,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 65,
+                      "column": 49
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " moduleFileExtensions: [",
+                  "start": 2199,
+                  "end": 2225,
+                  "loc": {
+                    "start": {
+                      "line": 66,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 66,
+                      "column": 28
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": "   \"js\",",
+                  "start": 2228,
+                  "end": 2238,
+                  "loc": {
+                    "start": {
+                      "line": 67,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 67,
+                      "column": 12
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": "   \"json\",",
+                  "start": 2241,
+                  "end": 2253,
+                  "loc": {
+                    "start": {
+                      "line": 68,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 68,
+                      "column": 14
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": "   \"jsx\",",
+                  "start": 2256,
+                  "end": 2267,
+                  "loc": {
+                    "start": {
+                      "line": 69,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 69,
+                      "column": 13
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": "   \"node\"",
+                  "start": 2270,
+                  "end": 2281,
+                  "loc": {
+                    "start": {
+                      "line": 70,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 70,
+                      "column": 13
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " ],",
+                  "start": 2284,
+                  "end": 2289,
+                  "loc": {
+                    "start": {
+                      "line": 71,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 71,
+                      "column": 7
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " A map from regular expressions to module names that allow to stub out resources with a single module",
+                  "start": 2293,
+                  "end": 2396,
+                  "loc": {
+                    "start": {
+                      "line": 73,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 73,
+                      "column": 105
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " moduleNameMapper: {},",
+                  "start": 2399,
+                  "end": 2423,
+                  "loc": {
+                    "start": {
+                      "line": 74,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 74,
+                      "column": 26
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader",
+                  "start": 2427,
+                  "end": 2547,
+                  "loc": {
+                    "start": {
+                      "line": 76,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 76,
+                      "column": 122
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " modulePathIgnorePatterns: [],",
+                  "start": 2550,
+                  "end": 2582,
+                  "loc": {
+                    "start": {
+                      "line": 77,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 77,
+                      "column": 34
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Activates notifications for test results",
+                  "start": 2586,
+                  "end": 2629,
+                  "loc": {
+                    "start": {
+                      "line": 79,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 79,
+                      "column": 45
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " notify: false,",
+                  "start": 2632,
+                  "end": 2649,
+                  "loc": {
+                    "start": {
+                      "line": 80,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 80,
+                      "column": 19
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " An enum that specifies notification mode. Requires { notify: true }",
+                  "start": 2653,
+                  "end": 2723,
+                  "loc": {
+                    "start": {
+                      "line": 82,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 82,
+                      "column": 72
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " notifyMode: \"always\",",
+                  "start": 2726,
+                  "end": 2750,
+                  "loc": {
+                    "start": {
+                      "line": 83,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 83,
+                      "column": 26
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " A preset that is used as a base for Jest's configuration",
+                  "start": 2754,
+                  "end": 2813,
+                  "loc": {
+                    "start": {
+                      "line": 85,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 85,
+                      "column": 61
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " preset: null,",
+                  "start": 2816,
+                  "end": 2832,
+                  "loc": {
+                    "start": {
+                      "line": 86,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 86,
+                      "column": 18
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Run tests from one or more projects",
+                  "start": 2836,
+                  "end": 2874,
+                  "loc": {
+                    "start": {
+                      "line": 88,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 88,
+                      "column": 40
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " projects: null,",
+                  "start": 2877,
+                  "end": 2895,
+                  "loc": {
+                    "start": {
+                      "line": 89,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 89,
+                      "column": 20
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Use this configuration option to add custom reporters to Jest",
+                  "start": 2899,
+                  "end": 2963,
+                  "loc": {
+                    "start": {
+                      "line": 91,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 91,
+                      "column": 66
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " reporters: undefined,",
+                  "start": 2966,
+                  "end": 2990,
+                  "loc": {
+                    "start": {
+                      "line": 92,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 92,
+                      "column": 26
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Automatically reset mock state between every test",
+                  "start": 2994,
+                  "end": 3046,
+                  "loc": {
+                    "start": {
+                      "line": 94,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 94,
+                      "column": 54
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " resetMocks: false,",
+                  "start": 3049,
+                  "end": 3070,
+                  "loc": {
+                    "start": {
+                      "line": 95,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 95,
+                      "column": 23
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Reset the module registry before running each individual test",
+                  "start": 3074,
+                  "end": 3138,
+                  "loc": {
+                    "start": {
+                      "line": 97,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 97,
+                      "column": 66
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " resetModules: false,",
+                  "start": 3141,
+                  "end": 3164,
+                  "loc": {
+                    "start": {
+                      "line": 98,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 98,
+                      "column": 25
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " A path to a custom resolver",
+                  "start": 3168,
+                  "end": 3198,
+                  "loc": {
+                    "start": {
+                      "line": 100,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 100,
+                      "column": 32
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " resolver: null,",
+                  "start": 3201,
+                  "end": 3219,
+                  "loc": {
+                    "start": {
+                      "line": 101,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 101,
+                      "column": 20
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Automatically restore mock state between every test",
+                  "start": 3223,
+                  "end": 3277,
+                  "loc": {
+                    "start": {
+                      "line": 103,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 103,
+                      "column": 56
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " restoreMocks: false,",
+                  "start": 3280,
+                  "end": 3303,
+                  "loc": {
+                    "start": {
+                      "line": 104,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 104,
+                      "column": 25
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " The root directory that Jest should scan for tests and modules within",
+                  "start": 3307,
+                  "end": 3379,
+                  "loc": {
+                    "start": {
+                      "line": 106,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 106,
+                      "column": 74
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " rootDir: null,",
+                  "start": 3382,
+                  "end": 3399,
+                  "loc": {
+                    "start": {
+                      "line": 107,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 107,
+                      "column": 19
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " A list of paths to directories that Jest should use to search for files in",
+                  "start": 3403,
+                  "end": 3480,
+                  "loc": {
+                    "start": {
+                      "line": 109,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 109,
+                      "column": 79
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " roots: [",
+                  "start": 3483,
+                  "end": 3494,
+                  "loc": {
+                    "start": {
+                      "line": 110,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 110,
+                      "column": 13
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": "   \"<rootDir>\"",
+                  "start": 3497,
+                  "end": 3513,
+                  "loc": {
+                    "start": {
+                      "line": 111,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 111,
+                      "column": 18
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " ],",
+                  "start": 3516,
+                  "end": 3521,
+                  "loc": {
+                    "start": {
+                      "line": 112,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 112,
+                      "column": 7
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Allows you to use a custom runner instead of Jest's default test runner",
+                  "start": 3525,
+                  "end": 3599,
+                  "loc": {
+                    "start": {
+                      "line": 114,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 114,
+                      "column": 76
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " runner: \"jest-runner\",",
+                  "start": 3602,
+                  "end": 3627,
+                  "loc": {
+                    "start": {
+                      "line": 115,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 115,
+                      "column": 27
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " The paths to modules that run some code to configure or set up the testing environment before each test",
+                  "start": 3631,
+                  "end": 3737,
+                  "loc": {
+                    "start": {
+                      "line": 117,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 117,
+                      "column": 108
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " setupFiles: [],",
+                  "start": 3740,
+                  "end": 3758,
+                  "loc": {
+                    "start": {
+                      "line": 118,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 118,
+                      "column": 20
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " The path to a module that runs some code to configure or set up the testing framework before each test",
+                  "start": 3762,
+                  "end": 3867,
+                  "loc": {
+                    "start": {
+                      "line": 120,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 120,
+                      "column": 107
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " setupTestFrameworkScriptFile: null,",
+                  "start": 3870,
+                  "end": 3908,
+                  "loc": {
+                    "start": {
+                      "line": 121,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 121,
+                      "column": 40
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " A list of paths to snapshot serializer modules Jest should use for snapshot testing",
+                  "start": 3912,
+                  "end": 3998,
+                  "loc": {
+                    "start": {
+                      "line": 123,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 123,
+                      "column": 88
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " snapshotSerializers: [],",
+                  "start": 4001,
+                  "end": 4028,
+                  "loc": {
+                    "start": {
+                      "line": 124,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 124,
+                      "column": 29
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " The test environment that will be used for testing",
+                  "start": 4032,
+                  "end": 4085,
+                  "loc": {
+                    "start": {
+                      "line": 126,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 126,
+                      "column": 55
+                    }
+                  }
+                }
+              ],
+              "trailingComments": [
+                {
+                  "type": "CommentLine",
+                  "value": " Options that will be passed to the testEnvironment",
+                  "start": 4115,
+                  "end": 4168,
+                  "loc": {
+                    "start": {
+                      "line": 129,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 129,
+                      "column": 55
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " testEnvironmentOptions: {},",
+                  "start": 4171,
+                  "end": 4201,
+                  "loc": {
+                    "start": {
+                      "line": 130,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 130,
+                      "column": 32
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Adds a location field to test results",
+                  "start": 4205,
+                  "end": 4245,
+                  "loc": {
+                    "start": {
+                      "line": 132,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 132,
+                      "column": 42
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " testLocationInResults: false,",
+                  "start": 4248,
+                  "end": 4280,
+                  "loc": {
+                    "start": {
+                      "line": 133,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 133,
+                      "column": 34
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " The glob patterns Jest uses to detect test files",
+                  "start": 4284,
+                  "end": 4335,
+                  "loc": {
+                    "start": {
+                      "line": 135,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 135,
+                      "column": 53
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " testMatch: [",
+                  "start": 4338,
+                  "end": 4353,
+                  "loc": {
+                    "start": {
+                      "line": 136,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 136,
+                      "column": 17
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": "   \"**/__tests__/**/*.js?(x)\",",
+                  "start": 4356,
+                  "end": 4388,
+                  "loc": {
+                    "start": {
+                      "line": 137,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 137,
+                      "column": 34
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": "   \"**/?(*.)+(spec|test).js?(x)\"",
+                  "start": 4391,
+                  "end": 4425,
+                  "loc": {
+                    "start": {
+                      "line": 138,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 138,
+                      "column": 36
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " ],",
+                  "start": 4428,
+                  "end": 4433,
+                  "loc": {
+                    "start": {
+                      "line": 139,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 139,
+                      "column": 7
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " An array of regexp pattern strings that are matched against all test paths, matched tests are skipped",
+                  "start": 4437,
+                  "end": 4541,
+                  "loc": {
+                    "start": {
+                      "line": 141,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 141,
+                      "column": 106
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " testPathIgnorePatterns: [",
+                  "start": 4544,
+                  "end": 4572,
+                  "loc": {
+                    "start": {
+                      "line": 142,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 142,
+                      "column": 30
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": "   \"/node_modules/\"",
+                  "start": 4575,
+                  "end": 4596,
+                  "loc": {
+                    "start": {
+                      "line": 143,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 143,
+                      "column": 23
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " ],",
+                  "start": 4599,
+                  "end": 4604,
+                  "loc": {
+                    "start": {
+                      "line": 144,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 144,
+                      "column": 7
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " The regexp pattern Jest uses to detect test files",
+                  "start": 4608,
+                  "end": 4660,
+                  "loc": {
+                    "start": {
+                      "line": 146,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 146,
+                      "column": 54
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " testRegex: \"\",",
+                  "start": 4663,
+                  "end": 4680,
+                  "loc": {
+                    "start": {
+                      "line": 147,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 147,
+                      "column": 19
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " This option allows the use of a custom results processor",
+                  "start": 4684,
+                  "end": 4743,
+                  "loc": {
+                    "start": {
+                      "line": 149,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 149,
+                      "column": 61
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " testResultsProcessor: null,",
+                  "start": 4746,
+                  "end": 4776,
+                  "loc": {
+                    "start": {
+                      "line": 150,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 150,
+                      "column": 32
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " This option allows use of a custom test runner",
+                  "start": 4780,
+                  "end": 4829,
+                  "loc": {
+                    "start": {
+                      "line": 152,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 152,
+                      "column": 51
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " testRunner: \"jasmine2\",",
+                  "start": 4832,
+                  "end": 4858,
+                  "loc": {
+                    "start": {
+                      "line": 153,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 153,
+                      "column": 28
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " This option sets the URL for the jsdom environment. It is reflected in properties such as location.href",
+                  "start": 4862,
+                  "end": 4968,
+                  "loc": {
+                    "start": {
+                      "line": 155,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 155,
+                      "column": 108
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " testURL: \"http://localhost\",",
+                  "start": 4971,
+                  "end": 5002,
+                  "loc": {
+                    "start": {
+                      "line": 156,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 156,
+                      "column": 33
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Setting this value to \"fake\" allows the use of fake timers for functions such as \"setTimeout\"",
+                  "start": 5006,
+                  "end": 5102,
+                  "loc": {
+                    "start": {
+                      "line": 158,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 158,
+                      "column": 98
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " timers: \"real\",",
+                  "start": 5105,
+                  "end": 5123,
+                  "loc": {
+                    "start": {
+                      "line": 159,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 159,
+                      "column": 20
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " A map from regular expressions to paths to transformers",
+                  "start": 5127,
+                  "end": 5185,
+                  "loc": {
+                    "start": {
+                      "line": 161,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 161,
+                      "column": 60
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " transform: null,",
+                  "start": 5188,
+                  "end": 5207,
+                  "loc": {
+                    "start": {
+                      "line": 162,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 162,
+                      "column": 21
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation",
+                  "start": 5211,
+                  "end": 5335,
+                  "loc": {
+                    "start": {
+                      "line": 164,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 164,
+                      "column": 126
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " transformIgnorePatterns: [",
+                  "start": 5338,
+                  "end": 5367,
+                  "loc": {
+                    "start": {
+                      "line": 165,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 165,
+                      "column": 31
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": "   \"/node_modules/\"",
+                  "start": 5370,
+                  "end": 5391,
+                  "loc": {
+                    "start": {
+                      "line": 166,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 166,
+                      "column": 23
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " ],",
+                  "start": 5394,
+                  "end": 5399,
+                  "loc": {
+                    "start": {
+                      "line": 167,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 167,
+                      "column": 7
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them",
+                  "start": 5403,
+                  "end": 5544,
+                  "loc": {
+                    "start": {
+                      "line": 169,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 169,
+                      "column": 143
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " unmockedModulePathPatterns: undefined,",
+                  "start": 5547,
+                  "end": 5588,
+                  "loc": {
+                    "start": {
+                      "line": 170,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 170,
+                      "column": 43
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Indicates whether each individual test should be reported during the run",
+                  "start": 5592,
+                  "end": 5667,
+                  "loc": {
+                    "start": {
+                      "line": 172,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 172,
+                      "column": 77
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " verbose: null,",
+                  "start": 5670,
+                  "end": 5687,
+                  "loc": {
+                    "start": {
+                      "line": 173,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 173,
+                      "column": 19
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " An array of regexp patterns that are matched against all source file paths before re-running tests in watch mode",
+                  "start": 5691,
+                  "end": 5806,
+                  "loc": {
+                    "start": {
+                      "line": 175,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 175,
+                      "column": 117
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " watchPathIgnorePatterns: [],",
+                  "start": 5809,
+                  "end": 5840,
+                  "loc": {
+                    "start": {
+                      "line": 176,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 176,
+                      "column": 33
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " Whether to use watchman for file crawling",
+                  "start": 5844,
+                  "end": 5888,
+                  "loc": {
+                    "start": {
+                      "line": 178,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 178,
+                      "column": 46
+                    }
+                  }
+                },
+                {
+                  "type": "CommentLine",
+                  "value": " watchman: true,",
+                  "start": 5891,
+                  "end": 5909,
+                  "loc": {
+                    "start": {
+                      "line": 179,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 179,
+                      "column": 20
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "leadingComments": [
+            {
+              "type": "CommentLine",
+              "value": " For a detailed explanation regarding each configuration property, visit:",
+              "start": 0,
+              "end": 75,
+              "loc": {
+                "start": {
+                  "line": 1,
+                  "column": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 75
+                }
+              }
+            },
+            {
+              "type": "CommentLine",
+              "value": " https://jestjs.io/docs/en/configuration.html",
+              "start": 76,
+              "end": 123,
+              "loc": {
+                "start": {
+                  "line": 2,
+                  "column": 0
+                },
+                "end": {
+                  "line": 2,
+                  "column": 47
+                }
+              }
+            }
+          ],
+          "trailingComments": []
+        },
+        "leadingComments": [
+          {
+            "type": "CommentLine",
+            "value": " For a detailed explanation regarding each configuration property, visit:",
+            "start": 0,
+            "end": 75,
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 75
+              }
+            }
+          },
+          {
+            "type": "CommentLine",
+            "value": " https://jestjs.io/docs/en/configuration.html",
+            "start": 76,
+            "end": 123,
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 0
+              },
+              "end": {
+                "line": 2,
+                "column": 47
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "directives": []
+  },
+  "comments": [
+    {
+      "type": "CommentLine",
+      "value": " For a detailed explanation regarding each configuration property, visit:",
+      "start": 0,
+      "end": 75,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 75
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " https://jestjs.io/docs/en/configuration.html",
+      "start": 76,
+      "end": 123,
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 47
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " All imported modules in your tests should be mocked automatically",
+      "start": 144,
+      "end": 212,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 2
+        },
+        "end": {
+          "line": 5,
+          "column": 70
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " automock: false,",
+      "start": 215,
+      "end": 234,
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 2
+        },
+        "end": {
+          "line": 6,
+          "column": 21
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Stop running tests after the first failure",
+      "start": 238,
+      "end": 283,
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 2
+        },
+        "end": {
+          "line": 8,
+          "column": 47
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " bail: false,",
+      "start": 286,
+      "end": 301,
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 2
+        },
+        "end": {
+          "line": 9,
+          "column": 17
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Respect \"browser\" field in package.json when resolving modules",
+      "start": 305,
+      "end": 370,
+      "loc": {
+        "start": {
+          "line": 11,
+          "column": 2
+        },
+        "end": {
+          "line": 11,
+          "column": 67
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " browser: false,",
+      "start": 373,
+      "end": 391,
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 2
+        },
+        "end": {
+          "line": 12,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " The directory where Jest should store its cached dependency information",
+      "start": 395,
+      "end": 469,
+      "loc": {
+        "start": {
+          "line": 14,
+          "column": 2
+        },
+        "end": {
+          "line": 14,
+          "column": 76
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " cacheDirectory: \"/var/folders/k1/qn_ccxjn65lgnjx5d1xh31dm0000gn/T/jest_dx\",",
+      "start": 472,
+      "end": 550,
+      "loc": {
+        "start": {
+          "line": 15,
+          "column": 2
+        },
+        "end": {
+          "line": 15,
+          "column": 80
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Automatically clear mock calls and instances between every test",
+      "start": 554,
+      "end": 620,
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 2
+        },
+        "end": {
+          "line": 17,
+          "column": 68
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Indicates whether the coverage information should be collected while executing the test",
+      "start": 644,
+      "end": 734,
+      "loc": {
+        "start": {
+          "line": 20,
+          "column": 2
+        },
+        "end": {
+          "line": 20,
+          "column": 92
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " collectCoverage: false,",
+      "start": 737,
+      "end": 763,
+      "loc": {
+        "start": {
+          "line": 21,
+          "column": 2
+        },
+        "end": {
+          "line": 21,
+          "column": 28
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " An array of glob patterns indicating a set of files for which coverage information should be collected",
+      "start": 767,
+      "end": 872,
+      "loc": {
+        "start": {
+          "line": 23,
+          "column": 2
+        },
+        "end": {
+          "line": 23,
+          "column": 107
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " collectCoverageFrom: null,",
+      "start": 875,
+      "end": 904,
+      "loc": {
+        "start": {
+          "line": 24,
+          "column": 2
+        },
+        "end": {
+          "line": 24,
+          "column": 31
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " The directory where Jest should output its coverage files",
+      "start": 908,
+      "end": 968,
+      "loc": {
+        "start": {
+          "line": 26,
+          "column": 2
+        },
+        "end": {
+          "line": 26,
+          "column": 62
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " An array of regexp pattern strings used to skip coverage collection",
+      "start": 1005,
+      "end": 1075,
+      "loc": {
+        "start": {
+          "line": 29,
+          "column": 2
+        },
+        "end": {
+          "line": 29,
+          "column": 72
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " coveragePathIgnorePatterns: [",
+      "start": 1078,
+      "end": 1110,
+      "loc": {
+        "start": {
+          "line": 30,
+          "column": 2
+        },
+        "end": {
+          "line": 30,
+          "column": 34
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": "   \"/node_modules/\"",
+      "start": 1113,
+      "end": 1134,
+      "loc": {
+        "start": {
+          "line": 31,
+          "column": 2
+        },
+        "end": {
+          "line": 31,
+          "column": 23
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " ],",
+      "start": 1137,
+      "end": 1142,
+      "loc": {
+        "start": {
+          "line": 32,
+          "column": 2
+        },
+        "end": {
+          "line": 32,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " A list of reporter names that Jest uses when writing coverage reports",
+      "start": 1146,
+      "end": 1218,
+      "loc": {
+        "start": {
+          "line": 34,
+          "column": 2
+        },
+        "end": {
+          "line": 34,
+          "column": 74
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " coverageReporters: [",
+      "start": 1221,
+      "end": 1244,
+      "loc": {
+        "start": {
+          "line": 35,
+          "column": 2
+        },
+        "end": {
+          "line": 35,
+          "column": 25
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": "   \"json\",",
+      "start": 1247,
+      "end": 1259,
+      "loc": {
+        "start": {
+          "line": 36,
+          "column": 2
+        },
+        "end": {
+          "line": 36,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": "   \"text\",",
+      "start": 1262,
+      "end": 1274,
+      "loc": {
+        "start": {
+          "line": 37,
+          "column": 2
+        },
+        "end": {
+          "line": 37,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": "   \"lcov\",",
+      "start": 1277,
+      "end": 1289,
+      "loc": {
+        "start": {
+          "line": 38,
+          "column": 2
+        },
+        "end": {
+          "line": 38,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": "   \"clover\"",
+      "start": 1292,
+      "end": 1305,
+      "loc": {
+        "start": {
+          "line": 39,
+          "column": 2
+        },
+        "end": {
+          "line": 39,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " ],",
+      "start": 1308,
+      "end": 1313,
+      "loc": {
+        "start": {
+          "line": 40,
+          "column": 2
+        },
+        "end": {
+          "line": 40,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " An object that configures minimum threshold enforcement for coverage results",
+      "start": 1317,
+      "end": 1396,
+      "loc": {
+        "start": {
+          "line": 42,
+          "column": 2
+        },
+        "end": {
+          "line": 42,
+          "column": 81
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " coverageThreshold: null,",
+      "start": 1399,
+      "end": 1426,
+      "loc": {
+        "start": {
+          "line": 43,
+          "column": 2
+        },
+        "end": {
+          "line": 43,
+          "column": 29
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Make calling deprecated APIs throw helpful error messages",
+      "start": 1430,
+      "end": 1490,
+      "loc": {
+        "start": {
+          "line": 45,
+          "column": 2
+        },
+        "end": {
+          "line": 45,
+          "column": 62
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " errorOnDeprecated: false,",
+      "start": 1493,
+      "end": 1521,
+      "loc": {
+        "start": {
+          "line": 46,
+          "column": 2
+        },
+        "end": {
+          "line": 46,
+          "column": 30
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Force coverage collection from ignored files usin a array of glob patterns",
+      "start": 1525,
+      "end": 1602,
+      "loc": {
+        "start": {
+          "line": 48,
+          "column": 2
+        },
+        "end": {
+          "line": 48,
+          "column": 79
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " forceCoverageMatch: [],",
+      "start": 1605,
+      "end": 1631,
+      "loc": {
+        "start": {
+          "line": 49,
+          "column": 2
+        },
+        "end": {
+          "line": 49,
+          "column": 28
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " A path to a module which exports an async function that is triggered once before all test suites",
+      "start": 1635,
+      "end": 1734,
+      "loc": {
+        "start": {
+          "line": 51,
+          "column": 2
+        },
+        "end": {
+          "line": 51,
+          "column": 101
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " globalSetup: null,",
+      "start": 1737,
+      "end": 1758,
+      "loc": {
+        "start": {
+          "line": 52,
+          "column": 2
+        },
+        "end": {
+          "line": 52,
+          "column": 23
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " A path to a module which exports an async function that is triggered once after all test suites",
+      "start": 1762,
+      "end": 1860,
+      "loc": {
+        "start": {
+          "line": 54,
+          "column": 2
+        },
+        "end": {
+          "line": 54,
+          "column": 100
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " globalTeardown: null,",
+      "start": 1863,
+      "end": 1887,
+      "loc": {
+        "start": {
+          "line": 55,
+          "column": 2
+        },
+        "end": {
+          "line": 55,
+          "column": 26
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " A set of global variables that need to be available in all test environments",
+      "start": 1891,
+      "end": 1970,
+      "loc": {
+        "start": {
+          "line": 57,
+          "column": 2
+        },
+        "end": {
+          "line": 57,
+          "column": 81
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " globals: {},",
+      "start": 1973,
+      "end": 1988,
+      "loc": {
+        "start": {
+          "line": 58,
+          "column": 2
+        },
+        "end": {
+          "line": 58,
+          "column": 17
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " An array of directory names to be searched recursively up from the requiring module's location",
+      "start": 1992,
+      "end": 2089,
+      "loc": {
+        "start": {
+          "line": 60,
+          "column": 2
+        },
+        "end": {
+          "line": 60,
+          "column": 99
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " moduleDirectories: [",
+      "start": 2092,
+      "end": 2115,
+      "loc": {
+        "start": {
+          "line": 61,
+          "column": 2
+        },
+        "end": {
+          "line": 61,
+          "column": 25
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": "   \"node_modules\"",
+      "start": 2118,
+      "end": 2137,
+      "loc": {
+        "start": {
+          "line": 62,
+          "column": 2
+        },
+        "end": {
+          "line": 62,
+          "column": 21
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " ],",
+      "start": 2140,
+      "end": 2145,
+      "loc": {
+        "start": {
+          "line": 63,
+          "column": 2
+        },
+        "end": {
+          "line": 63,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " An array of file extensions your modules use",
+      "start": 2149,
+      "end": 2196,
+      "loc": {
+        "start": {
+          "line": 65,
+          "column": 2
+        },
+        "end": {
+          "line": 65,
+          "column": 49
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " moduleFileExtensions: [",
+      "start": 2199,
+      "end": 2225,
+      "loc": {
+        "start": {
+          "line": 66,
+          "column": 2
+        },
+        "end": {
+          "line": 66,
+          "column": 28
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": "   \"js\",",
+      "start": 2228,
+      "end": 2238,
+      "loc": {
+        "start": {
+          "line": 67,
+          "column": 2
+        },
+        "end": {
+          "line": 67,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": "   \"json\",",
+      "start": 2241,
+      "end": 2253,
+      "loc": {
+        "start": {
+          "line": 68,
+          "column": 2
+        },
+        "end": {
+          "line": 68,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": "   \"jsx\",",
+      "start": 2256,
+      "end": 2267,
+      "loc": {
+        "start": {
+          "line": 69,
+          "column": 2
+        },
+        "end": {
+          "line": 69,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": "   \"node\"",
+      "start": 2270,
+      "end": 2281,
+      "loc": {
+        "start": {
+          "line": 70,
+          "column": 2
+        },
+        "end": {
+          "line": 70,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " ],",
+      "start": 2284,
+      "end": 2289,
+      "loc": {
+        "start": {
+          "line": 71,
+          "column": 2
+        },
+        "end": {
+          "line": 71,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " A map from regular expressions to module names that allow to stub out resources with a single module",
+      "start": 2293,
+      "end": 2396,
+      "loc": {
+        "start": {
+          "line": 73,
+          "column": 2
+        },
+        "end": {
+          "line": 73,
+          "column": 105
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " moduleNameMapper: {},",
+      "start": 2399,
+      "end": 2423,
+      "loc": {
+        "start": {
+          "line": 74,
+          "column": 2
+        },
+        "end": {
+          "line": 74,
+          "column": 26
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader",
+      "start": 2427,
+      "end": 2547,
+      "loc": {
+        "start": {
+          "line": 76,
+          "column": 2
+        },
+        "end": {
+          "line": 76,
+          "column": 122
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " modulePathIgnorePatterns: [],",
+      "start": 2550,
+      "end": 2582,
+      "loc": {
+        "start": {
+          "line": 77,
+          "column": 2
+        },
+        "end": {
+          "line": 77,
+          "column": 34
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Activates notifications for test results",
+      "start": 2586,
+      "end": 2629,
+      "loc": {
+        "start": {
+          "line": 79,
+          "column": 2
+        },
+        "end": {
+          "line": 79,
+          "column": 45
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " notify: false,",
+      "start": 2632,
+      "end": 2649,
+      "loc": {
+        "start": {
+          "line": 80,
+          "column": 2
+        },
+        "end": {
+          "line": 80,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " An enum that specifies notification mode. Requires { notify: true }",
+      "start": 2653,
+      "end": 2723,
+      "loc": {
+        "start": {
+          "line": 82,
+          "column": 2
+        },
+        "end": {
+          "line": 82,
+          "column": 72
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " notifyMode: \"always\",",
+      "start": 2726,
+      "end": 2750,
+      "loc": {
+        "start": {
+          "line": 83,
+          "column": 2
+        },
+        "end": {
+          "line": 83,
+          "column": 26
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " A preset that is used as a base for Jest's configuration",
+      "start": 2754,
+      "end": 2813,
+      "loc": {
+        "start": {
+          "line": 85,
+          "column": 2
+        },
+        "end": {
+          "line": 85,
+          "column": 61
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " preset: null,",
+      "start": 2816,
+      "end": 2832,
+      "loc": {
+        "start": {
+          "line": 86,
+          "column": 2
+        },
+        "end": {
+          "line": 86,
+          "column": 18
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Run tests from one or more projects",
+      "start": 2836,
+      "end": 2874,
+      "loc": {
+        "start": {
+          "line": 88,
+          "column": 2
+        },
+        "end": {
+          "line": 88,
+          "column": 40
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " projects: null,",
+      "start": 2877,
+      "end": 2895,
+      "loc": {
+        "start": {
+          "line": 89,
+          "column": 2
+        },
+        "end": {
+          "line": 89,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Use this configuration option to add custom reporters to Jest",
+      "start": 2899,
+      "end": 2963,
+      "loc": {
+        "start": {
+          "line": 91,
+          "column": 2
+        },
+        "end": {
+          "line": 91,
+          "column": 66
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " reporters: undefined,",
+      "start": 2966,
+      "end": 2990,
+      "loc": {
+        "start": {
+          "line": 92,
+          "column": 2
+        },
+        "end": {
+          "line": 92,
+          "column": 26
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Automatically reset mock state between every test",
+      "start": 2994,
+      "end": 3046,
+      "loc": {
+        "start": {
+          "line": 94,
+          "column": 2
+        },
+        "end": {
+          "line": 94,
+          "column": 54
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " resetMocks: false,",
+      "start": 3049,
+      "end": 3070,
+      "loc": {
+        "start": {
+          "line": 95,
+          "column": 2
+        },
+        "end": {
+          "line": 95,
+          "column": 23
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Reset the module registry before running each individual test",
+      "start": 3074,
+      "end": 3138,
+      "loc": {
+        "start": {
+          "line": 97,
+          "column": 2
+        },
+        "end": {
+          "line": 97,
+          "column": 66
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " resetModules: false,",
+      "start": 3141,
+      "end": 3164,
+      "loc": {
+        "start": {
+          "line": 98,
+          "column": 2
+        },
+        "end": {
+          "line": 98,
+          "column": 25
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " A path to a custom resolver",
+      "start": 3168,
+      "end": 3198,
+      "loc": {
+        "start": {
+          "line": 100,
+          "column": 2
+        },
+        "end": {
+          "line": 100,
+          "column": 32
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " resolver: null,",
+      "start": 3201,
+      "end": 3219,
+      "loc": {
+        "start": {
+          "line": 101,
+          "column": 2
+        },
+        "end": {
+          "line": 101,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Automatically restore mock state between every test",
+      "start": 3223,
+      "end": 3277,
+      "loc": {
+        "start": {
+          "line": 103,
+          "column": 2
+        },
+        "end": {
+          "line": 103,
+          "column": 56
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " restoreMocks: false,",
+      "start": 3280,
+      "end": 3303,
+      "loc": {
+        "start": {
+          "line": 104,
+          "column": 2
+        },
+        "end": {
+          "line": 104,
+          "column": 25
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " The root directory that Jest should scan for tests and modules within",
+      "start": 3307,
+      "end": 3379,
+      "loc": {
+        "start": {
+          "line": 106,
+          "column": 2
+        },
+        "end": {
+          "line": 106,
+          "column": 74
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " rootDir: null,",
+      "start": 3382,
+      "end": 3399,
+      "loc": {
+        "start": {
+          "line": 107,
+          "column": 2
+        },
+        "end": {
+          "line": 107,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " A list of paths to directories that Jest should use to search for files in",
+      "start": 3403,
+      "end": 3480,
+      "loc": {
+        "start": {
+          "line": 109,
+          "column": 2
+        },
+        "end": {
+          "line": 109,
+          "column": 79
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " roots: [",
+      "start": 3483,
+      "end": 3494,
+      "loc": {
+        "start": {
+          "line": 110,
+          "column": 2
+        },
+        "end": {
+          "line": 110,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": "   \"<rootDir>\"",
+      "start": 3497,
+      "end": 3513,
+      "loc": {
+        "start": {
+          "line": 111,
+          "column": 2
+        },
+        "end": {
+          "line": 111,
+          "column": 18
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " ],",
+      "start": 3516,
+      "end": 3521,
+      "loc": {
+        "start": {
+          "line": 112,
+          "column": 2
+        },
+        "end": {
+          "line": 112,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Allows you to use a custom runner instead of Jest's default test runner",
+      "start": 3525,
+      "end": 3599,
+      "loc": {
+        "start": {
+          "line": 114,
+          "column": 2
+        },
+        "end": {
+          "line": 114,
+          "column": 76
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " runner: \"jest-runner\",",
+      "start": 3602,
+      "end": 3627,
+      "loc": {
+        "start": {
+          "line": 115,
+          "column": 2
+        },
+        "end": {
+          "line": 115,
+          "column": 27
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " The paths to modules that run some code to configure or set up the testing environment before each test",
+      "start": 3631,
+      "end": 3737,
+      "loc": {
+        "start": {
+          "line": 117,
+          "column": 2
+        },
+        "end": {
+          "line": 117,
+          "column": 108
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " setupFiles: [],",
+      "start": 3740,
+      "end": 3758,
+      "loc": {
+        "start": {
+          "line": 118,
+          "column": 2
+        },
+        "end": {
+          "line": 118,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " The path to a module that runs some code to configure or set up the testing framework before each test",
+      "start": 3762,
+      "end": 3867,
+      "loc": {
+        "start": {
+          "line": 120,
+          "column": 2
+        },
+        "end": {
+          "line": 120,
+          "column": 107
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " setupTestFrameworkScriptFile: null,",
+      "start": 3870,
+      "end": 3908,
+      "loc": {
+        "start": {
+          "line": 121,
+          "column": 2
+        },
+        "end": {
+          "line": 121,
+          "column": 40
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " A list of paths to snapshot serializer modules Jest should use for snapshot testing",
+      "start": 3912,
+      "end": 3998,
+      "loc": {
+        "start": {
+          "line": 123,
+          "column": 2
+        },
+        "end": {
+          "line": 123,
+          "column": 88
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " snapshotSerializers: [],",
+      "start": 4001,
+      "end": 4028,
+      "loc": {
+        "start": {
+          "line": 124,
+          "column": 2
+        },
+        "end": {
+          "line": 124,
+          "column": 29
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " The test environment that will be used for testing",
+      "start": 4032,
+      "end": 4085,
+      "loc": {
+        "start": {
+          "line": 126,
+          "column": 2
+        },
+        "end": {
+          "line": 126,
+          "column": 55
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Options that will be passed to the testEnvironment",
+      "start": 4115,
+      "end": 4168,
+      "loc": {
+        "start": {
+          "line": 129,
+          "column": 2
+        },
+        "end": {
+          "line": 129,
+          "column": 55
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " testEnvironmentOptions: {},",
+      "start": 4171,
+      "end": 4201,
+      "loc": {
+        "start": {
+          "line": 130,
+          "column": 2
+        },
+        "end": {
+          "line": 130,
+          "column": 32
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Adds a location field to test results",
+      "start": 4205,
+      "end": 4245,
+      "loc": {
+        "start": {
+          "line": 132,
+          "column": 2
+        },
+        "end": {
+          "line": 132,
+          "column": 42
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " testLocationInResults: false,",
+      "start": 4248,
+      "end": 4280,
+      "loc": {
+        "start": {
+          "line": 133,
+          "column": 2
+        },
+        "end": {
+          "line": 133,
+          "column": 34
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " The glob patterns Jest uses to detect test files",
+      "start": 4284,
+      "end": 4335,
+      "loc": {
+        "start": {
+          "line": 135,
+          "column": 2
+        },
+        "end": {
+          "line": 135,
+          "column": 53
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " testMatch: [",
+      "start": 4338,
+      "end": 4353,
+      "loc": {
+        "start": {
+          "line": 136,
+          "column": 2
+        },
+        "end": {
+          "line": 136,
+          "column": 17
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": "   \"**/__tests__/**/*.js?(x)\",",
+      "start": 4356,
+      "end": 4388,
+      "loc": {
+        "start": {
+          "line": 137,
+          "column": 2
+        },
+        "end": {
+          "line": 137,
+          "column": 34
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": "   \"**/?(*.)+(spec|test).js?(x)\"",
+      "start": 4391,
+      "end": 4425,
+      "loc": {
+        "start": {
+          "line": 138,
+          "column": 2
+        },
+        "end": {
+          "line": 138,
+          "column": 36
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " ],",
+      "start": 4428,
+      "end": 4433,
+      "loc": {
+        "start": {
+          "line": 139,
+          "column": 2
+        },
+        "end": {
+          "line": 139,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " An array of regexp pattern strings that are matched against all test paths, matched tests are skipped",
+      "start": 4437,
+      "end": 4541,
+      "loc": {
+        "start": {
+          "line": 141,
+          "column": 2
+        },
+        "end": {
+          "line": 141,
+          "column": 106
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " testPathIgnorePatterns: [",
+      "start": 4544,
+      "end": 4572,
+      "loc": {
+        "start": {
+          "line": 142,
+          "column": 2
+        },
+        "end": {
+          "line": 142,
+          "column": 30
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": "   \"/node_modules/\"",
+      "start": 4575,
+      "end": 4596,
+      "loc": {
+        "start": {
+          "line": 143,
+          "column": 2
+        },
+        "end": {
+          "line": 143,
+          "column": 23
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " ],",
+      "start": 4599,
+      "end": 4604,
+      "loc": {
+        "start": {
+          "line": 144,
+          "column": 2
+        },
+        "end": {
+          "line": 144,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " The regexp pattern Jest uses to detect test files",
+      "start": 4608,
+      "end": 4660,
+      "loc": {
+        "start": {
+          "line": 146,
+          "column": 2
+        },
+        "end": {
+          "line": 146,
+          "column": 54
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " testRegex: \"\",",
+      "start": 4663,
+      "end": 4680,
+      "loc": {
+        "start": {
+          "line": 147,
+          "column": 2
+        },
+        "end": {
+          "line": 147,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " This option allows the use of a custom results processor",
+      "start": 4684,
+      "end": 4743,
+      "loc": {
+        "start": {
+          "line": 149,
+          "column": 2
+        },
+        "end": {
+          "line": 149,
+          "column": 61
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " testResultsProcessor: null,",
+      "start": 4746,
+      "end": 4776,
+      "loc": {
+        "start": {
+          "line": 150,
+          "column": 2
+        },
+        "end": {
+          "line": 150,
+          "column": 32
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " This option allows use of a custom test runner",
+      "start": 4780,
+      "end": 4829,
+      "loc": {
+        "start": {
+          "line": 152,
+          "column": 2
+        },
+        "end": {
+          "line": 152,
+          "column": 51
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " testRunner: \"jasmine2\",",
+      "start": 4832,
+      "end": 4858,
+      "loc": {
+        "start": {
+          "line": 153,
+          "column": 2
+        },
+        "end": {
+          "line": 153,
+          "column": 28
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " This option sets the URL for the jsdom environment. It is reflected in properties such as location.href",
+      "start": 4862,
+      "end": 4968,
+      "loc": {
+        "start": {
+          "line": 155,
+          "column": 2
+        },
+        "end": {
+          "line": 155,
+          "column": 108
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " testURL: \"http://localhost\",",
+      "start": 4971,
+      "end": 5002,
+      "loc": {
+        "start": {
+          "line": 156,
+          "column": 2
+        },
+        "end": {
+          "line": 156,
+          "column": 33
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Setting this value to \"fake\" allows the use of fake timers for functions such as \"setTimeout\"",
+      "start": 5006,
+      "end": 5102,
+      "loc": {
+        "start": {
+          "line": 158,
+          "column": 2
+        },
+        "end": {
+          "line": 158,
+          "column": 98
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " timers: \"real\",",
+      "start": 5105,
+      "end": 5123,
+      "loc": {
+        "start": {
+          "line": 159,
+          "column": 2
+        },
+        "end": {
+          "line": 159,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " A map from regular expressions to paths to transformers",
+      "start": 5127,
+      "end": 5185,
+      "loc": {
+        "start": {
+          "line": 161,
+          "column": 2
+        },
+        "end": {
+          "line": 161,
+          "column": 60
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " transform: null,",
+      "start": 5188,
+      "end": 5207,
+      "loc": {
+        "start": {
+          "line": 162,
+          "column": 2
+        },
+        "end": {
+          "line": 162,
+          "column": 21
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation",
+      "start": 5211,
+      "end": 5335,
+      "loc": {
+        "start": {
+          "line": 164,
+          "column": 2
+        },
+        "end": {
+          "line": 164,
+          "column": 126
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " transformIgnorePatterns: [",
+      "start": 5338,
+      "end": 5367,
+      "loc": {
+        "start": {
+          "line": 165,
+          "column": 2
+        },
+        "end": {
+          "line": 165,
+          "column": 31
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": "   \"/node_modules/\"",
+      "start": 5370,
+      "end": 5391,
+      "loc": {
+        "start": {
+          "line": 166,
+          "column": 2
+        },
+        "end": {
+          "line": 166,
+          "column": 23
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " ],",
+      "start": 5394,
+      "end": 5399,
+      "loc": {
+        "start": {
+          "line": 167,
+          "column": 2
+        },
+        "end": {
+          "line": 167,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them",
+      "start": 5403,
+      "end": 5544,
+      "loc": {
+        "start": {
+          "line": 169,
+          "column": 2
+        },
+        "end": {
+          "line": 169,
+          "column": 143
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " unmockedModulePathPatterns: undefined,",
+      "start": 5547,
+      "end": 5588,
+      "loc": {
+        "start": {
+          "line": 170,
+          "column": 2
+        },
+        "end": {
+          "line": 170,
+          "column": 43
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Indicates whether each individual test should be reported during the run",
+      "start": 5592,
+      "end": 5667,
+      "loc": {
+        "start": {
+          "line": 172,
+          "column": 2
+        },
+        "end": {
+          "line": 172,
+          "column": 77
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " verbose: null,",
+      "start": 5670,
+      "end": 5687,
+      "loc": {
+        "start": {
+          "line": 173,
+          "column": 2
+        },
+        "end": {
+          "line": 173,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " An array of regexp patterns that are matched against all source file paths before re-running tests in watch mode",
+      "start": 5691,
+      "end": 5806,
+      "loc": {
+        "start": {
+          "line": 175,
+          "column": 2
+        },
+        "end": {
+          "line": 175,
+          "column": 117
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " watchPathIgnorePatterns: [],",
+      "start": 5809,
+      "end": 5840,
+      "loc": {
+        "start": {
+          "line": 176,
+          "column": 2
+        },
+        "end": {
+          "line": 176,
+          "column": 33
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Whether to use watchman for file crawling",
+      "start": 5844,
+      "end": 5888,
+      "loc": {
+        "start": {
+          "line": 178,
+          "column": 2
+        },
+        "end": {
+          "line": 178,
+          "column": 46
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " watchman: true,",
+      "start": 5891,
+      "end": 5909,
+      "loc": {
+        "start": {
+          "line": 179,
+          "column": 2
+        },
+        "end": {
+          "line": 179,
+          "column": 20
+        }
+      }
+    }
+  ],
+  "tokens": [
+    {
+      "type": "CommentLine",
+      "value": " For a detailed explanation regarding each configuration property, visit:",
+      "start": 0,
+      "end": 75,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 75
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " https://jestjs.io/docs/en/configuration.html",
+      "start": 76,
+      "end": 123,
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 47
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "export",
+        "keyword": "export",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "export",
+      "start": 125,
+      "end": 131,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "line": 4,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "default",
+        "keyword": "default",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "default",
+      "start": 132,
+      "end": 139,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 7
+        },
+        "end": {
+          "line": 4,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "{",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 140,
+      "end": 141,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 15
+        },
+        "end": {
+          "line": 4,
+          "column": 16
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " All imported modules in your tests should be mocked automatically",
+      "start": 144,
+      "end": 212,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 2
+        },
+        "end": {
+          "line": 5,
+          "column": 70
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " automock: false,",
+      "start": 215,
+      "end": 234,
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 2
+        },
+        "end": {
+          "line": 6,
+          "column": 21
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Stop running tests after the first failure",
+      "start": 238,
+      "end": 283,
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 2
+        },
+        "end": {
+          "line": 8,
+          "column": 47
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " bail: false,",
+      "start": 286,
+      "end": 301,
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 2
+        },
+        "end": {
+          "line": 9,
+          "column": 17
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Respect \"browser\" field in package.json when resolving modules",
+      "start": 305,
+      "end": 370,
+      "loc": {
+        "start": {
+          "line": 11,
+          "column": 2
+        },
+        "end": {
+          "line": 11,
+          "column": 67
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " browser: false,",
+      "start": 373,
+      "end": 391,
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 2
+        },
+        "end": {
+          "line": 12,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " The directory where Jest should store its cached dependency information",
+      "start": 395,
+      "end": 469,
+      "loc": {
+        "start": {
+          "line": 14,
+          "column": 2
+        },
+        "end": {
+          "line": 14,
+          "column": 76
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " cacheDirectory: \"/var/folders/k1/qn_ccxjn65lgnjx5d1xh31dm0000gn/T/jest_dx\",",
+      "start": 472,
+      "end": 550,
+      "loc": {
+        "start": {
+          "line": 15,
+          "column": 2
+        },
+        "end": {
+          "line": 15,
+          "column": 80
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Automatically clear mock calls and instances between every test",
+      "start": 554,
+      "end": 620,
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 2
+        },
+        "end": {
+          "line": 17,
+          "column": 68
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "clearMocks",
+      "start": 623,
+      "end": 633,
+      "loc": {
+        "start": {
+          "line": 18,
+          "column": 2
+        },
+        "end": {
+          "line": 18,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 633,
+      "end": 634,
+      "loc": {
+        "start": {
+          "line": 18,
+          "column": 12
+        },
+        "end": {
+          "line": 18,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "true",
+        "keyword": "true",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "true",
+      "start": 635,
+      "end": 639,
+      "loc": {
+        "start": {
+          "line": 18,
+          "column": 14
+        },
+        "end": {
+          "line": 18,
+          "column": 18
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 639,
+      "end": 640,
+      "loc": {
+        "start": {
+          "line": 18,
+          "column": 18
+        },
+        "end": {
+          "line": 18,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Indicates whether the coverage information should be collected while executing the test",
+      "start": 644,
+      "end": 734,
+      "loc": {
+        "start": {
+          "line": 20,
+          "column": 2
+        },
+        "end": {
+          "line": 20,
+          "column": 92
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " collectCoverage: false,",
+      "start": 737,
+      "end": 763,
+      "loc": {
+        "start": {
+          "line": 21,
+          "column": 2
+        },
+        "end": {
+          "line": 21,
+          "column": 28
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " An array of glob patterns indicating a set of files for which coverage information should be collected",
+      "start": 767,
+      "end": 872,
+      "loc": {
+        "start": {
+          "line": 23,
+          "column": 2
+        },
+        "end": {
+          "line": 23,
+          "column": 107
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " collectCoverageFrom: null,",
+      "start": 875,
+      "end": 904,
+      "loc": {
+        "start": {
+          "line": 24,
+          "column": 2
+        },
+        "end": {
+          "line": 24,
+          "column": 31
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " The directory where Jest should output its coverage files",
+      "start": 908,
+      "end": 968,
+      "loc": {
+        "start": {
+          "line": 26,
+          "column": 2
+        },
+        "end": {
+          "line": 26,
+          "column": 62
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "coverageDirectory",
+      "start": 971,
+      "end": 988,
+      "loc": {
+        "start": {
+          "line": 27,
+          "column": 2
+        },
+        "end": {
+          "line": 27,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 988,
+      "end": 989,
+      "loc": {
+        "start": {
+          "line": 27,
+          "column": 19
+        },
+        "end": {
+          "line": 27,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "coverage",
+      "start": 990,
+      "end": 1000,
+      "loc": {
+        "start": {
+          "line": 27,
+          "column": 21
+        },
+        "end": {
+          "line": 27,
+          "column": 31
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 1000,
+      "end": 1001,
+      "loc": {
+        "start": {
+          "line": 27,
+          "column": 31
+        },
+        "end": {
+          "line": 27,
+          "column": 32
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " An array of regexp pattern strings used to skip coverage collection",
+      "start": 1005,
+      "end": 1075,
+      "loc": {
+        "start": {
+          "line": 29,
+          "column": 2
+        },
+        "end": {
+          "line": 29,
+          "column": 72
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " coveragePathIgnorePatterns: [",
+      "start": 1078,
+      "end": 1110,
+      "loc": {
+        "start": {
+          "line": 30,
+          "column": 2
+        },
+        "end": {
+          "line": 30,
+          "column": 34
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": "   \"/node_modules/\"",
+      "start": 1113,
+      "end": 1134,
+      "loc": {
+        "start": {
+          "line": 31,
+          "column": 2
+        },
+        "end": {
+          "line": 31,
+          "column": 23
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " ],",
+      "start": 1137,
+      "end": 1142,
+      "loc": {
+        "start": {
+          "line": 32,
+          "column": 2
+        },
+        "end": {
+          "line": 32,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " A list of reporter names that Jest uses when writing coverage reports",
+      "start": 1146,
+      "end": 1218,
+      "loc": {
+        "start": {
+          "line": 34,
+          "column": 2
+        },
+        "end": {
+          "line": 34,
+          "column": 74
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " coverageReporters: [",
+      "start": 1221,
+      "end": 1244,
+      "loc": {
+        "start": {
+          "line": 35,
+          "column": 2
+        },
+        "end": {
+          "line": 35,
+          "column": 25
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": "   \"json\",",
+      "start": 1247,
+      "end": 1259,
+      "loc": {
+        "start": {
+          "line": 36,
+          "column": 2
+        },
+        "end": {
+          "line": 36,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": "   \"text\",",
+      "start": 1262,
+      "end": 1274,
+      "loc": {
+        "start": {
+          "line": 37,
+          "column": 2
+        },
+        "end": {
+          "line": 37,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": "   \"lcov\",",
+      "start": 1277,
+      "end": 1289,
+      "loc": {
+        "start": {
+          "line": 38,
+          "column": 2
+        },
+        "end": {
+          "line": 38,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": "   \"clover\"",
+      "start": 1292,
+      "end": 1305,
+      "loc": {
+        "start": {
+          "line": 39,
+          "column": 2
+        },
+        "end": {
+          "line": 39,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " ],",
+      "start": 1308,
+      "end": 1313,
+      "loc": {
+        "start": {
+          "line": 40,
+          "column": 2
+        },
+        "end": {
+          "line": 40,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " An object that configures minimum threshold enforcement for coverage results",
+      "start": 1317,
+      "end": 1396,
+      "loc": {
+        "start": {
+          "line": 42,
+          "column": 2
+        },
+        "end": {
+          "line": 42,
+          "column": 81
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " coverageThreshold: null,",
+      "start": 1399,
+      "end": 1426,
+      "loc": {
+        "start": {
+          "line": 43,
+          "column": 2
+        },
+        "end": {
+          "line": 43,
+          "column": 29
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Make calling deprecated APIs throw helpful error messages",
+      "start": 1430,
+      "end": 1490,
+      "loc": {
+        "start": {
+          "line": 45,
+          "column": 2
+        },
+        "end": {
+          "line": 45,
+          "column": 62
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " errorOnDeprecated: false,",
+      "start": 1493,
+      "end": 1521,
+      "loc": {
+        "start": {
+          "line": 46,
+          "column": 2
+        },
+        "end": {
+          "line": 46,
+          "column": 30
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Force coverage collection from ignored files usin a array of glob patterns",
+      "start": 1525,
+      "end": 1602,
+      "loc": {
+        "start": {
+          "line": 48,
+          "column": 2
+        },
+        "end": {
+          "line": 48,
+          "column": 79
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " forceCoverageMatch: [],",
+      "start": 1605,
+      "end": 1631,
+      "loc": {
+        "start": {
+          "line": 49,
+          "column": 2
+        },
+        "end": {
+          "line": 49,
+          "column": 28
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " A path to a module which exports an async function that is triggered once before all test suites",
+      "start": 1635,
+      "end": 1734,
+      "loc": {
+        "start": {
+          "line": 51,
+          "column": 2
+        },
+        "end": {
+          "line": 51,
+          "column": 101
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " globalSetup: null,",
+      "start": 1737,
+      "end": 1758,
+      "loc": {
+        "start": {
+          "line": 52,
+          "column": 2
+        },
+        "end": {
+          "line": 52,
+          "column": 23
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " A path to a module which exports an async function that is triggered once after all test suites",
+      "start": 1762,
+      "end": 1860,
+      "loc": {
+        "start": {
+          "line": 54,
+          "column": 2
+        },
+        "end": {
+          "line": 54,
+          "column": 100
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " globalTeardown: null,",
+      "start": 1863,
+      "end": 1887,
+      "loc": {
+        "start": {
+          "line": 55,
+          "column": 2
+        },
+        "end": {
+          "line": 55,
+          "column": 26
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " A set of global variables that need to be available in all test environments",
+      "start": 1891,
+      "end": 1970,
+      "loc": {
+        "start": {
+          "line": 57,
+          "column": 2
+        },
+        "end": {
+          "line": 57,
+          "column": 81
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " globals: {},",
+      "start": 1973,
+      "end": 1988,
+      "loc": {
+        "start": {
+          "line": 58,
+          "column": 2
+        },
+        "end": {
+          "line": 58,
+          "column": 17
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " An array of directory names to be searched recursively up from the requiring module's location",
+      "start": 1992,
+      "end": 2089,
+      "loc": {
+        "start": {
+          "line": 60,
+          "column": 2
+        },
+        "end": {
+          "line": 60,
+          "column": 99
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " moduleDirectories: [",
+      "start": 2092,
+      "end": 2115,
+      "loc": {
+        "start": {
+          "line": 61,
+          "column": 2
+        },
+        "end": {
+          "line": 61,
+          "column": 25
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": "   \"node_modules\"",
+      "start": 2118,
+      "end": 2137,
+      "loc": {
+        "start": {
+          "line": 62,
+          "column": 2
+        },
+        "end": {
+          "line": 62,
+          "column": 21
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " ],",
+      "start": 2140,
+      "end": 2145,
+      "loc": {
+        "start": {
+          "line": 63,
+          "column": 2
+        },
+        "end": {
+          "line": 63,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " An array of file extensions your modules use",
+      "start": 2149,
+      "end": 2196,
+      "loc": {
+        "start": {
+          "line": 65,
+          "column": 2
+        },
+        "end": {
+          "line": 65,
+          "column": 49
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " moduleFileExtensions: [",
+      "start": 2199,
+      "end": 2225,
+      "loc": {
+        "start": {
+          "line": 66,
+          "column": 2
+        },
+        "end": {
+          "line": 66,
+          "column": 28
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": "   \"js\",",
+      "start": 2228,
+      "end": 2238,
+      "loc": {
+        "start": {
+          "line": 67,
+          "column": 2
+        },
+        "end": {
+          "line": 67,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": "   \"json\",",
+      "start": 2241,
+      "end": 2253,
+      "loc": {
+        "start": {
+          "line": 68,
+          "column": 2
+        },
+        "end": {
+          "line": 68,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": "   \"jsx\",",
+      "start": 2256,
+      "end": 2267,
+      "loc": {
+        "start": {
+          "line": 69,
+          "column": 2
+        },
+        "end": {
+          "line": 69,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": "   \"node\"",
+      "start": 2270,
+      "end": 2281,
+      "loc": {
+        "start": {
+          "line": 70,
+          "column": 2
+        },
+        "end": {
+          "line": 70,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " ],",
+      "start": 2284,
+      "end": 2289,
+      "loc": {
+        "start": {
+          "line": 71,
+          "column": 2
+        },
+        "end": {
+          "line": 71,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " A map from regular expressions to module names that allow to stub out resources with a single module",
+      "start": 2293,
+      "end": 2396,
+      "loc": {
+        "start": {
+          "line": 73,
+          "column": 2
+        },
+        "end": {
+          "line": 73,
+          "column": 105
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " moduleNameMapper: {},",
+      "start": 2399,
+      "end": 2423,
+      "loc": {
+        "start": {
+          "line": 74,
+          "column": 2
+        },
+        "end": {
+          "line": 74,
+          "column": 26
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader",
+      "start": 2427,
+      "end": 2547,
+      "loc": {
+        "start": {
+          "line": 76,
+          "column": 2
+        },
+        "end": {
+          "line": 76,
+          "column": 122
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " modulePathIgnorePatterns: [],",
+      "start": 2550,
+      "end": 2582,
+      "loc": {
+        "start": {
+          "line": 77,
+          "column": 2
+        },
+        "end": {
+          "line": 77,
+          "column": 34
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Activates notifications for test results",
+      "start": 2586,
+      "end": 2629,
+      "loc": {
+        "start": {
+          "line": 79,
+          "column": 2
+        },
+        "end": {
+          "line": 79,
+          "column": 45
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " notify: false,",
+      "start": 2632,
+      "end": 2649,
+      "loc": {
+        "start": {
+          "line": 80,
+          "column": 2
+        },
+        "end": {
+          "line": 80,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " An enum that specifies notification mode. Requires { notify: true }",
+      "start": 2653,
+      "end": 2723,
+      "loc": {
+        "start": {
+          "line": 82,
+          "column": 2
+        },
+        "end": {
+          "line": 82,
+          "column": 72
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " notifyMode: \"always\",",
+      "start": 2726,
+      "end": 2750,
+      "loc": {
+        "start": {
+          "line": 83,
+          "column": 2
+        },
+        "end": {
+          "line": 83,
+          "column": 26
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " A preset that is used as a base for Jest's configuration",
+      "start": 2754,
+      "end": 2813,
+      "loc": {
+        "start": {
+          "line": 85,
+          "column": 2
+        },
+        "end": {
+          "line": 85,
+          "column": 61
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " preset: null,",
+      "start": 2816,
+      "end": 2832,
+      "loc": {
+        "start": {
+          "line": 86,
+          "column": 2
+        },
+        "end": {
+          "line": 86,
+          "column": 18
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Run tests from one or more projects",
+      "start": 2836,
+      "end": 2874,
+      "loc": {
+        "start": {
+          "line": 88,
+          "column": 2
+        },
+        "end": {
+          "line": 88,
+          "column": 40
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " projects: null,",
+      "start": 2877,
+      "end": 2895,
+      "loc": {
+        "start": {
+          "line": 89,
+          "column": 2
+        },
+        "end": {
+          "line": 89,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Use this configuration option to add custom reporters to Jest",
+      "start": 2899,
+      "end": 2963,
+      "loc": {
+        "start": {
+          "line": 91,
+          "column": 2
+        },
+        "end": {
+          "line": 91,
+          "column": 66
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " reporters: undefined,",
+      "start": 2966,
+      "end": 2990,
+      "loc": {
+        "start": {
+          "line": 92,
+          "column": 2
+        },
+        "end": {
+          "line": 92,
+          "column": 26
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Automatically reset mock state between every test",
+      "start": 2994,
+      "end": 3046,
+      "loc": {
+        "start": {
+          "line": 94,
+          "column": 2
+        },
+        "end": {
+          "line": 94,
+          "column": 54
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " resetMocks: false,",
+      "start": 3049,
+      "end": 3070,
+      "loc": {
+        "start": {
+          "line": 95,
+          "column": 2
+        },
+        "end": {
+          "line": 95,
+          "column": 23
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Reset the module registry before running each individual test",
+      "start": 3074,
+      "end": 3138,
+      "loc": {
+        "start": {
+          "line": 97,
+          "column": 2
+        },
+        "end": {
+          "line": 97,
+          "column": 66
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " resetModules: false,",
+      "start": 3141,
+      "end": 3164,
+      "loc": {
+        "start": {
+          "line": 98,
+          "column": 2
+        },
+        "end": {
+          "line": 98,
+          "column": 25
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " A path to a custom resolver",
+      "start": 3168,
+      "end": 3198,
+      "loc": {
+        "start": {
+          "line": 100,
+          "column": 2
+        },
+        "end": {
+          "line": 100,
+          "column": 32
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " resolver: null,",
+      "start": 3201,
+      "end": 3219,
+      "loc": {
+        "start": {
+          "line": 101,
+          "column": 2
+        },
+        "end": {
+          "line": 101,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Automatically restore mock state between every test",
+      "start": 3223,
+      "end": 3277,
+      "loc": {
+        "start": {
+          "line": 103,
+          "column": 2
+        },
+        "end": {
+          "line": 103,
+          "column": 56
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " restoreMocks: false,",
+      "start": 3280,
+      "end": 3303,
+      "loc": {
+        "start": {
+          "line": 104,
+          "column": 2
+        },
+        "end": {
+          "line": 104,
+          "column": 25
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " The root directory that Jest should scan for tests and modules within",
+      "start": 3307,
+      "end": 3379,
+      "loc": {
+        "start": {
+          "line": 106,
+          "column": 2
+        },
+        "end": {
+          "line": 106,
+          "column": 74
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " rootDir: null,",
+      "start": 3382,
+      "end": 3399,
+      "loc": {
+        "start": {
+          "line": 107,
+          "column": 2
+        },
+        "end": {
+          "line": 107,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " A list of paths to directories that Jest should use to search for files in",
+      "start": 3403,
+      "end": 3480,
+      "loc": {
+        "start": {
+          "line": 109,
+          "column": 2
+        },
+        "end": {
+          "line": 109,
+          "column": 79
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " roots: [",
+      "start": 3483,
+      "end": 3494,
+      "loc": {
+        "start": {
+          "line": 110,
+          "column": 2
+        },
+        "end": {
+          "line": 110,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": "   \"<rootDir>\"",
+      "start": 3497,
+      "end": 3513,
+      "loc": {
+        "start": {
+          "line": 111,
+          "column": 2
+        },
+        "end": {
+          "line": 111,
+          "column": 18
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " ],",
+      "start": 3516,
+      "end": 3521,
+      "loc": {
+        "start": {
+          "line": 112,
+          "column": 2
+        },
+        "end": {
+          "line": 112,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Allows you to use a custom runner instead of Jest's default test runner",
+      "start": 3525,
+      "end": 3599,
+      "loc": {
+        "start": {
+          "line": 114,
+          "column": 2
+        },
+        "end": {
+          "line": 114,
+          "column": 76
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " runner: \"jest-runner\",",
+      "start": 3602,
+      "end": 3627,
+      "loc": {
+        "start": {
+          "line": 115,
+          "column": 2
+        },
+        "end": {
+          "line": 115,
+          "column": 27
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " The paths to modules that run some code to configure or set up the testing environment before each test",
+      "start": 3631,
+      "end": 3737,
+      "loc": {
+        "start": {
+          "line": 117,
+          "column": 2
+        },
+        "end": {
+          "line": 117,
+          "column": 108
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " setupFiles: [],",
+      "start": 3740,
+      "end": 3758,
+      "loc": {
+        "start": {
+          "line": 118,
+          "column": 2
+        },
+        "end": {
+          "line": 118,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " The path to a module that runs some code to configure or set up the testing framework before each test",
+      "start": 3762,
+      "end": 3867,
+      "loc": {
+        "start": {
+          "line": 120,
+          "column": 2
+        },
+        "end": {
+          "line": 120,
+          "column": 107
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " setupTestFrameworkScriptFile: null,",
+      "start": 3870,
+      "end": 3908,
+      "loc": {
+        "start": {
+          "line": 121,
+          "column": 2
+        },
+        "end": {
+          "line": 121,
+          "column": 40
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " A list of paths to snapshot serializer modules Jest should use for snapshot testing",
+      "start": 3912,
+      "end": 3998,
+      "loc": {
+        "start": {
+          "line": 123,
+          "column": 2
+        },
+        "end": {
+          "line": 123,
+          "column": 88
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " snapshotSerializers: [],",
+      "start": 4001,
+      "end": 4028,
+      "loc": {
+        "start": {
+          "line": 124,
+          "column": 2
+        },
+        "end": {
+          "line": 124,
+          "column": 29
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " The test environment that will be used for testing",
+      "start": 4032,
+      "end": 4085,
+      "loc": {
+        "start": {
+          "line": 126,
+          "column": 2
+        },
+        "end": {
+          "line": 126,
+          "column": 55
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "testEnvironment",
+      "start": 4088,
+      "end": 4103,
+      "loc": {
+        "start": {
+          "line": 127,
+          "column": 2
+        },
+        "end": {
+          "line": 127,
+          "column": 17
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ":",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 4103,
+      "end": 4104,
+      "loc": {
+        "start": {
+          "line": 127,
+          "column": 17
+        },
+        "end": {
+          "line": 127,
+          "column": 18
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "node",
+      "start": 4105,
+      "end": 4111,
+      "loc": {
+        "start": {
+          "line": 127,
+          "column": 19
+        },
+        "end": {
+          "line": 127,
+          "column": 25
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Options that will be passed to the testEnvironment",
+      "start": 4115,
+      "end": 4168,
+      "loc": {
+        "start": {
+          "line": 129,
+          "column": 2
+        },
+        "end": {
+          "line": 129,
+          "column": 55
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " testEnvironmentOptions: {},",
+      "start": 4171,
+      "end": 4201,
+      "loc": {
+        "start": {
+          "line": 130,
+          "column": 2
+        },
+        "end": {
+          "line": 130,
+          "column": 32
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Adds a location field to test results",
+      "start": 4205,
+      "end": 4245,
+      "loc": {
+        "start": {
+          "line": 132,
+          "column": 2
+        },
+        "end": {
+          "line": 132,
+          "column": 42
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " testLocationInResults: false,",
+      "start": 4248,
+      "end": 4280,
+      "loc": {
+        "start": {
+          "line": 133,
+          "column": 2
+        },
+        "end": {
+          "line": 133,
+          "column": 34
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " The glob patterns Jest uses to detect test files",
+      "start": 4284,
+      "end": 4335,
+      "loc": {
+        "start": {
+          "line": 135,
+          "column": 2
+        },
+        "end": {
+          "line": 135,
+          "column": 53
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " testMatch: [",
+      "start": 4338,
+      "end": 4353,
+      "loc": {
+        "start": {
+          "line": 136,
+          "column": 2
+        },
+        "end": {
+          "line": 136,
+          "column": 17
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": "   \"**/__tests__/**/*.js?(x)\",",
+      "start": 4356,
+      "end": 4388,
+      "loc": {
+        "start": {
+          "line": 137,
+          "column": 2
+        },
+        "end": {
+          "line": 137,
+          "column": 34
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": "   \"**/?(*.)+(spec|test).js?(x)\"",
+      "start": 4391,
+      "end": 4425,
+      "loc": {
+        "start": {
+          "line": 138,
+          "column": 2
+        },
+        "end": {
+          "line": 138,
+          "column": 36
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " ],",
+      "start": 4428,
+      "end": 4433,
+      "loc": {
+        "start": {
+          "line": 139,
+          "column": 2
+        },
+        "end": {
+          "line": 139,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " An array of regexp pattern strings that are matched against all test paths, matched tests are skipped",
+      "start": 4437,
+      "end": 4541,
+      "loc": {
+        "start": {
+          "line": 141,
+          "column": 2
+        },
+        "end": {
+          "line": 141,
+          "column": 106
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " testPathIgnorePatterns: [",
+      "start": 4544,
+      "end": 4572,
+      "loc": {
+        "start": {
+          "line": 142,
+          "column": 2
+        },
+        "end": {
+          "line": 142,
+          "column": 30
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": "   \"/node_modules/\"",
+      "start": 4575,
+      "end": 4596,
+      "loc": {
+        "start": {
+          "line": 143,
+          "column": 2
+        },
+        "end": {
+          "line": 143,
+          "column": 23
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " ],",
+      "start": 4599,
+      "end": 4604,
+      "loc": {
+        "start": {
+          "line": 144,
+          "column": 2
+        },
+        "end": {
+          "line": 144,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " The regexp pattern Jest uses to detect test files",
+      "start": 4608,
+      "end": 4660,
+      "loc": {
+        "start": {
+          "line": 146,
+          "column": 2
+        },
+        "end": {
+          "line": 146,
+          "column": 54
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " testRegex: \"\",",
+      "start": 4663,
+      "end": 4680,
+      "loc": {
+        "start": {
+          "line": 147,
+          "column": 2
+        },
+        "end": {
+          "line": 147,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " This option allows the use of a custom results processor",
+      "start": 4684,
+      "end": 4743,
+      "loc": {
+        "start": {
+          "line": 149,
+          "column": 2
+        },
+        "end": {
+          "line": 149,
+          "column": 61
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " testResultsProcessor: null,",
+      "start": 4746,
+      "end": 4776,
+      "loc": {
+        "start": {
+          "line": 150,
+          "column": 2
+        },
+        "end": {
+          "line": 150,
+          "column": 32
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " This option allows use of a custom test runner",
+      "start": 4780,
+      "end": 4829,
+      "loc": {
+        "start": {
+          "line": 152,
+          "column": 2
+        },
+        "end": {
+          "line": 152,
+          "column": 51
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " testRunner: \"jasmine2\",",
+      "start": 4832,
+      "end": 4858,
+      "loc": {
+        "start": {
+          "line": 153,
+          "column": 2
+        },
+        "end": {
+          "line": 153,
+          "column": 28
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " This option sets the URL for the jsdom environment. It is reflected in properties such as location.href",
+      "start": 4862,
+      "end": 4968,
+      "loc": {
+        "start": {
+          "line": 155,
+          "column": 2
+        },
+        "end": {
+          "line": 155,
+          "column": 108
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " testURL: \"http://localhost\",",
+      "start": 4971,
+      "end": 5002,
+      "loc": {
+        "start": {
+          "line": 156,
+          "column": 2
+        },
+        "end": {
+          "line": 156,
+          "column": 33
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Setting this value to \"fake\" allows the use of fake timers for functions such as \"setTimeout\"",
+      "start": 5006,
+      "end": 5102,
+      "loc": {
+        "start": {
+          "line": 158,
+          "column": 2
+        },
+        "end": {
+          "line": 158,
+          "column": 98
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " timers: \"real\",",
+      "start": 5105,
+      "end": 5123,
+      "loc": {
+        "start": {
+          "line": 159,
+          "column": 2
+        },
+        "end": {
+          "line": 159,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " A map from regular expressions to paths to transformers",
+      "start": 5127,
+      "end": 5185,
+      "loc": {
+        "start": {
+          "line": 161,
+          "column": 2
+        },
+        "end": {
+          "line": 161,
+          "column": 60
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " transform: null,",
+      "start": 5188,
+      "end": 5207,
+      "loc": {
+        "start": {
+          "line": 162,
+          "column": 2
+        },
+        "end": {
+          "line": 162,
+          "column": 21
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation",
+      "start": 5211,
+      "end": 5335,
+      "loc": {
+        "start": {
+          "line": 164,
+          "column": 2
+        },
+        "end": {
+          "line": 164,
+          "column": 126
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " transformIgnorePatterns: [",
+      "start": 5338,
+      "end": 5367,
+      "loc": {
+        "start": {
+          "line": 165,
+          "column": 2
+        },
+        "end": {
+          "line": 165,
+          "column": 31
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": "   \"/node_modules/\"",
+      "start": 5370,
+      "end": 5391,
+      "loc": {
+        "start": {
+          "line": 166,
+          "column": 2
+        },
+        "end": {
+          "line": 166,
+          "column": 23
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " ],",
+      "start": 5394,
+      "end": 5399,
+      "loc": {
+        "start": {
+          "line": 167,
+          "column": 2
+        },
+        "end": {
+          "line": 167,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them",
+      "start": 5403,
+      "end": 5544,
+      "loc": {
+        "start": {
+          "line": 169,
+          "column": 2
+        },
+        "end": {
+          "line": 169,
+          "column": 143
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " unmockedModulePathPatterns: undefined,",
+      "start": 5547,
+      "end": 5588,
+      "loc": {
+        "start": {
+          "line": 170,
+          "column": 2
+        },
+        "end": {
+          "line": 170,
+          "column": 43
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Indicates whether each individual test should be reported during the run",
+      "start": 5592,
+      "end": 5667,
+      "loc": {
+        "start": {
+          "line": 172,
+          "column": 2
+        },
+        "end": {
+          "line": 172,
+          "column": 77
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " verbose: null,",
+      "start": 5670,
+      "end": 5687,
+      "loc": {
+        "start": {
+          "line": 173,
+          "column": 2
+        },
+        "end": {
+          "line": 173,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " An array of regexp patterns that are matched against all source file paths before re-running tests in watch mode",
+      "start": 5691,
+      "end": 5806,
+      "loc": {
+        "start": {
+          "line": 175,
+          "column": 2
+        },
+        "end": {
+          "line": 175,
+          "column": 117
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " watchPathIgnorePatterns: [],",
+      "start": 5809,
+      "end": 5840,
+      "loc": {
+        "start": {
+          "line": 176,
+          "column": 2
+        },
+        "end": {
+          "line": 176,
+          "column": 33
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Whether to use watchman for file crawling",
+      "start": 5844,
+      "end": 5888,
+      "loc": {
+        "start": {
+          "line": 178,
+          "column": 2
+        },
+        "end": {
+          "line": 178,
+          "column": 46
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " watchman: true,",
+      "start": 5891,
+      "end": 5909,
+      "loc": {
+        "start": {
+          "line": 179,
+          "column": 2
+        },
+        "end": {
+          "line": 179,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "}",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 5910,
+      "end": 5911,
+      "loc": {
+        "start": {
+          "line": 180,
+          "column": 0
+        },
+        "end": {
+          "line": 180,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "eof",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 5912,
+      "end": 5912,
+      "loc": {
+        "start": {
+          "line": 181,
+          "column": 0
+        },
+        "end": {
+          "line": 181,
+          "column": 0
+        }
+      }
+    }
+  ]
+}

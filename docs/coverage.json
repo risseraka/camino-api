@@ -1,0 +1,1191 @@
+{
+  "coverage": "0.28%",
+  "expectCount": 346,
+  "actualCount": 1,
+  "files": {
+    "camino-api/api/_file-import.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        4
+      ]
+    },
+    "camino-api/api/resolvers/_format.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        6
+      ]
+    },
+    "camino-api/api/resolvers/_geojson.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        9,
+        17
+      ]
+    },
+    "camino-api/api/resolvers/_permissions-check.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        1
+      ]
+    },
+    "camino-api/api/resolvers/entreprises.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        7
+      ]
+    },
+    "camino-api/api/resolvers/metas.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        12,
+        15
+      ]
+    },
+    "camino-api/api/resolvers/permissions.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        8
+      ]
+    },
+    "camino-api/api/resolvers/substances.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        6
+      ]
+    },
+    "camino-api/api/resolvers/titres-travaux.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        89,
+        22
+      ]
+    },
+    "camino-api/api/resolvers/titres.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        157,
+        21
+      ]
+    },
+    "camino-api/api/resolvers/utilisateurs.js": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        18,
+        26,
+        46,
+        56
+      ]
+    },
+    "camino-api/api/resolvers/version.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "camino-api/api/schemas.js": {
+      "expectCount": 9,
+      "actualCount": 0,
+      "undocumentLines": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    "camino-api/config/index.js": {
+      "expectCount": 5,
+      "actualCount": 0,
+      "undocumentLines": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "camino-api/config/knex.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        11
+      ]
+    },
+    "camino-api/database/index.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        5
+      ]
+    },
+    "camino-api/database/models/administrations.js": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        4,
+        8,
+        29
+      ]
+    },
+    "camino-api/database/models/demarches-statuts.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        4,
+        8
+      ]
+    },
+    "camino-api/database/models/demarches-types.js": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        5,
+        6,
+        10,
+        29
+      ]
+    },
+    "camino-api/database/models/domaines.js": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        5,
+        9,
+        21
+      ]
+    },
+    "camino-api/database/models/emprises.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        4,
+        8
+      ]
+    },
+    "camino-api/database/models/entreprises.js": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        5,
+        9,
+        36
+      ]
+    },
+    "camino-api/database/models/etapes-statuts.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        4,
+        8
+      ]
+    },
+    "camino-api/database/models/etapes-types.js": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        5,
+        9,
+        33
+      ]
+    },
+    "camino-api/database/models/permissions.js": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        4,
+        8,
+        21
+      ]
+    },
+    "camino-api/database/models/phases-statuts.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        4,
+        8
+      ]
+    },
+    "camino-api/database/models/statuts.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        4,
+        8
+      ]
+    },
+    "camino-api/database/models/substances-legales-codes.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        4,
+        8
+      ]
+    },
+    "camino-api/database/models/substances-legales.js": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        5,
+        6,
+        10,
+        25
+      ]
+    },
+    "camino-api/database/models/substances.js": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        5,
+        9,
+        25
+      ]
+    },
+    "camino-api/database/models/titres-administrations.js": {
+      "expectCount": 5,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        5,
+        9,
+        21,
+        34
+      ]
+    },
+    "camino-api/database/models/titres-amodiataires.js": {
+      "expectCount": 5,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        5,
+        9,
+        21,
+        34
+      ]
+    },
+    "camino-api/database/models/titres-demarches.js": {
+      "expectCount": 5,
+      "actualCount": 0,
+      "undocumentLines": [
+        7,
+        8,
+        12,
+        28,
+        82
+      ]
+    },
+    "camino-api/database/models/titres-documents.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        4,
+        8
+      ]
+    },
+    "camino-api/database/models/titres-emprises.js": {
+      "expectCount": 5,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        5,
+        9,
+        21,
+        34
+      ]
+    },
+    "camino-api/database/models/titres-erreurs.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        4,
+        8
+      ]
+    },
+    "camino-api/database/models/titres-etapes.js": {
+      "expectCount": 5,
+      "actualCount": 0,
+      "undocumentLines": [
+        18,
+        19,
+        23,
+        49,
+        195
+      ]
+    },
+    "camino-api/database/models/titres-phases.js": {
+      "expectCount": 5,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        5,
+        9,
+        23,
+        36
+      ]
+    },
+    "camino-api/database/models/titres-points-references.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        4,
+        8
+      ]
+    },
+    "camino-api/database/models/titres-points.js": {
+      "expectCount": 6,
+      "actualCount": 0,
+      "undocumentLines": [
+        5,
+        6,
+        10,
+        42,
+        55,
+        64
+      ]
+    },
+    "camino-api/database/models/titres-substances.js": {
+      "expectCount": 5,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        5,
+        9,
+        23,
+        36
+      ]
+    },
+    "camino-api/database/models/titres-titulaires.js": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        5,
+        9,
+        21
+      ]
+    },
+    "camino-api/database/models/titres-travaux-rapports.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        4,
+        8
+      ]
+    },
+    "camino-api/database/models/titres.js": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        13,
+        14,
+        18,
+        43
+      ]
+    },
+    "camino-api/database/models/types.js": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        5,
+        6,
+        10,
+        22
+      ]
+    },
+    "camino-api/database/models/utilisateurs.js": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        5,
+        9,
+        30
+      ]
+    },
+    "camino-api/database/queries/_options.js": {
+      "expectCount": 10,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        10,
+        14,
+        18,
+        22,
+        26,
+        59,
+        63,
+        69,
+        84
+      ]
+    },
+    "camino-api/database/queries/entreprises.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        4
+      ]
+    },
+    "camino-api/database/queries/metas.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        7
+      ]
+    },
+    "camino-api/database/queries/permissions.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "camino-api/database/queries/substances.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        4
+      ]
+    },
+    "camino-api/database/queries/titres-demarches.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        4
+      ]
+    },
+    "camino-api/database/queries/titres-etapes.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        4
+      ]
+    },
+    "camino-api/database/queries/titres-phases.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        4
+      ]
+    },
+    "camino-api/database/queries/titres-points.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "camino-api/database/queries/titres-travaux.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "camino-api/database/queries/titres.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        4
+      ]
+    },
+    "camino-api/database/queries/utilisateurs.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        4
+      ]
+    },
+    "camino-api/index.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        25
+      ]
+    },
+    "camino-api/tasks/_utils/titre-date-fin-find.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "camino-api/tasks/_utils/titre-demarche-date-fin-duree-find.js": {
+      "expectCount": 5,
+      "actualCount": 0,
+      "undocumentLines": [
+        62,
+        118,
+        152,
+        178,
+        11
+      ]
+    },
+    "camino-api/tasks/_utils/titre-demarche-ordre-find.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        4
+      ]
+    },
+    "camino-api/tasks/_utils/titre-demarche-phases-filter.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        10
+      ]
+    },
+    "camino-api/tasks/_utils/titre-demarche-statut-id-find.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "camino-api/tasks/_utils/titre-demarches-asc-sort.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        4
+      ]
+    },
+    "camino-api/tasks/_utils/titre-etapes-asc-sort.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        2
+      ]
+    },
+    "camino-api/tasks/_utils/titre-etapes-desc-sort.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        2
+      ]
+    },
+    "camino-api/tasks/_utils/titre-phases-find.js": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        51,
+        103,
+        129,
+        8
+      ]
+    },
+    "camino-api/tasks/_utils/titre-prop-etape-id-find.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        5
+      ]
+    },
+    "camino-api/tasks/_utils/titre-statut-id-find.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        4
+      ]
+    },
+    "camino-api/tasks/daily/index.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        18
+      ]
+    },
+    "camino-api/tasks/daily/titres-demarches-ordre-update.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        21,
+        3
+      ]
+    },
+    "camino-api/tasks/daily/titres-demarches-statut-ids-update.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        5
+      ]
+    },
+    "camino-api/tasks/daily/titres-etapes-ordre-update.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        20,
+        3
+      ]
+    },
+    "camino-api/tasks/daily/titres-phases-update.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        50,
+        5
+      ]
+    },
+    "camino-api/tasks/daily/titres-props-etape-id-update.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "camino-api/tasks/daily/titres-statut-ids-update.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        5
+      ]
+    },
+    "camino-api/tasks/etape-update/index.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        14
+      ]
+    },
+    "camino-api/tasks/etape-update/titre-demarche-statut-id-update.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        5
+      ]
+    },
+    "camino-api/tasks/etape-update/titre-demarches-ordre-update.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "camino-api/tasks/etape-update/titre-etapes-ordre-update.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "camino-api/tasks/etape-update/titre-phases-update.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        4
+      ]
+    },
+    "camino-api/tasks/etape-update/titre-props-etape-id-update.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "camino-api/tasks/etape-update/titre-statut-id-update.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        5
+      ]
+    },
+    "camino-api/tasks/titre-demarches.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        8
+      ]
+    },
+    "camino-api/tasks/titre-etapes.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "camino-api/tasks/titre-phases.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        70,
+        75,
+        8
+      ]
+    },
+    "camino-api/tasks/titres-without-points-list.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        6,
+        19
+      ]
+    },
+    "camino-api/tasks/titres.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        4
+      ]
+    },
+    "camino-api/tasks/utilisateur-add.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        7,
+        9,
+        15
+      ]
+    },
+    "camino-api/tasks/utilisateur-remove.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        6,
+        8
+      ]
+    },
+    "camino-api/tools/export/_utils/db-process.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        4
+      ]
+    },
+    "camino-api/tools/export/_utils/google-spreadsheet-promisify.js": {
+      "expectCount": 9,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        14,
+        27,
+        40,
+        53,
+        66,
+        78,
+        90,
+        102
+      ]
+    },
+    "camino-api/tools/export/_utils/json-to-spreadsheet.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        126,
+        16
+      ]
+    },
+    "camino-api/tools/export/_utils/row-format.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        12
+      ]
+    },
+    "camino-api/tools/export/_utils/spreadsheet-row-add.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        9
+      ]
+    },
+    "camino-api/tools/export/_utils/spreadsheet-row-update.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        11
+      ]
+    },
+    "camino-api/tools/export/definitions.js": {
+      "expectCount": 14,
+      "actualCount": 0,
+      "undocumentLines": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        21,
+        31,
+        40,
+        48,
+        50
+      ]
+    },
+    "camino-api/tools/export/index.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        8
+      ]
+    },
+    "camino-api/tools/export/tables/titres-travaux.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        5
+      ]
+    },
+    "camino-api/tools/export/tables/titres.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        7
+      ]
+    },
+    "camino-api/tools/export/tables/utilisateurs.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        1
+      ]
+    },
+    "camino-api/tools/export/titre-travaux-rapport.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        6,
+        13
+      ]
+    },
+    "camino-api/tools/export/titres-travaux-rapports.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        6,
+        10
+      ]
+    },
+    "camino-api/tools/export/utilisateurs.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        6,
+        10
+      ]
+    },
+    "camino-api/tools/import/_utils/_spreadsheet-to-json.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        5
+      ]
+    },
+    "camino-api/tools/import/_utils/file-create.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "camino-api/tools/import/_utils/file-path-create.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "camino-api/tools/import/index.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        9,
+        19
+      ]
+    },
+    "camino-api/tools/import/spreadsheets.js": {
+      "expectCount": 19,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        16,
+        17,
+        20,
+        28,
+        42
+      ]
+    },
+    "camino-api/tools/knex/config.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        12
+      ]
+    },
+    "camino-api/tools/knex/index.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        6,
+        10
+      ]
+    },
+    "camino-api/tools/knex/knex.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        12
+      ]
+    },
+    "camino-api/tools/knex/migrations/20180521134020_domaines_types_statuts.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        35
+      ]
+    },
+    "camino-api/tools/knex/migrations/20180521154020_demarches_etapes.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        99
+      ]
+    },
+    "camino-api/tools/knex/migrations/20180521162125_substances.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        43
+      ]
+    },
+    "camino-api/tools/knex/migrations/20180521162130_repertoire.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        67
+      ]
+    },
+    "camino-api/tools/knex/migrations/20180521171034_titres.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        12
+      ]
+    },
+    "camino-api/tools/knex/migrations/20180522134857_titres_demarches_etapes.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        94
+      ]
+    },
+    "camino-api/tools/knex/migrations/20180522174715_titres_etapes_substances_emprises.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        31
+      ]
+    },
+    "camino-api/tools/knex/migrations/20180522174720_titres_etapes_utilisateurs_titulaires_amodiataires_administrations.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        41
+      ]
+    },
+    "camino-api/tools/knex/migrations/20180522232605_titres_etapes_points.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        29
+      ]
+    },
+    "camino-api/tools/knex/migrations/20180522232610_titres_etapes_documents.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        19
+      ]
+    },
+    "camino-api/tools/knex/migrations/20180522232620_titres_etapes_erreurs.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        22
+      ]
+    },
+    "camino-api/tools/knex/migrations/20181106210542_travaux_rapports.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        14
+      ]
+    },
+    "camino-api/tools/knex/seeds/1-metas.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        16
+      ]
+    },
+    "camino-api/tools/knex/seeds/2-substances.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        6
+      ]
+    },
+    "camino-api/tools/knex/seeds/3-repertoire.js": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        12,
+        24,
+        38,
+        40
+      ]
+    },
+    "camino-api/tools/knex/seeds/4-utilisateurs.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        4
+      ]
+    },
+    "camino-api/tools/knex/seeds/5-titres.js": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        2,
+        3,
+        17,
+        28
+      ]
+    },
+    "camino-api/tools/knex/seeds/6-titres-travaux-rapports.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        4
+      ]
+    },
+    "camino-api/tools/mailer/batch.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "camino-api/tools/mailer/index.js": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        13,
+        17,
+        19,
+        26
+      ]
+    },
+    "camino-api/tools/utils/database/demarches-by-titre.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        10
+      ]
+    },
+    "camino-api/tools/utils/database/demarches-types.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        8
+      ]
+    },
+    "camino-api/tools/utils/database/demarches-with-no-points.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        8
+      ]
+    },
+    "camino-api/tools/utils/database/utilisateurs-by-titre.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        7
+      ]
+    },
+    "camino-api/tools/utils/graphql-dsl-to-query-convert.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        4
+      ]
+    },
+    "camino-api/tools/utils/index.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        12
+      ]
+    },
+    "camino-api/tools/utils/json/error-find.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        11,
+        33
+      ]
+    }
+  }
+}
