@@ -2130,6 +2130,18 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "camino-api/tasks/index.js",
+    "file/camino-api/tasks/index.js.html",
+    "camino-api/tasks/index.js",
+    "file"
+  ],
+  [
+    "camino-api/tasks/index.js~titredemarche",
+    "typedef/index.html#static-typedef-titreDemarche",
+    "camino-api/tasks/index.js~titreDemarche",
+    "typedef"
+  ],
+  [
     "camino-api/tasks/titre-demarches.js",
     "file/camino-api/tasks/titre-demarches.js.html",
     "camino-api/tasks/titre-demarches.js",

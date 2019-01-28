@@ -86,6 +86,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-titreEtapes">titreEtapes</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-titrePhases">titrePhases</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-titres">titres</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-titreDemarche">titreDemarche</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tasks--utils">tasks/_utils</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-titreDateFinFind">titreDateFinFind</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-titreDemarcheDateFinAndDureeFind">titreDemarcheDateFinAndDureeFind</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-titreDemarcheOrdreFind">titreDemarcheOrdreFind</a></span></span></li>
@@ -162,7 +163,11 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">camino-api/tools/knex/migrations/20180521134020_domaines_types_statuts.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">exports.up = knex =&gt; {
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+ * cr&#xE9;ation des tables &apos;metas&apos; de la base de donn&#xE9;es
+ */
+
+exports.up = knex =&gt; {
   return knex.schema
     .createTable(&apos;domaines&apos;, table =&gt; {
       table.string(&apos;id&apos;, 1).primary()

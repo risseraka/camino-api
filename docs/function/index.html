@@ -86,6 +86,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-titreEtapes">titreEtapes</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-titrePhases">titrePhases</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-titres">titres</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-titreDemarche">titreDemarche</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tasks--utils">tasks/_utils</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-titreDateFinFind">titreDateFinFind</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-titreDemarcheDateFinAndDureeFind">titreDemarcheDateFinAndDureeFind</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-titreDemarcheOrdreFind">titreDemarcheOrdreFind</a></span></span></li>
@@ -992,7 +993,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-titreDateFinFind">titreDateFinFind</a></span></span><span class="code" data-ice="signature">(titreDemarches: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-titreDateFinFind">titreDateFinFind</a></span></span><span class="code" data-ice="signature">(titreDemarches: <span><span><a href="typedef/index.html#static-typedef-titreDemarche">titreDemarche</a></span><span>[]</span></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></span>
         </p>
       </div>
       <div>
@@ -1643,7 +1644,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>cr&#xE9;ation des tables &apos;metas&apos; de la base de donn&#xE9;es</p>
+</div>
       </div>
     </td>
     <td>
@@ -2109,11 +2111,11 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/camino-api/tools/knex/migrations/20180521134020_domaines_types_statuts.js.html#lineNumber35">source</a></span></span>
+      <span data-ice="source"><span><a href="file/camino-api/tools/knex/migrations/20180521134020_domaines_types_statuts.js.html#lineNumber39">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {down} from &apos;<span><a href="file/camino-api/tools/knex/migrations/20180521134020_domaines_types_statuts.js.html#lineNumber35">camino-api/camino-api/tools/knex/migrations/20180521134020_domaines_types_statuts.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {down} from &apos;<span><a href="file/camino-api/tools/knex/migrations/20180521134020_domaines_types_statuts.js.html#lineNumber39">camino-api/camino-api/tools/knex/migrations/20180521134020_domaines_types_statuts.js</a></span>&apos;</code></pre></div>
   
   
   
@@ -4051,7 +4053,7 @@
     
     
     
-    <span class="code" data-ice="name">titreDateFinFind</span><span class="code" data-ice="signature">(titreDemarches: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></span>
+    <span class="code" data-ice="name">titreDateFinFind</span><span class="code" data-ice="signature">(titreDemarches: <span><span><a href="typedef/index.html#static-typedef-titreDemarche">titreDemarche</a></span><span>[]</span></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></span>
     <span class="right-info">
       
       
@@ -4077,7 +4079,7 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">titreDemarches</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span></td>
+      <td data-ice="type" class="code"><span><span><a href="typedef/index.html#static-typedef-titreDemarche">titreDemarche</a></span><span>[]</span></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"><p>la liste des d&#xE9;marches d&apos;un titres</p>
 </td>
@@ -5691,14 +5693,15 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/camino-api/tools/knex/migrations/20180521134020_domaines_types_statuts.js.html#lineNumber1">source</a></span></span>
+      <span data-ice="source"><span><a href="file/camino-api/tools/knex/migrations/20180521134020_domaines_types_statuts.js.html#lineNumber5">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {up} from &apos;<span><a href="file/camino-api/tools/knex/migrations/20180521134020_domaines_types_statuts.js.html#lineNumber1">camino-api/camino-api/tools/knex/migrations/20180521134020_domaines_types_statuts.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {up} from &apos;<span><a href="file/camino-api/tools/knex/migrations/20180521134020_domaines_types_statuts.js.html#lineNumber5">camino-api/camino-api/tools/knex/migrations/20180521134020_domaines_types_statuts.js</a></span>&apos;</code></pre></div>
   
   
-  
+  <div data-ice="description"><p>cr&#xE9;ation des tables &apos;metas&apos; de la base de donn&#xE9;es</p>
+</div>
 
   
 

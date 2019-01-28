@@ -1,7 +1,7 @@
 {
-  "coverage": "0.28%",
+  "coverage": "0.57%",
   "expectCount": 346,
-  "actualCount": 1,
+  "actualCount": 2,
   "files": {
     "camino-api/api/_file-import.js": {
       "expectCount": 1,
@@ -977,10 +977,9 @@
     },
     "camino-api/tools/knex/migrations/20180521134020_domaines_types_statuts.js": {
       "expectCount": 2,
-      "actualCount": 0,
+      "actualCount": 1,
       "undocumentLines": [
-        1,
-        35
+        39
       ]
     },
     "camino-api/tools/knex/migrations/20180521154020_demarches_etapes.js": {

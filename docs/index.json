@@ -4877,7 +4877,7 @@
     "__docId__": 290,
     "kind": "file",
     "name": "camino-api/tasks/_utils/titre-date-fin-find.js",
-    "content": "const titreDemarcheDateFinAndDureeFind = require('./titre-demarche-date-fin-duree-find')\n\n/**\n * Trouve la date de fin d'un titre\n * @param {Array} titreDemarches la liste des démarches d'un titres\n * @return {String} la date de fin du titre sous forme yyyy-mm-dd\n */\n\nconst titreDateFinFind = titreDemarches => {\n  // la dernière démarche dont le statut est acceptée ou terminée\n  const titreDemarche = titreDemarches.find(titreDemarche =>\n    ['acc', 'ter'].includes(titreDemarche.statutId)\n  )\n  const dateFin =\n    titreDemarche &&\n    titreDemarcheDateFinAndDureeFind(titreDemarches, titreDemarche.ordre)\n      .dateFin\n\n  return dateFin\n}\n\nmodule.exports = titreDateFinFind\n",
+    "content": "const titreDemarcheDateFinAndDureeFind = require('./titre-demarche-date-fin-duree-find')\n\n/**\n * Trouve la date de fin d'un titre\n * @param {titreDemarche[]} titreDemarches la liste des démarches d'un titres\n * @return {String} la date de fin du titre sous forme yyyy-mm-dd\n */\n\nconst titreDateFinFind = titreDemarches => {\n  // la dernière démarche dont le statut est acceptée ou terminée\n  const titreDemarche = titreDemarches.find(titreDemarche =>\n    ['acc', 'ter'].includes(titreDemarche.statutId)\n  )\n  const dateFin =\n    titreDemarche &&\n    titreDemarcheDateFinAndDureeFind(titreDemarches, titreDemarche.ordre)\n      .dateFin\n\n  return dateFin\n}\n\nmodule.exports = titreDateFinFind\n",
     "static": true,
     "longname": "/Volumes/fr-work/Sites/camino-api/tasks/_utils/titre-date-fin-find.js",
     "access": "public",
@@ -4903,7 +4903,7 @@
       {
         "nullable": null,
         "types": [
-          "Array"
+          "titreDemarche[]"
         ],
         "spread": false,
         "optional": false,
@@ -6307,6 +6307,96 @@
   {
     "__docId__": 352,
     "kind": "file",
+    "name": "camino-api/tasks/index.js",
+    "content": "/**\n * @typedef {Object} titreDemarche\n * @property {!String} id id de la démarche\n * @property {!string} titreId id du titre minier\n * @property {!string} typeId id du type de la démarche\n * @property {!string} statutId id du statut de la démarche\n * @property {number} ordre ordre chronologique de la démarche au sein du titre\n * @property {boolean} annulationDemarcheId si la démarche est une annulation, cette id identifie la démarche annulée\n */\n",
+    "static": true,
+    "longname": "/Volumes/fr-work/Sites/camino-api/tasks/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 353,
+    "kind": "typedef",
+    "name": "titreDemarche",
+    "memberof": "camino-api/tasks/index.js",
+    "static": true,
+    "longname": "camino-api/tasks/index.js~titreDemarche",
+    "access": "public",
+    "description": "",
+    "properties": [
+      {
+        "nullable": false,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "id",
+        "description": "id de la démarche"
+      },
+      {
+        "nullable": false,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "titreId",
+        "description": "id du titre minier"
+      },
+      {
+        "nullable": false,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "typeId",
+        "description": "id du type de la démarche"
+      },
+      {
+        "nullable": false,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "statutId",
+        "description": "id du statut de la démarche"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "ordre",
+        "description": "ordre chronologique de la démarche au sein du titre"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "annulationDemarcheId",
+        "description": "si la démarche est une annulation, cette id identifie la démarche annulée"
+      }
+    ],
+    "type": {
+      "types": [
+        "Object"
+      ],
+      "optional": false,
+      "name": "titreDemarche"
+    }
+  },
+  {
+    "__docId__": 354,
+    "kind": "file",
     "name": "camino-api/tasks/titre-demarches.js",
     "content": "const {\n  titreDemarcheStatutIdUpdate,\n  titreDemarcheOrdreUpdate\n} = require('../database/queries/titres-demarches')\n\nconst titreDemarchesAscSort = require('./_utils/titre-demarches-asc-sort')\n\nconst titreDemarches = {\n  // met à jour le statut d'une démarche\n  titreDemarcheStatutIdUpdate(titreDemarche, statutId) {\n    return (\n      // filtre uniquement les démarches dont le statut a changé\n      statutId !== titreDemarche.statutId &&\n      titreDemarcheStatutIdUpdate({\n        id: titreDemarche.id,\n        statutId\n      }).then(u => {\n        console.log(\n          `Mise à jour: démarche ${titreDemarche.id}, statutId ${statutId}`\n        )\n        return u\n      })\n    )\n  },\n\n  // met à jour la propriété 'ordre' de toutes les démarches d'un titre\n  titreDemarchesOrdreUpdate(titreDemarchesByTitre) {\n    return titreDemarchesAscSort(titreDemarchesByTitre)\n    // to-do: faire un reduce au lieu de map-filter-map\n      .map((titreDemarche, index) => {\n        titreDemarche.ordreUpdated = index + 1\n        return titreDemarche\n      })\n      .filter(\n        titreDemarche => titreDemarche.ordreUpdated !== titreDemarche.ordre\n      )\n      .map(titreDemarche => {\n        return titreDemarcheOrdreUpdate({\n          id: titreDemarche.id,\n          ordre: titreDemarche.ordreUpdated\n        }).then(u => {\n          console.log(\n            `Mise à jour: démarche ${titreDemarche.id}, ordre ${\n              titreDemarche.ordreUpdated\n            }`\n          )\n          return u\n        })\n      })\n  }\n}\n\nmodule.exports = titreDemarches\n",
     "static": true,
@@ -6316,7 +6406,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 353,
+    "__docId__": 355,
     "kind": "variable",
     "name": "titreDemarches",
     "memberof": "camino-api/tasks/titre-demarches.js",
@@ -6336,7 +6426,7 @@
     }
   },
   {
-    "__docId__": 354,
+    "__docId__": 356,
     "kind": "file",
     "name": "camino-api/tasks/titre-etapes.js",
     "content": "const { titreEtapeUpdate } = require('../database/queries/titres-etapes')\n\nconst titreEtapes = {\n  titreEtapesOrdreUpdate(titreEtapesByDemarche) {\n    return titreEtapesByDemarche\n      .sort((a, b) => a.date - b.date)\n      .map((titreEtape, index) => {\n        titreEtape.ordreNew = index + 1\n        return titreEtape\n      })\n      .filter(titreEtape => titreEtape.ordreNew !== titreEtape.ordre)\n      .map(titreEtape => {\n        const props = {\n          ordre: titreEtape.ordreNew\n        }\n\n        titreEtapeUpdate({ id: titreEtape.id, props }).then(u => {\n          console.log(\n            `Mise à jour: étape ${titreEtape.id}, ${JSON.stringify(props)}`\n          )\n          return u\n        })\n      })\n  }\n}\n\nmodule.exports = titreEtapes\n",
@@ -6347,7 +6437,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 355,
+    "__docId__": 357,
     "kind": "variable",
     "name": "titreEtapes",
     "memberof": "camino-api/tasks/titre-etapes.js",
@@ -6367,7 +6457,7 @@
     }
   },
   {
-    "__docId__": 356,
+    "__docId__": 358,
     "kind": "file",
     "name": "camino-api/tasks/titre-phases.js",
     "content": "const dateFormat = require('dateformat')\n\nconst {\n  titrePhaseUpdate,\n  titrePhaseDelete\n} = require('../database/queries/titres-phases')\n\nconst titrePhases = {\n  titrePhaseUpdate(res, titrePhase, titresPhasesOld) {\n    const titrePhaseOld = titrePhaseEqualFind(\n      titrePhase.titreDemarcheId,\n      titresPhasesOld\n    )\n    const titrePhasePropsChanged = titrePhaseOld\n      ? titrePhasePropsChangedFind(titrePhase, titrePhaseOld)\n      : null\n\n    let titrePhaseUpdated\n\n    if (\n      // si la phase n'existe pas\n      !titrePhaseOld\n    ) {\n      titrePhaseUpdated = titrePhaseUpdate({ titrePhase }).then(u => {\n        console.log(`Création: phase ${titrePhase.titreDemarcheId}`)\n\n        return u\n      })\n    } else if (\n      // si la phase existe et est modifiée\n      titrePhasePropsChanged\n    ) {\n      // console.log(titrePhasePropsChanged)\n      titrePhaseUpdated = titrePhaseUpdate({ titrePhase }).then(u => {\n        console.log(\n          `Mise à jour: phase ${titrePhase.titreDemarcheId}, ${JSON.stringify(\n            titrePhasePropsChanged\n          )}`\n        )\n\n        return u\n      })\n    }\n\n    return titrePhaseUpdated ? [...res, titrePhaseUpdated] : res\n  },\n\n  titrePhaseDelete(res, titrePhaseOld, titresPhases) {\n    const titrePhase = titrePhaseEqualFind(\n      titrePhaseOld.titreDemarcheId,\n      titresPhases\n    )\n\n    let titrePhaseDeleted\n\n    if (!titrePhase) {\n      titrePhaseDeleted = titrePhaseDelete({\n        titreDemarcheId: titrePhaseOld.titreDemarcheId\n      }).then(u => {\n        console.log(`Suppression: phase ${titrePhaseOld.titreDemarcheId}`)\n\n        return u\n      })\n    }\n    return titrePhaseDeleted ? [...res, titrePhaseDeleted] : res\n  }\n}\n\n// retourne une phase parmi les titrePhases en fonction de son id\nconst titrePhaseEqualFind = (titreDemarcheId, titrePhases) =>\n  titrePhases.find(tp => tp.titreDemarcheId === titreDemarcheId)\n\n// retourne les propriétés de la phase existante\n// qui sont différentes de la nouvelle phase\nconst titrePhasePropsChangedFind = (titrePhase, titrePhaseOld) =>\n  Object.keys(titrePhase).reduce((res, key) => {\n    if (titrePhaseOld[key] instanceof Date) {\n      titrePhaseOld[key] = dateFormat(titrePhaseOld[key], 'yyyy-mm-dd')\n    }\n\n    const mod = { [key]: [titrePhaseOld[key], titrePhase[key]] }\n\n    return titrePhase[key] === titrePhaseOld[key]\n      ? res\n      : res\n      ? Object.assign(res, mod)\n      : mod\n  }, null)\n\nmodule.exports = titrePhases\n",
@@ -6378,7 +6468,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 357,
+    "__docId__": 359,
     "kind": "function",
     "name": "titrePhaseEqualFind",
     "memberof": "camino-api/tasks/titre-phases.js",
@@ -6411,7 +6501,7 @@
     "ignore": true
   },
   {
-    "__docId__": 358,
+    "__docId__": 360,
     "kind": "function",
     "name": "titrePhasePropsChangedFind",
     "memberof": "camino-api/tasks/titre-phases.js",
@@ -6444,7 +6534,7 @@
     "ignore": true
   },
   {
-    "__docId__": 359,
+    "__docId__": 361,
     "kind": "variable",
     "name": "titrePhases",
     "memberof": "camino-api/tasks/titre-phases.js",
@@ -6464,7 +6554,7 @@
     }
   },
   {
-    "__docId__": 360,
+    "__docId__": 362,
     "kind": "file",
     "name": "camino-api/tasks/titres-without-points-list.js",
     "content": "require('dotenv').config()\nrequire('../database/index')\n\nconst { titresGet } = require('../database/queries/titres')\n\nconst titresWithoutPointsList = async () => {\n  const titres = await titresGet({ domaineIds: ['g'] })\n\n  const list = titres.filter(\n    titre =>\n      titre.demarches.every(demarche =>\n        demarche.etapes.every(etape => etape.points.length === 0)\n      ) && titre.statutId === 'val'\n  )\n\n  return list.map(titre => titre.id)\n}\n\nconst run = async () => {\n  const res = await titresWithoutPointsList()\n  console.log(res)\n  console.log('Done')\n\n  process.exit()\n}\n\nrun()\n",
@@ -6475,7 +6565,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 361,
+    "__docId__": 363,
     "kind": "function",
     "name": "titresWithoutPointsList",
     "memberof": "camino-api/tasks/titres-without-points-list.js",
@@ -6499,7 +6589,7 @@
     "ignore": true
   },
   {
-    "__docId__": 362,
+    "__docId__": 364,
     "kind": "function",
     "name": "run",
     "memberof": "camino-api/tasks/titres-without-points-list.js",
@@ -6519,7 +6609,7 @@
     "ignore": true
   },
   {
-    "__docId__": 363,
+    "__docId__": 365,
     "kind": "file",
     "name": "camino-api/tasks/titres.js",
     "content": "const { titrePropsUpdate } = require('../database/queries/titres')\nconst titrePropEtapeIdFind = require('./_utils/titre-prop-etape-id-find')\n\nconst titres = {\n  calculatedProps: [\n    'points',\n    'titulaires',\n    'amodiataires',\n    'administrations',\n    'surface',\n    'volume',\n    'substances'\n  ],\n\n  titreStatutIdUpdate(titre, statutId) {\n    return (\n      statutId !== titre.statutId &&\n      titrePropsUpdate({\n        id: titre.id,\n        props: { statutId }\n      }).then(u => {\n        console.log(`Mise à jour: titre ${titre.id}, statutId ${statutId}`)\n        return u\n      })\n    )\n  },\n\n  titrePropsUpdate(titre, prop) {\n    const propEtapeIdName = `${prop}TitreEtapeId`\n    const etapeId = titrePropEtapeIdFind(titre.demarches, prop)\n\n    return (\n      etapeId !== titre[propEtapeIdName] &&\n      titrePropsUpdate({\n        id: titre.id,\n        props: { [propEtapeIdName]: etapeId }\n      }).then(u => {\n        console.log(`Mise à jour: titre ${titre.id}, ${prop}, ${etapeId}`)\n        return u\n      })\n    )\n  }\n}\n\nmodule.exports = titres\n",
@@ -6530,7 +6620,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 364,
+    "__docId__": 366,
     "kind": "variable",
     "name": "titres",
     "memberof": "camino-api/tasks/titres.js",
@@ -6550,7 +6640,7 @@
     }
   },
   {
-    "__docId__": 365,
+    "__docId__": 367,
     "kind": "file",
     "name": "camino-api/tasks/utilisateur-add.js",
     "content": "require('dotenv').config()\nconst bcrypt = require('bcrypt')\nrequire('../database/index')\n\nconst { utilisateurAdd } = require('../database/queries/utilisateurs')\n\nconst password = process.env.ADMIN_PASSWORD\n\nconst utilisateur = {\n  id: process.env.ADMIN_ID,\n  email: process.env.ADMIN_EMAIL,\n  permissionId: 'super'\n}\n\nconst run = async () => {\n  utilisateur.motDePasse = await bcrypt.hash(password, 10)\n  await utilisateurAdd(utilisateur)\n  console.log('Utilisateur créé')\n  process.exit()\n}\n\nrun()\n",
@@ -6561,7 +6651,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 366,
+    "__docId__": 368,
     "kind": "variable",
     "name": "password",
     "memberof": "camino-api/tasks/utilisateur-add.js",
@@ -6582,7 +6672,7 @@
     "ignore": true
   },
   {
-    "__docId__": 367,
+    "__docId__": 369,
     "kind": "variable",
     "name": "utilisateur",
     "memberof": "camino-api/tasks/utilisateur-add.js",
@@ -6603,7 +6693,7 @@
     "ignore": true
   },
   {
-    "__docId__": 368,
+    "__docId__": 370,
     "kind": "function",
     "name": "run",
     "memberof": "camino-api/tasks/utilisateur-add.js",
@@ -6623,7 +6713,7 @@
     "ignore": true
   },
   {
-    "__docId__": 369,
+    "__docId__": 371,
     "kind": "file",
     "name": "camino-api/tasks/utilisateur-remove.js",
     "content": "require('dotenv').config()\nrequire('../database/index')\n\nconst { utilisateurRemove } = require('../database/queries/utilisateurs')\n\nconst id = process.env.ADMIN_ID\n\nconst run = async () => {\n  const utilisateur = await utilisateurRemove(id)\n  if (utilisateur) {\n    console.log('Utilisateur supprimé')\n  } else {\n    console.log('Aucun utilisateur supprimé')\n  }\n  process.exit()\n}\n\nrun()\n",
@@ -6634,7 +6724,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 370,
+    "__docId__": 372,
     "kind": "variable",
     "name": "id",
     "memberof": "camino-api/tasks/utilisateur-remove.js",
@@ -6655,7 +6745,7 @@
     "ignore": true
   },
   {
-    "__docId__": 371,
+    "__docId__": 373,
     "kind": "function",
     "name": "run",
     "memberof": "camino-api/tasks/utilisateur-remove.js",
@@ -6675,7 +6765,7 @@
     "ignore": true
   },
   {
-    "__docId__": 372,
+    "__docId__": 374,
     "kind": "file",
     "name": "camino-api/tools/export/_utils/db-process.js",
     "content": "const jsonToSpreadsheet = require('./json-to-spreadsheet')\nconst credentials = require('../credentials')\n\nconst dbProcess = async definition => {\n  const content = await definition.fetch\n  await jsonToSpreadsheet(\n    definition.spreadsheetId,\n    credentials,\n    definition.tables,\n    content\n  )\n  return `Export: ${content.length} ${definition.name}`\n}\n\nmodule.exports = dbProcess\n",
@@ -6686,7 +6776,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 373,
+    "__docId__": 375,
     "kind": "function",
     "name": "dbProcess",
     "memberof": "camino-api/tools/export/_utils/db-process.js",
@@ -6716,7 +6806,7 @@
     }
   },
   {
-    "__docId__": 374,
+    "__docId__": 376,
     "kind": "file",
     "name": "camino-api/tools/export/_utils/google-spreadsheet-promisify.js",
     "content": "const gssUseServiceAccountAuth = (gss, credentials) =>\n  new Promise((resolve, reject) =>\n    gss.useServiceAccountAuth(credentials, (err, res) => {\n      if (err) {\n        console.log('Erreur useServiceAccountAuth:', err)\n        reject(err)\n      } else {\n        console.log('authentification: succès')\n        resolve(res)\n      }\n    })\n  )\n\nconst gssGetInfo = gss =>\n  new Promise((resolve, reject) =>\n    gss.getInfo((err, res) => {\n      if (err) {\n        console.log('Erreur getInfo:', err)\n        reject(err)\n      } else {\n        console.log('spreadsheet:', res.title)\n        resolve(res)\n      }\n    })\n  )\n\nconst worksheetRemove = (gss, worksheet) =>\n  new Promise((resolve, reject) => {\n    gss.removeWorksheet(worksheet.id, (err, res) => {\n      if (err) {\n        console.log('Erreur removeWorksheet:', err)\n        reject(err)\n      } else {\n        console.log(`worksheet supprimée: ${worksheet.title}`)\n        resolve(res)\n      }\n    })\n  })\n\nconst worksheetAdd = (gss, worksheet) =>\n  new Promise((resolve, reject) =>\n    gss.addWorksheet(worksheet, (err, res) => {\n      if (err) {\n        console.log('Erreur addWorksheet:', err)\n        reject(err)\n      } else {\n        console.log(`worksheet ajoutée: ${worksheet.title}`)\n        resolve(res)\n      }\n    })\n  )\n\nconst rowAdd = (gss, worksheetId, row) =>\n  new Promise((resolve, reject) =>\n    gss.addRow(worksheetId, row, (err, res) => {\n      if (err) {\n        console.log('Erreur addRow:', err)\n        reject(err)\n      } else {\n        console.log(`row ajouté: ${row[Object.keys(row)[0]]}`)\n        resolve(res)\n      }\n    })\n  )\n\nconst rowsGet = (gss, worksheetId, options) =>\n  new Promise((resolve, reject) =>\n    gss.getRows(worksheetId, options, (err, res) => {\n      if (err) {\n        console.log('Erreur getRows:', err)\n        reject(err)\n      } else {\n        resolve(res)\n      }\n    })\n  )\n\nconst rowDelete = row =>\n  new Promise((resolve, reject) =>\n    row.del((err, res) => {\n      if (err) {\n        console.log('Erreur rowSave:', err)\n        reject(err)\n      } else {\n        resolve(res)\n      }\n    })\n  )\n\nconst cellsGet = (gss, worksheetId, options) =>\n  new Promise((resolve, reject) =>\n    gss.getCells(worksheetId, options, (err, res) => {\n      if (err) {\n        console.log('Erreur getCells:', err)\n        reject(err)\n      } else {\n        resolve(res)\n      }\n    })\n  )\n\nconst cellSet = (cell, value) =>\n  new Promise((resolve, reject) =>\n    cell.setValue(value, (err, res) => {\n      if (err) {\n        console.log('Erreur cell.setValue:', err)\n        reject(err)\n      } else {\n        resolve(res)\n      }\n    })\n  )\n\nmodule.exports = {\n  gssUseServiceAccountAuth,\n  gssGetInfo,\n  worksheetRemove,\n  worksheetAdd,\n  rowAdd,\n  rowsGet,\n  rowDelete,\n  cellsGet,\n  cellSet\n}\n",
@@ -6727,7 +6817,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 375,
+    "__docId__": 377,
     "kind": "function",
     "name": "gssUseServiceAccountAuth",
     "memberof": "camino-api/tools/export/_utils/google-spreadsheet-promisify.js",
@@ -6760,7 +6850,7 @@
     "ignore": true
   },
   {
-    "__docId__": 376,
+    "__docId__": 378,
     "kind": "function",
     "name": "gssGetInfo",
     "memberof": "camino-api/tools/export/_utils/google-spreadsheet-promisify.js",
@@ -6787,7 +6877,7 @@
     "ignore": true
   },
   {
-    "__docId__": 377,
+    "__docId__": 379,
     "kind": "function",
     "name": "worksheetRemove",
     "memberof": "camino-api/tools/export/_utils/google-spreadsheet-promisify.js",
@@ -6820,7 +6910,7 @@
     "ignore": true
   },
   {
-    "__docId__": 378,
+    "__docId__": 380,
     "kind": "function",
     "name": "worksheetAdd",
     "memberof": "camino-api/tools/export/_utils/google-spreadsheet-promisify.js",
@@ -6853,7 +6943,7 @@
     "ignore": true
   },
   {
-    "__docId__": 379,
+    "__docId__": 381,
     "kind": "function",
     "name": "rowAdd",
     "memberof": "camino-api/tools/export/_utils/google-spreadsheet-promisify.js",
@@ -6892,7 +6982,7 @@
     "ignore": true
   },
   {
-    "__docId__": 380,
+    "__docId__": 382,
     "kind": "function",
     "name": "rowsGet",
     "memberof": "camino-api/tools/export/_utils/google-spreadsheet-promisify.js",
@@ -6931,7 +7021,7 @@
     "ignore": true
   },
   {
-    "__docId__": 381,
+    "__docId__": 383,
     "kind": "function",
     "name": "rowDelete",
     "memberof": "camino-api/tools/export/_utils/google-spreadsheet-promisify.js",
@@ -6958,7 +7048,7 @@
     "ignore": true
   },
   {
-    "__docId__": 382,
+    "__docId__": 384,
     "kind": "function",
     "name": "cellsGet",
     "memberof": "camino-api/tools/export/_utils/google-spreadsheet-promisify.js",
@@ -6997,7 +7087,7 @@
     "ignore": true
   },
   {
-    "__docId__": 383,
+    "__docId__": 385,
     "kind": "function",
     "name": "cellSet",
     "memberof": "camino-api/tools/export/_utils/google-spreadsheet-promisify.js",
@@ -7030,7 +7120,7 @@
     "ignore": true
   },
   {
-    "__docId__": 384,
+    "__docId__": 386,
     "kind": "file",
     "name": "camino-api/tools/export/_utils/json-to-spreadsheet.js",
     "content": "const PQueue = require('p-queue')\nconst GoogleSpreadsheet = require('google-spreadsheet')\nconst decamelize = require('decamelize')\nconst rowFormat = require('./row-format')\n\nconst {\n  gssUseServiceAccountAuth,\n  gssGetInfo,\n  worksheetRemove,\n  worksheetAdd,\n  rowAdd,\n  cellsGet,\n  cellSet\n} = require('./google-spreadsheet-promisify')\n\nconst jsonToSpreadsheet = async (\n  spreadsheetId,\n  credentials,\n  tables,\n  content\n) => {\n  // instancie le constructeur\n  const gss = new GoogleSpreadsheet(spreadsheetId)\n\n  // authentification dans google\n  await gssUseServiceAccountAuth(gss, credentials)\n\n  // obtiens les infos sur la spreadsheet\n  const infos = await gssGetInfo(gss)\n\n  // si l'onglet 'tmp' n'existe pas, le créer\n  if (!infos.worksheets.find(w => w.title === 'tmp')) {\n    await worksheetAdd(gss, { title: 'tmp' })\n  }\n\n  // retourne un tableau des onglets à supprimer\n  const worksheetsRemove = infos.worksheets.filter(w => w.title !== 'tmp')\n\n  // retourne un tableau avec les requêtes pour supprimer les onglets\n  const worksheetRemovePromises = worksheetsRemove.map(w =>\n    worksheetRemove(gss, w)\n  )\n\n  // supprime les onglets\n  await Promise.all(worksheetRemovePromises)\n\n  // retourne un tableau avec les requêtes pour ajouter les nouveaux onglets\n  const worksheetsPromises = tables.map(({ name, columns }) => () =>\n    worksheetAdd(gss, {\n      title: decamelize(name),\n      // id est un mot clé reservé par l'API google\n      // pour contourner cette limitation, on converti id en Id\n      // on le convertira à nouveau en id ensuite\n      headers: columns.map(h => (h === 'id' ? 'Id' : decamelize(h))),\n      colCount: columns.length,\n      rowCount: 1\n    })\n  )\n\n  // on utilise une queue plutôt que Promise.all\n  // pour que les onglets soient créés dans l'ordre\n  const worksheetQueue = new PQueue({ concurrency: 1 })\n  const worksheets = await worksheetQueue.addAll(worksheetsPromises)\n\n  // est ce que l'onglet tmp existe ?\n  const worksheetTmpRemove = infos.worksheets.find(w => w.title === 'tmp')\n\n  // si l'onglet 'tmp' existe, on le supprime\n  if (worksheetTmpRemove) {\n    await worksheetRemove(gss, worksheetTmpRemove)\n  }\n\n  // pour chaque table,\n  tables.forEach(table => {\n    // renseigne l'id des worksheets créées\n    const worksheet = worksheets.find(w => w.title === decamelize(table.name))\n    table.worksheetId = worksheet && worksheet.id\n\n    // retourne les rows mis au format\n    table.rows = rowsCreate(content, table.parents).map(row =>\n      rowFormat(row, table.columns, table.callbacks)\n    )\n  })\n\n  // retourne un tableau avec les requêtes pour ajouter les nouveaux rows\n  const rowPromises = tables.reduce(\n    (promises, table) => [\n      ...promises,\n      ...table.rows.map(row => () => rowAdd(gss, table.worksheetId, row))\n    ],\n    []\n  )\n\n  // utilise une queue plutôt que Promise.all\n  // pour éviter de saturer l'API google\n  const rowsQueue = new PQueue({ concurrency: 15 })\n  await rowsQueue.addAll(rowPromises)\n\n  // converti le champs Id en id\n  const tablesWithId = tables.filter(w => w.columns.find(h => h === 'id'))\n\n  await Promise.all(\n    tablesWithId.map(async table => {\n      const cells = await cellsGet(gss, table.worksheetId, {\n        'min-row': 1,\n        'max-row': 1,\n        'min-col': 1,\n        'max-col': 1\n      })\n\n      await cellSet(cells[0], 'id')\n    })\n  )\n}\n\n// fonction récursive qui parcourt les 'elements' (p.e.: 'titres')\n// en descendant la chaîne de 'parents' (p.e.: ['demarches', 'etapes', 'points'])\n// et retourne un tableau avec les éléments à convertir en 'rows'\n// ceux dont le nom correspond à la dernière entrée parmi les parents\n// (p.e.: des 'points')\n// in:\n// - elements: un tableau avec les éléments extraits de la bdd\n// - parents: un tableau avec le nom des ancêtres ['grandParents', 'parents', 'elements']\n// out\n// - un tableau avec les éléments à convertir en 'rows'\nconst rowsCreate = (elements, parents) =>\n  // si il existe au moins un parent\n  parents && parents.length\n    ? // parcourt la liste d'éléments\n      elements.reduce(\n        (rows, element) =>\n          // si il existe un element dont le nom correspond au premier parent\n          element[parents[0]]\n            ? // recursion sur rowsCreate avec cet élément\n              // et la liste de parents moins le premier\n              [...rows, ...rowsCreate(element[parents[0]], parents.slice(1))]\n            : // sinon, retourne le résultat\n              rows,\n        []\n      )\n    : // si il n'y a pas de parent\n    // si elements est un tableau\n    Array.isArray(elements)\n    ? // le retourne tel quel\n      elements\n    : // sinon, l'insère dans un tableau\n      [elements]\n\nmodule.exports = jsonToSpreadsheet\n",
@@ -7041,7 +7131,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 385,
+    "__docId__": 387,
     "kind": "function",
     "name": "rowsCreate",
     "memberof": "camino-api/tools/export/_utils/json-to-spreadsheet.js",
@@ -7074,7 +7164,7 @@
     "ignore": true
   },
   {
-    "__docId__": 386,
+    "__docId__": 388,
     "kind": "function",
     "name": "jsonToSpreadsheet",
     "memberof": "camino-api/tools/export/_utils/json-to-spreadsheet.js",
@@ -7118,7 +7208,7 @@
     "return": null
   },
   {
-    "__docId__": 387,
+    "__docId__": 389,
     "kind": "file",
     "name": "camino-api/tools/export/_utils/row-format.js",
     "content": "// formate un objet 'element' sous forme de 'row'\nconst decamelize = require('decamelize')\n\n// in\n// - element: un objet json extrait de la base de données source\n// - columns: les colonnes de la spreadsheet cible\n// - callbacks: un tableau avec les fonctions de transformation des données de certaines colonnes\n// out\n// - un objet 'row' avec les données formatées par colonnes\n//   prêt à être inséré dans une spreadsheet\n\nconst rowFormat = (element, columns, callbacks) =>\n  columns.reduce(\n    (row, column) =>\n      element[column]\n        ? Object.assign(row, {\n            // id est un mot clé réservé par google\n            // pour contourner cette limitation, on converti id en Id\n            [column === 'id' ? 'Id' : decamelize(column)]:\n              callbacks && Object.keys(callbacks).find(cb => cb === column)\n                ? callbacks[column](element[column])\n                : element[column]\n          })\n        : row,\n    {}\n  )\n\nmodule.exports = rowFormat\n",
@@ -7129,7 +7219,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 388,
+    "__docId__": 390,
     "kind": "function",
     "name": "rowFormat",
     "memberof": "camino-api/tools/export/_utils/row-format.js",
@@ -7167,7 +7257,7 @@
     "return": null
   },
   {
-    "__docId__": 389,
+    "__docId__": 391,
     "kind": "file",
     "name": "camino-api/tools/export/_utils/spreadsheet-row-add.js",
     "content": "const GoogleSpreadsheet = require('google-spreadsheet')\nconst rowFormat = require('./row-format')\n\nconst {\n  gssUseServiceAccountAuth,\n  rowAdd\n} = require('./google-spreadsheet-promisify')\n\nconst spreadsheetRowAdd = async (\n  spreadsheetId,\n  credentials,\n  table,\n  content\n) => {\n  // instancie le constructeur\n  const gss = new GoogleSpreadsheet(spreadsheetId)\n\n  // authentification dans google\n  await gssUseServiceAccountAuth(gss, credentials)\n\n  const row = rowFormat(content, table.columns, table.callbacks)\n\n  await rowAdd(gss, 1, row)\n}\n\nmodule.exports = spreadsheetRowAdd\n",
@@ -7178,7 +7268,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 390,
+    "__docId__": 392,
     "kind": "function",
     "name": "spreadsheetRowAdd",
     "memberof": "camino-api/tools/export/_utils/spreadsheet-row-add.js",
@@ -7222,7 +7312,7 @@
     "return": null
   },
   {
-    "__docId__": 391,
+    "__docId__": 393,
     "kind": "file",
     "name": "camino-api/tools/export/_utils/spreadsheet-row-update.js",
     "content": "const GoogleSpreadsheet = require('google-spreadsheet')\nconst rowFormat = require('./row-format')\n\nconst {\n  gssUseServiceAccountAuth,\n  rowsGet,\n  rowDelete,\n  rowAdd\n} = require('./google-spreadsheet-promisify')\n\nconst spreadsheetRowUpdate = async (\n  spreadsheetId,\n  credentials,\n  table,\n  content\n) => {\n  // instancie le constructeur\n  const gss = new GoogleSpreadsheet(spreadsheetId)\n\n  // authentification dans google\n  await gssUseServiceAccountAuth(gss, credentials)\n\n  const row = rowFormat(content, table.columns, table.callbacks)\n\n  const rows = await rowsGet(gss, 1, { query: `(id=${content.id})` })\n\n  if (rows[0]) {\n    await rowDelete(rows[0])\n  }\n\n  await rowAdd(gss, 1, row)\n}\n\nmodule.exports = spreadsheetRowUpdate\n",
@@ -7233,7 +7323,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 392,
+    "__docId__": 394,
     "kind": "function",
     "name": "spreadsheetRowUpdate",
     "memberof": "camino-api/tools/export/_utils/spreadsheet-row-update.js",
@@ -7277,7 +7367,7 @@
     "return": null
   },
   {
-    "__docId__": 393,
+    "__docId__": 395,
     "kind": "file",
     "name": "camino-api/tools/export/credentials.js",
     "content": "module.exports = {\n  type: 'service_account',\n  project_id: process.env.GOOGLE_PROJECT_ID,\n  private_key_id: process.env.GOOGLE_PRIVATE_KEY_ID,\n  private_key: process.env.GOOGLE_PRIVATE_KEY,\n  client_email: process.env.GOOGLE_CLIENT_EMAIL,\n  client_id: process.env.GOOGLE_CLIENT_ID,\n  auth_uri: 'https://accounts.google.com/o/oauth2/auth',\n  token_uri: 'https://accounts.google.com/o/oauth2/token',\n  auth_provider_x509_cert_url: 'https://www.googleapis.com/oauth2/v1/certs',\n  client_x509_cert_url: process.env.GOOGLE_CLIENT_X509_CERT_URL\n}\n",
@@ -7288,7 +7378,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 394,
+    "__docId__": 396,
     "kind": "file",
     "name": "camino-api/tools/export/definitions.js",
     "content": "const { titresGet } = require('../../database/queries/titres')\nconst { utilisateursGet } = require('../../database/queries/utilisateurs')\nconst {\n  titresTravauxRapportsGet\n} = require('../../database/queries/titres-travaux')\n\nconst titresTables = require('./tables/titres')\nconst utilisateursTables = require('./tables/utilisateurs')\nconst titresTravauxRapportsTables = require('./tables/titres-travaux')\n\nconst titresCSpreadsheetId = process.env.GOOGLE_SPREADSHEET_ID_EXPORT_TITRES_C\nconst titresFSpreadsheetId = process.env.GOOGLE_SPREADSHEET_ID_EXPORT_TITRES_F\nconst titresGSpreadsheetId = process.env.GOOGLE_SPREADSHEET_ID_EXPORT_TITRES_G\nconst titresHSpreadsheetId = process.env.GOOGLE_SPREADSHEET_ID_EXPORT_TITRES_H\nconst titresMSpreadsheetId = process.env.GOOGLE_SPREADSHEET_ID_EXPORT_TITRES_M\nconst titresRSpreadsheetId = process.env.GOOGLE_SPREADSHEET_ID_EXPORT_TITRES_R\nconst titresSSpreadsheetId = process.env.GOOGLE_SPREADSHEET_ID_EXPORT_TITRES_S\nconst titresWSpreadsheetId = process.env.GOOGLE_SPREADSHEET_ID_EXPORT_TITRES_W\nconst utilisateursSpreadsheetId =\n  process.env.GOOGLE_SPREADSHEET_ID_EXPORT_UTILISATEURS\nconst titresTravauxRapportsSpreadsheetId =\n  process.env.GOOGLE_SPREADSHEET_ID_EXPORT_TITRES_TRAVAUX_RAPPORTS\n// const metasSpreadsheetId = process.env.GOOGLE_SPREADSHEET_ID_EXPORT_METAS\n// const entreprisesSpreadsheetId =\n//   process.env.GOOGLE_SPREADSHEET_ID_EXPORT_ENTREPRISES\n// const administrationsSpreadsheetId =\n//   process.env.GOOGLE_SPREADSHEET_ID_EXPORT_ADMINISTRATIONS\n// const substancesSpreadsheetId =\n//   process.env.GOOGLE_SPREADSHEET_ID_EXPORT_SUBSTANCES\n\nconst titresFetch = domaineId =>\n  titresGet({\n    typeIds: undefined,\n    domaineIds: [domaineId],\n    statutIds: undefined,\n    substances: undefined,\n    noms: undefined\n  })\n\nconst utilisateursFetch = () =>\n  utilisateursGet({\n    noms: undefined,\n    entrepriseIds: undefined,\n    administrationIds: undefined,\n    permissionIds: undefined\n  })\n\nconst titresTravauxRapportsFetch = () => titresTravauxRapportsGet()\n\nconst definitions = [\n  {\n    name: 'utilisateurs',\n    spreadsheetId: utilisateursSpreadsheetId,\n    fetch: utilisateursFetch(),\n    tables: utilisateursTables\n  },\n  {\n    name: 'titres-c',\n    spreadsheetId: titresCSpreadsheetId,\n    fetch: titresFetch('c'),\n    tables: titresTables\n  },\n  {\n    name: 'titres-f',\n    spreadsheetId: titresFSpreadsheetId,\n    fetch: titresFetch('f'),\n    tables: titresTables\n  },\n  {\n    name: 'titres-g',\n    spreadsheetId: titresGSpreadsheetId,\n    fetch: titresFetch('g'),\n    tables: titresTables\n  },\n  {\n    name: 'titres-h',\n    spreadsheetId: titresHSpreadsheetId,\n    fetch: titresFetch('h'),\n    tables: titresTables\n  },\n  {\n    name: 'titres-m',\n    spreadsheetId: titresMSpreadsheetId,\n    fetch: titresFetch('m'),\n    tables: titresTables\n  },\n  {\n    name: 'titres-r',\n    spreadsheetId: titresRSpreadsheetId,\n    fetch: titresFetch('r'),\n    tables: titresTables\n  },\n  {\n    name: 'titres-s',\n    spreadsheetId: titresSSpreadsheetId,\n    fetch: titresFetch('s'),\n    tables: titresTables\n  },\n  {\n    name: 'titres-w',\n    spreadsheetId: titresWSpreadsheetId,\n    fetch: titresFetch('w'),\n    tables: titresTables\n  },\n  {\n    name: 'titres-travaux-rapports',\n    spreadsheetId: titresTravauxRapportsSpreadsheetId,\n    fetch: titresTravauxRapportsFetch(),\n    tables: titresTravauxRapportsTables\n  }\n]\n\nmodule.exports = definitions\n",
@@ -7299,7 +7389,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 395,
+    "__docId__": 397,
     "kind": "variable",
     "name": "titresCSpreadsheetId",
     "memberof": "camino-api/tools/export/definitions.js",
@@ -7320,7 +7410,7 @@
     "ignore": true
   },
   {
-    "__docId__": 396,
+    "__docId__": 398,
     "kind": "variable",
     "name": "titresFSpreadsheetId",
     "memberof": "camino-api/tools/export/definitions.js",
@@ -7341,7 +7431,7 @@
     "ignore": true
   },
   {
-    "__docId__": 397,
+    "__docId__": 399,
     "kind": "variable",
     "name": "titresGSpreadsheetId",
     "memberof": "camino-api/tools/export/definitions.js",
@@ -7362,7 +7452,7 @@
     "ignore": true
   },
   {
-    "__docId__": 398,
+    "__docId__": 400,
     "kind": "variable",
     "name": "titresHSpreadsheetId",
     "memberof": "camino-api/tools/export/definitions.js",
@@ -7383,7 +7473,7 @@
     "ignore": true
   },
   {
-    "__docId__": 399,
+    "__docId__": 401,
     "kind": "variable",
     "name": "titresMSpreadsheetId",
     "memberof": "camino-api/tools/export/definitions.js",
@@ -7404,7 +7494,7 @@
     "ignore": true
   },
   {
-    "__docId__": 400,
+    "__docId__": 402,
     "kind": "variable",
     "name": "titresRSpreadsheetId",
     "memberof": "camino-api/tools/export/definitions.js",
@@ -7425,7 +7515,7 @@
     "ignore": true
   },
   {
-    "__docId__": 401,
+    "__docId__": 403,
     "kind": "variable",
     "name": "titresSSpreadsheetId",
     "memberof": "camino-api/tools/export/definitions.js",
@@ -7446,7 +7536,7 @@
     "ignore": true
   },
   {
-    "__docId__": 402,
+    "__docId__": 404,
     "kind": "variable",
     "name": "titresWSpreadsheetId",
     "memberof": "camino-api/tools/export/definitions.js",
@@ -7467,7 +7557,7 @@
     "ignore": true
   },
   {
-    "__docId__": 403,
+    "__docId__": 405,
     "kind": "variable",
     "name": "utilisateursSpreadsheetId",
     "memberof": "camino-api/tools/export/definitions.js",
@@ -7488,7 +7578,7 @@
     "ignore": true
   },
   {
-    "__docId__": 404,
+    "__docId__": 406,
     "kind": "variable",
     "name": "titresTravauxRapportsSpreadsheetId",
     "memberof": "camino-api/tools/export/definitions.js",
@@ -7509,7 +7599,7 @@
     "ignore": true
   },
   {
-    "__docId__": 405,
+    "__docId__": 407,
     "kind": "function",
     "name": "titresFetch",
     "memberof": "camino-api/tools/export/definitions.js",
@@ -7536,7 +7626,7 @@
     "ignore": true
   },
   {
-    "__docId__": 406,
+    "__docId__": 408,
     "kind": "function",
     "name": "utilisateursFetch",
     "memberof": "camino-api/tools/export/definitions.js",
@@ -7556,7 +7646,7 @@
     "ignore": true
   },
   {
-    "__docId__": 407,
+    "__docId__": 409,
     "kind": "function",
     "name": "titresTravauxRapportsFetch",
     "memberof": "camino-api/tools/export/definitions.js",
@@ -7576,7 +7666,7 @@
     "ignore": true
   },
   {
-    "__docId__": 408,
+    "__docId__": 410,
     "kind": "variable",
     "name": "definitions",
     "memberof": "camino-api/tools/export/definitions.js",
@@ -7596,7 +7686,7 @@
     }
   },
   {
-    "__docId__": 409,
+    "__docId__": 411,
     "kind": "file",
     "name": "camino-api/tools/export/index.js",
     "content": "require('dotenv').config()\nrequire('../../database/index')\nconst PQueue = require('p-queue')\nconst dbProcess = require('./_utils/db-process')\n\nconst definitions = require('./definitions')\n\nconst run = async () => {\n  // on utilise une queue plutôt que Promise.all\n  // pour ne pas surcharger l'API de google\n  const spreadSheetsPromises = definitions.map(definition => () =>\n    dbProcess(definition)\n  )\n  const spreadSheetsQueue = new PQueue({ concurrency: 1 })\n  await spreadSheetsQueue.addAll(spreadSheetsPromises)\n}\n\nrun()\n",
@@ -7607,7 +7697,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 410,
+    "__docId__": 412,
     "kind": "function",
     "name": "run",
     "memberof": "camino-api/tools/export/index.js",
@@ -7627,7 +7717,7 @@
     "ignore": true
   },
   {
-    "__docId__": 411,
+    "__docId__": 413,
     "kind": "file",
     "name": "camino-api/tools/export/tables/titres-travaux.js",
     "content": "// liste des tables\n// la colonne id si elle existe doit être en première position\n// car c'est un mot clé réservé par l'API google\n// (cf: _utils/json-to-spreadsheet.js)\nconst tables = [\n  {\n    name: 'titresTravauxRapports',\n    columns: ['id', 'titreId', 'date', 'confirmation', 'contenu'],\n    callbacks: {\n      contenu: v => JSON.stringify(v)\n    }\n  }\n]\n\nmodule.exports = tables\n",
@@ -7638,7 +7728,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 412,
+    "__docId__": 414,
     "kind": "variable",
     "name": "tables",
     "memberof": "camino-api/tools/export/tables/titres-travaux.js",
@@ -7658,7 +7748,7 @@
     }
   },
   {
-    "__docId__": 413,
+    "__docId__": 415,
     "kind": "file",
     "name": "camino-api/tools/export/tables/titres.js",
     "content": "const dateFormat = require('dateformat')\n\n// liste des tables\n// la colonne id si elle existe doit être en première position\n// car c'est un mot clé réservé par l'API google\n// (cf: _utils/json-to-spreadsheet.js)\nconst tables = [\n  {\n    name: 'titres',\n    columns: ['id', 'nom', 'typeId', 'domaineId', 'statutId', 'references'],\n    callbacks: {\n      references: v => JSON.stringify(v)\n    }\n  },\n  {\n    name: 'titresDemarches',\n    columns: ['id', 'typeId', 'titreId', 'statutId', 'ordre'],\n    parents: ['demarches']\n  },\n  {\n    name: 'titresPhases',\n    columns: ['titreDemarcheId', 'statutId', 'dateDebut', 'dateFin'],\n    parents: ['demarches', 'phase'],\n    callbacks: {\n      dateDebut: v => dateFormat(v, 'yyyy-mm-dd'),\n      dateFin: v => dateFormat(v, 'yyyy-mm-dd')\n    }\n  },\n  {\n    name: 'titresEtapes',\n    columns: [\n      'id',\n      'titreDemarcheId',\n      'typeId',\n      'statutId',\n      'ordre',\n      'date',\n      'dateDebut',\n      'duree',\n      'dateFin',\n      'surface',\n      'visas',\n      'engagement',\n      'engagementDevise',\n      'sourceIndisponible'\n    ],\n    parents: ['demarches', 'etapes'],\n    callbacks: {\n      dateDebut: v => dateFormat(v, 'yyyy-mm-dd'),\n      dateFin: v => dateFormat(v, 'yyyy-mm-dd'),\n      date: v => dateFormat(v, 'yyyy-mm-dd'),\n      visas: v => JSON.stringify(v)\n    }\n  },\n  {\n    name: 'titresPoints',\n    columns: [\n      'id',\n      'titreEtapeId',\n      'coordonnees',\n      'groupe',\n      'contour',\n      'point',\n      'nom',\n      'description',\n      'securite'\n    ],\n    parents: ['demarches', 'etapes', 'points'],\n    callbacks: {\n      coordonnees: v => `${v.x}, ${v.y}`\n    }\n  },\n  {\n    name: 'titresPointsReferences',\n    columns: ['id', 'titrePointId', 'systeme', 'coordonnees'],\n    parents: ['demarches', 'etapes', 'points', 'references'],\n    callbacks: {\n      coordonnees: v => `${v.x}, ${v.y}`\n    }\n  },\n  {\n    name: 'titresDocuments',\n    columns: [\n      'id',\n      'titreEtapeId',\n      'type',\n      'jorf',\n      'nor',\n      'nom',\n      'url',\n      'uri',\n      'fichier'\n    ],\n    parents: ['demarches', 'etapes', 'documents']\n  },\n  {\n    name: 'titresSubstances',\n    columns: ['titreEtapeId', 'substanceId', 'connexe', 'ordre'],\n    parents: ['demarches', 'etapes', 'titresSubstances']\n  },\n  {\n    name: 'titresTitulaires',\n    columns: ['titreEtapeId', 'entrepriseId'],\n    parents: ['demarches', 'etapes', 'titresTitulaires']\n  },\n  {\n    name: 'titresAmodiataires',\n    columns: ['titreEtapeId', 'entrepriseId'],\n    parents: ['demarches', 'etapes', 'titresAmodiataires']\n  },\n  {\n    name: 'titresUtilisateurs',\n    columns: ['titreEtapeId', 'utilisateurId'],\n    parents: ['demarches', 'etapes', 'titresUtilisateurs']\n  },\n  {\n    name: 'titresEmprises',\n    columns: ['titreEtapeId', 'empriseId'],\n    parents: ['demarches', 'etapes', 'titresEmprises']\n  },\n  {\n    name: 'titresErreurs',\n    columns: [\n      'titreEtapeId',\n      'date',\n      'dateDebut',\n      'dateFin',\n      'duree',\n      'surface',\n      'points',\n      'substances',\n      'titulaires',\n      'amodiataires',\n      'administrations'\n    ],\n    parents: ['demarches', 'etapes', 'erreurs']\n  }\n]\n\nmodule.exports = tables\n",
@@ -7669,7 +7759,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 414,
+    "__docId__": 416,
     "kind": "variable",
     "name": "tables",
     "memberof": "camino-api/tools/export/tables/titres.js",
@@ -7689,7 +7779,7 @@
     }
   },
   {
-    "__docId__": 415,
+    "__docId__": 417,
     "kind": "file",
     "name": "camino-api/tools/export/tables/utilisateurs.js",
     "content": "const utilisateursTables = [\n  {\n    name: 'utilisateurs',\n    columns: [\n      'id',\n      'email',\n      'motDePasse',\n      'nom',\n      'prenom',\n      'administrationId',\n      'entrepriseId',\n      'telephoneFixe',\n      'telephoneMobile',\n      'permissionId',\n      'preferences'\n    ],\n    callbacks: {\n      preferences: v => JSON.stringify(v)\n    }\n  }\n]\n\nmodule.exports = utilisateursTables\n",
@@ -7700,7 +7790,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 416,
+    "__docId__": 418,
     "kind": "variable",
     "name": "utilisateursTables",
     "memberof": "camino-api/tools/export/tables/utilisateurs.js",
@@ -7720,7 +7810,7 @@
     }
   },
   {
-    "__docId__": 417,
+    "__docId__": 419,
     "kind": "file",
     "name": "camino-api/tools/export/titre-travaux-rapport.js",
     "content": "const credentials = require('./credentials')\nconst spreadsheetRowAdd = require('./_utils/spreadsheet-row-add')\nconst spreadsheetRowUpdate = require('./_utils/spreadsheet-row-update')\nconst tables = require('./tables/titres-travaux')\n\nconst titreTravauxRapportRowAdd = async content => {\n  const spreadsheetId =\n    process.env.GOOGLE_SPREADSHEET_ID_EXPORT_TITRES_TRAVAUX_RAPPORTS\n\n  await spreadsheetRowAdd(spreadsheetId, credentials, tables[0], content)\n}\n\nconst titreTravauxRapportRowUpdate = async content => {\n  const spreadsheetId =\n    process.env.GOOGLE_SPREADSHEET_ID_EXPORT_TITRES_TRAVAUX_RAPPORTS\n\n  try {\n    await spreadsheetRowUpdate(spreadsheetId, credentials, tables[0], content)\n  } catch (e) {\n    console.log(\"erreur lors de l'ajout d'une ligne dans la spreasheet\", e)\n  }\n}\n\nmodule.exports = { titreTravauxRapportRowAdd, titreTravauxRapportRowUpdate }\n",
@@ -7731,7 +7821,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 418,
+    "__docId__": 420,
     "kind": "function",
     "name": "titreTravauxRapportRowAdd",
     "memberof": "camino-api/tools/export/titre-travaux-rapport.js",
@@ -7758,7 +7848,7 @@
     "ignore": true
   },
   {
-    "__docId__": 419,
+    "__docId__": 421,
     "kind": "function",
     "name": "titreTravauxRapportRowUpdate",
     "memberof": "camino-api/tools/export/titre-travaux-rapport.js",
@@ -7785,7 +7875,7 @@
     "ignore": true
   },
   {
-    "__docId__": 420,
+    "__docId__": 422,
     "kind": "file",
     "name": "camino-api/tools/export/titres-travaux-rapports.js",
     "content": "require('dotenv').config()\nrequire('../../database/index')\nconst dbProcess = require('./_utils/db-process')\n\nconst definitions = require('./definitions')\nconst titresTravauxRapportsDefinition = definitions.find(\n  definition => definition.name === 'titres-travaux-rapports'\n)\n\nconst run = async () => {\n  const res = await dbProcess(titresTravauxRapportsDefinition)\n  console.log(res)\n  process.exit()\n}\n\nrun()\n",
@@ -7796,7 +7886,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 421,
+    "__docId__": 423,
     "kind": "variable",
     "name": "titresTravauxRapportsDefinition",
     "memberof": "camino-api/tools/export/titres-travaux-rapports.js",
@@ -7817,7 +7907,7 @@
     "ignore": true
   },
   {
-    "__docId__": 422,
+    "__docId__": 424,
     "kind": "function",
     "name": "run",
     "memberof": "camino-api/tools/export/titres-travaux-rapports.js",
@@ -7837,7 +7927,7 @@
     "ignore": true
   },
   {
-    "__docId__": 423,
+    "__docId__": 425,
     "kind": "file",
     "name": "camino-api/tools/export/utilisateurs.js",
     "content": "require('dotenv').config()\nrequire('../../database/index')\nconst dbProcess = require('./_utils/db-process')\nconst definitions = require('./definitions')\n\nconst utilisateursDefinition = definitions.find(\n  definition => definition.name === 'utilisateurs'\n)\n\nconst run = async () => {\n  const res = await dbProcess(utilisateursDefinition)\n  console.log(res)\n  process.exit()\n}\n\nrun()\n",
@@ -7848,7 +7938,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 424,
+    "__docId__": 426,
     "kind": "variable",
     "name": "utilisateursDefinition",
     "memberof": "camino-api/tools/export/utilisateurs.js",
@@ -7869,7 +7959,7 @@
     "ignore": true
   },
   {
-    "__docId__": 425,
+    "__docId__": 427,
     "kind": "function",
     "name": "run",
     "memberof": "camino-api/tools/export/utilisateurs.js",
@@ -7889,7 +7979,7 @@
     "ignore": true
   },
   {
-    "__docId__": 426,
+    "__docId__": 428,
     "kind": "file",
     "name": "camino-api/tools/geo/index.js",
     "content": "// converti les coordoonnées géo\n\nconst proj4 = require('proj4')\n\nproj4.defs(\n  'EPSG:2972',\n  '+proj=utm +zone=22 +ellps=GRS80 +towgs84=2,2,-2,0,0,0,0 +units=m +no_defs'\n)\n\nproj4('EPSG:2972', 'EPSG:4326', [coord1, coord2])\n",
@@ -7900,7 +7990,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 427,
+    "__docId__": 429,
     "kind": "file",
     "name": "camino-api/tools/import/_utils/_spreadsheet-to-json.js",
     "content": "const spreadSheetToJson = require('google-spreadsheet-to-json')\nconst credentials = require('../credentials.js')\nconst fileCreate = require('./file-create.js')\n\nmodule.exports = async (filePath, spreadsheetId, worksheet, cb) => {\n  try {\n    console.log(`Spreadsheet: ${filePath}`)\n    let json = await spreadSheetToJson({\n      spreadsheetId,\n      credentials,\n      worksheet\n    })\n\n    if (cb) {\n      json = cb(json)\n    }\n\n    const fileContent = JSON.stringify(json, null, 2)\n\n    await fileCreate(filePath, fileContent)\n  } catch (err) {\n    console.log(err)\n  }\n}\n",
@@ -7911,7 +8001,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 428,
+    "__docId__": 430,
     "kind": "function",
     "name": "_spreadsheettojson",
     "memberof": "camino-api/tools/import/_utils/_spreadsheet-to-json.js",
@@ -7955,7 +8045,7 @@
     "return": null
   },
   {
-    "__docId__": 429,
+    "__docId__": 431,
     "kind": "file",
     "name": "camino-api/tools/import/_utils/file-create.js",
     "content": "const fs = require('fs-extra')\n\nmodule.exports = async (name, content) => {\n  try {\n    await fs.writeFile(name, content, 'utf8')\n    console.log('File:', name)\n  } catch (err) {\n    console.log('File: error', err)\n  }\n}\n",
@@ -7966,7 +8056,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 430,
+    "__docId__": 432,
     "kind": "function",
     "name": "filecreate",
     "memberof": "camino-api/tools/import/_utils/file-create.js",
@@ -7998,7 +8088,7 @@
     "return": null
   },
   {
-    "__docId__": 431,
+    "__docId__": 433,
     "kind": "file",
     "name": "camino-api/tools/import/_utils/file-path-create.js",
     "content": "const path = require('path')\n\nconst filePathCreate = fileName =>\n  path.join(__dirname, `../../sources/${fileName.replace(/_/g, '-')}.json`)\n\nmodule.exports = filePathCreate\n",
@@ -8009,7 +8099,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 432,
+    "__docId__": 434,
     "kind": "function",
     "name": "filePathCreate",
     "memberof": "camino-api/tools/import/_utils/file-path-create.js",
@@ -8035,7 +8125,7 @@
     "return": null
   },
   {
-    "__docId__": 433,
+    "__docId__": 435,
     "kind": "file",
     "name": "camino-api/tools/import/credentials.js",
     "content": "module.exports = {\n  type: 'service_account',\n  project_id: process.env.GOOGLE_PROJECT_ID,\n  private_key_id: process.env.GOOGLE_PRIVATE_KEY_ID,\n  private_key: process.env.GOOGLE_PRIVATE_KEY,\n  client_email: process.env.GOOGLE_CLIENT_EMAIL,\n  client_id: process.env.GOOGLE_CLIENT_ID,\n  auth_uri: 'https://accounts.google.com/o/oauth2/auth',\n  token_uri: 'https://accounts.google.com/o/oauth2/token',\n  auth_provider_x509_cert_url: 'https://www.googleapis.com/oauth2/v1/certs',\n  client_x509_cert_url: process.env.GOOGLE_CLIENT_X509_CERT_URL\n}\n",
@@ -8046,7 +8136,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 434,
+    "__docId__": 436,
     "kind": "file",
     "name": "camino-api/tools/import/index.js",
     "content": "require('dotenv').config()\nconst PQueue = require('p-queue')\nconst spreadsheetToJson = require('./_utils/_spreadsheet-to-json')\nconst filePathCreate = require('./_utils/file-path-create')\nconst fileCreate = require('./_utils/file-create.js')\n\nconst spreadsheets = require('./spreadsheets')\n\nconst run = async () => {\n  // on utilise une queue plutôt que Promise.all\n  // pour ne pas surcharger l'API de google\n  const spreadSheetsPromises = spreadsheets.map(s => () =>\n    spreadsheetsProcess(s)\n  )\n  const spreadSheetsQueue = new PQueue({ concurrency: 1 })\n  await spreadSheetsQueue.addAll(spreadSheetsPromises)\n}\n\nconst spreadsheetsProcess = async spreadsheet =>\n  Promise.all([\n    ...spreadsheet.tables.map(\n      table =>\n        spreadsheet.id\n          ? // si l'id de la spreadsheet est renseignée\n            spreadsheetToJson(\n              filePathCreate(\n                spreadsheet.prefixFileName\n                  ? `${spreadsheet.name}-${table.name}`\n                  : table.name\n              ),\n              spreadsheet.id,\n              table.name,\n              table.cb\n            )\n          : // si l'id est absente on créé un fichier vide\n            fileCreate(\n              filePathCreate(\n                spreadsheet.prefixFileName\n                  ? `${spreadsheet.name}-${table.name}`\n                  : table.name\n              ),\n              JSON.stringify([], null, 2)\n            )\n    )\n  ])\n\nrun()\n",
@@ -8057,7 +8147,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 435,
+    "__docId__": 437,
     "kind": "function",
     "name": "run",
     "memberof": "camino-api/tools/import/index.js",
@@ -8077,7 +8167,7 @@
     "ignore": true
   },
   {
-    "__docId__": 436,
+    "__docId__": 438,
     "kind": "function",
     "name": "spreadsheetsProcess",
     "memberof": "camino-api/tools/import/index.js",
@@ -8104,7 +8194,7 @@
     "ignore": true
   },
   {
-    "__docId__": 437,
+    "__docId__": 439,
     "kind": "file",
     "name": "camino-api/tools/import/spreadsheets.js",
     "content": "const titresCSpreadsheetId = process.env.GOOGLE_SPREADSHEET_ID_TITRES_C\nconst titresFSpreadsheetId = process.env.GOOGLE_SPREADSHEET_ID_TITRES_F\nconst titresGSpreadsheetId = process.env.GOOGLE_SPREADSHEET_ID_TITRES_G\nconst titresHSpreadsheetId = process.env.GOOGLE_SPREADSHEET_ID_TITRES_H\nconst titresMSpreadsheetId = process.env.GOOGLE_SPREADSHEET_ID_TITRES_M\nconst titresM973SpreadsheetId = process.env.GOOGLE_SPREADSHEET_ID_TITRES_M973\nconst titresRSpreadsheetId = process.env.GOOGLE_SPREADSHEET_ID_TITRES_R\nconst titresSSpreadsheetId = process.env.GOOGLE_SPREADSHEET_ID_TITRES_S\nconst titresWSpreadsheetId = process.env.GOOGLE_SPREADSHEET_ID_TITRES_W\nconst metasSpreadsheetId = process.env.GOOGLE_SPREADSHEET_ID_METAS\nconst entreprisesSpreadsheetId = process.env.GOOGLE_SPREADSHEET_ID_ENTREPRISES\nconst utilisateursSpreadsheetId = process.env.GOOGLE_SPREADSHEET_ID_UTILISATEURS\nconst permissionsSpreadsheetId = process.env.GOOGLE_SPREADSHEET_ID_PERMISSIONS\nconst administrationsSpreadsheetId =\n  process.env.GOOGLE_SPREADSHEET_ID_ADMINISTRATIONS\nconst substancesSpreadsheetId = process.env.GOOGLE_SPREADSHEET_ID_SUBSTANCES\nconst titresTravauxRapportsSpreadsheetId =\n  process.env.GOOGLE_SPREADSHEET_ID_TITRES_TRAVAUX_RAPPORTS\n\nconst jsonParse = value => json =>\n  json.map(j =>\n    Object.keys(j).reduce((res, cur) => {\n      res[cur] = cur === value ? JSON.parse(j[cur]) : j[cur]\n      return res\n    }, {})\n  )\n\nconst titresTables = [\n  { name: 'titres', cb: jsonParse('references') },\n  { name: 'titres_demarches' },\n  { name: 'titres_etapes', cb: jsonParse('visas') },\n  { name: 'titres_points' },\n  { name: 'titres_points_references' },\n  { name: 'titres_documents' },\n  { name: 'titres_substances' },\n  { name: 'titres_titulaires' },\n  { name: 'titres_amodiataires' },\n  { name: 'titres_emprises' },\n  { name: 'titres_erreurs' }\n]\n\nconst spreadSheets = [\n  {\n    name: 'titres-c',\n    id: titresCSpreadsheetId,\n    tables: titresTables,\n    prefixFileName: true\n  },\n  {\n    name: 'titres-f',\n    id: titresFSpreadsheetId,\n    tables: titresTables,\n    prefixFileName: true\n  },\n  {\n    name: 'titres-g',\n    id: titresGSpreadsheetId,\n    tables: titresTables,\n    prefixFileName: true\n  },\n  {\n    name: 'titres-h',\n    id: titresHSpreadsheetId,\n    tables: titresTables,\n    prefixFileName: true\n  },\n  {\n    name: 'titres-m',\n    id: titresMSpreadsheetId,\n    tables: titresTables,\n    prefixFileName: true\n  },\n  {\n    name: 'titres-m973',\n    id: titresM973SpreadsheetId,\n    tables: titresTables,\n    prefixFileName: true\n  },\n  {\n    name: 'titres-r',\n    id: titresRSpreadsheetId,\n    tables: titresTables,\n    prefixFileName: true\n  },\n  {\n    name: 'titres-s',\n    id: titresSSpreadsheetId,\n    tables: titresTables,\n    prefixFileName: true\n  },\n  {\n    name: 'titres-w',\n    id: titresWSpreadsheetId,\n    tables: titresTables,\n    prefixFileName: true\n  },\n  {\n    name: 'metas',\n    id: metasSpreadsheetId,\n    tables: [\n      { name: 'domaines' },\n      { name: 'types' },\n      { name: 'domaines__types' },\n      { name: 'statuts' },\n      { name: 'demarches_types' },\n      { name: 'demarches_statuts' },\n      { name: 'demarches_types__types' },\n      { name: 'demarches_types__demarches_statuts' },\n      { name: 'phases_statuts' },\n      { name: 'etapes_types' },\n      { name: 'etapes_statuts' },\n      { name: 'etapes_types__etapes_statuts' },\n      { name: 'demarches_types__etapes_types' },\n      { name: 'emprises' }\n    ]\n  },\n  {\n    name: 'entreprises',\n    id: entreprisesSpreadsheetId,\n    tables: [\n      { name: 'c' },\n      { name: 'f' },\n      { name: 'g' },\n      { name: 'h' },\n      { name: 'm' },\n      { name: 'm973' },\n      { name: 'r' },\n      { name: 's' },\n      { name: 'w' }\n    ],\n    prefixFileName: true\n  },\n  {\n    name: 'utilisateurs',\n    id: utilisateursSpreadsheetId,\n    tables: [{ name: 'utilisateurs', cb: jsonParse('preferences') }]\n  },\n  {\n    name: 'utilisateurs',\n    id: permissionsSpreadsheetId,\n    tables: [{ name: 'permissions' }]\n  },\n  {\n    name: 'administrations',\n    id: administrationsSpreadsheetId,\n    tables: [{ name: 'administrations' }]\n  },\n  {\n    name: 'substances',\n    id: substancesSpreadsheetId,\n    tables: [\n      { name: 'substances' },\n      { name: 'substances_legales' },\n      { name: 'substances_legales_codes' },\n      { name: 'substances__substances_legales' }\n    ]\n  },\n  {\n    name: 'titresTravauxRapports',\n    id: titresTravauxRapportsSpreadsheetId,\n    tables: [{ name: 'titres_travaux_rapports', cb: jsonParse('contenu') }]\n  }\n]\n\nmodule.exports = spreadSheets\n",
@@ -8115,7 +8205,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 438,
+    "__docId__": 440,
     "kind": "variable",
     "name": "titresCSpreadsheetId",
     "memberof": "camino-api/tools/import/spreadsheets.js",
@@ -8136,7 +8226,7 @@
     "ignore": true
   },
   {
-    "__docId__": 439,
+    "__docId__": 441,
     "kind": "variable",
     "name": "titresFSpreadsheetId",
     "memberof": "camino-api/tools/import/spreadsheets.js",
@@ -8157,7 +8247,7 @@
     "ignore": true
   },
   {
-    "__docId__": 440,
+    "__docId__": 442,
     "kind": "variable",
     "name": "titresGSpreadsheetId",
     "memberof": "camino-api/tools/import/spreadsheets.js",
@@ -8178,7 +8268,7 @@
     "ignore": true
   },
   {
-    "__docId__": 441,
+    "__docId__": 443,
     "kind": "variable",
     "name": "titresHSpreadsheetId",
     "memberof": "camino-api/tools/import/spreadsheets.js",
@@ -8199,7 +8289,7 @@
     "ignore": true
   },
   {
-    "__docId__": 442,
+    "__docId__": 444,
     "kind": "variable",
     "name": "titresMSpreadsheetId",
     "memberof": "camino-api/tools/import/spreadsheets.js",
@@ -8220,7 +8310,7 @@
     "ignore": true
   },
   {
-    "__docId__": 443,
+    "__docId__": 445,
     "kind": "variable",
     "name": "titresM973SpreadsheetId",
     "memberof": "camino-api/tools/import/spreadsheets.js",
@@ -8241,7 +8331,7 @@
     "ignore": true
   },
   {
-    "__docId__": 444,
+    "__docId__": 446,
     "kind": "variable",
     "name": "titresRSpreadsheetId",
     "memberof": "camino-api/tools/import/spreadsheets.js",
@@ -8262,7 +8352,7 @@
     "ignore": true
   },
   {
-    "__docId__": 445,
+    "__docId__": 447,
     "kind": "variable",
     "name": "titresSSpreadsheetId",
     "memberof": "camino-api/tools/import/spreadsheets.js",
@@ -8283,7 +8373,7 @@
     "ignore": true
   },
   {
-    "__docId__": 446,
+    "__docId__": 448,
     "kind": "variable",
     "name": "titresWSpreadsheetId",
     "memberof": "camino-api/tools/import/spreadsheets.js",
@@ -8304,7 +8394,7 @@
     "ignore": true
   },
   {
-    "__docId__": 447,
+    "__docId__": 449,
     "kind": "variable",
     "name": "metasSpreadsheetId",
     "memberof": "camino-api/tools/import/spreadsheets.js",
@@ -8325,7 +8415,7 @@
     "ignore": true
   },
   {
-    "__docId__": 448,
+    "__docId__": 450,
     "kind": "variable",
     "name": "entreprisesSpreadsheetId",
     "memberof": "camino-api/tools/import/spreadsheets.js",
@@ -8346,7 +8436,7 @@
     "ignore": true
   },
   {
-    "__docId__": 449,
+    "__docId__": 451,
     "kind": "variable",
     "name": "utilisateursSpreadsheetId",
     "memberof": "camino-api/tools/import/spreadsheets.js",
@@ -8367,7 +8457,7 @@
     "ignore": true
   },
   {
-    "__docId__": 450,
+    "__docId__": 452,
     "kind": "variable",
     "name": "permissionsSpreadsheetId",
     "memberof": "camino-api/tools/import/spreadsheets.js",
@@ -8388,7 +8478,7 @@
     "ignore": true
   },
   {
-    "__docId__": 451,
+    "__docId__": 453,
     "kind": "variable",
     "name": "administrationsSpreadsheetId",
     "memberof": "camino-api/tools/import/spreadsheets.js",
@@ -8409,7 +8499,7 @@
     "ignore": true
   },
   {
-    "__docId__": 452,
+    "__docId__": 454,
     "kind": "variable",
     "name": "substancesSpreadsheetId",
     "memberof": "camino-api/tools/import/spreadsheets.js",
@@ -8430,7 +8520,7 @@
     "ignore": true
   },
   {
-    "__docId__": 453,
+    "__docId__": 455,
     "kind": "variable",
     "name": "titresTravauxRapportsSpreadsheetId",
     "memberof": "camino-api/tools/import/spreadsheets.js",
@@ -8451,7 +8541,7 @@
     "ignore": true
   },
   {
-    "__docId__": 454,
+    "__docId__": 456,
     "kind": "function",
     "name": "jsonParse",
     "memberof": "camino-api/tools/import/spreadsheets.js",
@@ -8478,7 +8568,7 @@
     "ignore": true
   },
   {
-    "__docId__": 455,
+    "__docId__": 457,
     "kind": "variable",
     "name": "titresTables",
     "memberof": "camino-api/tools/import/spreadsheets.js",
@@ -8499,7 +8589,7 @@
     "ignore": true
   },
   {
-    "__docId__": 456,
+    "__docId__": 458,
     "kind": "variable",
     "name": "spreadSheets",
     "memberof": "camino-api/tools/import/spreadsheets.js",
@@ -8519,7 +8609,7 @@
     }
   },
   {
-    "__docId__": 457,
+    "__docId__": 459,
     "kind": "file",
     "name": "camino-api/tools/knex/config.js",
     "content": "require('dotenv').config({ path: '../../.env' })\nconst { knexSnakeCaseMappers } = require('objection')\n\nconst connection = {\n  host: process.env.PGHOST,\n  port: process.env.PGPORT,\n  database: process.env.PGDATABASE,\n  user: process.env.PGUSER,\n  password: process.env.PGPASSWORD\n}\n\nconst knexConfig = {\n  client: 'pg',\n  connection,\n  migrations: {\n    directory: './migrations'\n  },\n  seeds: {\n    directory: './seeds'\n  },\n  ...knexSnakeCaseMappers()\n}\n\nmodule.exports = knexConfig\n",
@@ -8530,7 +8620,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 458,
+    "__docId__": 460,
     "kind": "variable",
     "name": "connection",
     "memberof": "camino-api/tools/knex/config.js",
@@ -8551,7 +8641,7 @@
     "ignore": true
   },
   {
-    "__docId__": 459,
+    "__docId__": 461,
     "kind": "variable",
     "name": "knexConfig",
     "memberof": "camino-api/tools/knex/config.js",
@@ -8571,7 +8661,7 @@
     }
   },
   {
-    "__docId__": 460,
+    "__docId__": 462,
     "kind": "file",
     "name": "camino-api/tools/knex/index.js",
     "content": "const Knex = require('knex')\nconst knexConfig = require('./knex')\nconst knex = Knex(knexConfig)\nconst chalk = require('chalk')\n\nconst run = new Promise((resolve, reject) => {\n  resolve()\n})\n\nconst exit = (text) => {\n  if (text instanceof Error) {\n    console.error(chalk.red(text.stack))\n  } else {\n    console.error(chalk.red(text))\n  }\n\n  process.exit(1)\n}\n\nrun\n  .then(() => {\n    console.log('Rollback')\n    return knex.migrate\n      .rollback()\n      .spread((batchNo, log) => {\n        if (log.length === 0) {\n          console.log(chalk.cyan('Already at the base migration'))\n        }\n\n        console.log(\n          chalk.green(\n            `Batch ${batchNo} rolled back: ${log.length} migrations \\n`\n          ) + chalk.cyan(log.join('\\n'))\n        )\n      })\n      .catch(exit)\n  })\n  .then(() => {\n    console.log('Migrate')\n    return knex.migrate\n      .latest()\n      .spread((batchNo, log) => {\n        if (log.length === 0) {\n          console.log(chalk.cyan('Already up to date'))\n        }\n\n        console.log(\n          chalk.green(`Batch ${batchNo} run: ${log.length} migrations \\n`) +\n            chalk.cyan(log.join('\\n'))\n        )\n      })\n      .catch(exit)\n  })\n  .then(() => {\n    console.log('Seed')\n    return knex.seed\n      .run()\n      .spread(log => {\n        if (log.length === 0) {\n          console.log(chalk.cyan('No seed files exist'))\n        }\n\n        console.log(\n          chalk.green(\n            `Ran ${log.length} seed files \\n${chalk.cyan(log.join('\\n'))}`\n          )\n        )\n      })\n      .catch(exit)\n  })\n  .then(() => {\n    console.log('Migrations terminées')\n    process.exit()\n  })\n",
@@ -8582,7 +8672,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 461,
+    "__docId__": 463,
     "kind": "variable",
     "name": "knex",
     "memberof": "camino-api/tools/knex/index.js",
@@ -8603,7 +8693,7 @@
     "ignore": true
   },
   {
-    "__docId__": 462,
+    "__docId__": 464,
     "kind": "variable",
     "name": "run",
     "memberof": "camino-api/tools/knex/index.js",
@@ -8624,7 +8714,7 @@
     "ignore": true
   },
   {
-    "__docId__": 463,
+    "__docId__": 465,
     "kind": "function",
     "name": "exit",
     "memberof": "camino-api/tools/knex/index.js",
@@ -8651,7 +8741,7 @@
     "ignore": true
   },
   {
-    "__docId__": 464,
+    "__docId__": 466,
     "kind": "file",
     "name": "camino-api/tools/knex/knex.js",
     "content": "require('dotenv').config()\nconst { knexSnakeCaseMappers } = require('objection')\n\nconst connection = {\n  host: process.env.PGHOST,\n  port: process.env.PGPORT,\n  database: process.env.PGDATABASE,\n  user: process.env.PGUSER,\n  password: process.env.PGPASSWORD\n}\n\nconst knexConfig = {\n  client: 'pg',\n  connection,\n  migrations: {\n    directory: './tools/knex/migrations'\n  },\n  seeds: {\n    directory: './tools/knex/seeds'\n  },\n  ...knexSnakeCaseMappers()\n}\n\nmodule.exports = knexConfig\n",
@@ -8662,7 +8752,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 465,
+    "__docId__": 467,
     "kind": "variable",
     "name": "connection",
     "memberof": "camino-api/tools/knex/knex.js",
@@ -8683,7 +8773,7 @@
     "ignore": true
   },
   {
-    "__docId__": 466,
+    "__docId__": 468,
     "kind": "variable",
     "name": "knexConfig",
     "memberof": "camino-api/tools/knex/knex.js",
@@ -8703,10 +8793,10 @@
     }
   },
   {
-    "__docId__": 467,
+    "__docId__": 469,
     "kind": "file",
     "name": "camino-api/tools/knex/migrations/20180521134020_domaines_types_statuts.js",
-    "content": "exports.up = knex => {\r\n  return knex.schema\r\n    .createTable('domaines', table => {\r\n      table.string('id', 1).primary()\r\n      table.string('nom').notNullable()\r\n      table.integer('ordre')\r\n    })\r\n    .createTable('types', table => {\r\n      table.string('id', 3).primary()\r\n      table.string('nom').notNullable()\r\n    })\r\n    .createTable('domaines__types', table => {\r\n      table\r\n        .string('domaineId', 1)\r\n        .references('domaines.id')\r\n        .notNullable()\r\n      table\r\n        .string('typeId', 3)\r\n        .references('types.id')\r\n        .notNullable()\r\n      table.boolean('archive')\r\n      table.primary(['domaineId', 'typeId'])\r\n    })\r\n    .createTable('emprises', table => {\r\n      table.string('id', 3).primary()\r\n      table.string('nom').notNullable()\r\n    })\r\n    .createTable('statuts', table => {\r\n      table.string('id', 3).primary()\r\n      table.string('nom', 32).notNullable()\r\n      table.string('couleur', 16).notNullable()\r\n    })\r\n}\r\n\r\nexports.down = knex => {\r\n  return knex.schema\r\n    .dropTable('domaines__types')\r\n    .dropTable('domaines')\r\n    .dropTable('types')\r\n    .dropTable('statuts')\r\n    .dropTable('emprises')\r\n}\r\n",
+    "content": "/**\r\n * création des tables 'metas' de la base de données\r\n */\r\n\r\nexports.up = knex => {\r\n  return knex.schema\r\n    .createTable('domaines', table => {\r\n      table.string('id', 1).primary()\r\n      table.string('nom').notNullable()\r\n      table.integer('ordre')\r\n    })\r\n    .createTable('types', table => {\r\n      table.string('id', 3).primary()\r\n      table.string('nom').notNullable()\r\n    })\r\n    .createTable('domaines__types', table => {\r\n      table\r\n        .string('domaineId', 1)\r\n        .references('domaines.id')\r\n        .notNullable()\r\n      table\r\n        .string('typeId', 3)\r\n        .references('types.id')\r\n        .notNullable()\r\n      table.boolean('archive')\r\n      table.primary(['domaineId', 'typeId'])\r\n    })\r\n    .createTable('emprises', table => {\r\n      table.string('id', 3).primary()\r\n      table.string('nom').notNullable()\r\n    })\r\n    .createTable('statuts', table => {\r\n      table.string('id', 3).primary()\r\n      table.string('nom', 32).notNullable()\r\n      table.string('couleur', 16).notNullable()\r\n    })\r\n}\r\n\r\nexports.down = knex => {\r\n  return knex.schema\r\n    .dropTable('domaines__types')\r\n    .dropTable('domaines')\r\n    .dropTable('types')\r\n    .dropTable('statuts')\r\n    .dropTable('emprises')\r\n}\r\n",
     "static": true,
     "longname": "/Volumes/fr-work/Sites/camino-api/tools/knex/migrations/20180521134020_domaines_types_statuts.js",
     "access": "public",
@@ -8714,7 +8804,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 468,
+    "__docId__": 470,
     "kind": "function",
     "name": "up",
     "memberof": "camino-api/tools/knex/migrations/20180521134020_domaines_types_statuts.js",
@@ -8726,9 +8816,8 @@
     "export": true,
     "importPath": "camino-api/camino-api/tools/knex/migrations/20180521134020_domaines_types_statuts.js",
     "importStyle": "{up}",
-    "description": null,
-    "lineNumber": 1,
-    "undocument": true,
+    "description": "création des tables 'metas' de la base de données",
+    "lineNumber": 5,
     "params": [
       {
         "name": "knex",
@@ -8744,7 +8833,7 @@
     }
   },
   {
-    "__docId__": 469,
+    "__docId__": 471,
     "kind": "function",
     "name": "down",
     "memberof": "camino-api/tools/knex/migrations/20180521134020_domaines_types_statuts.js",
@@ -8757,7 +8846,7 @@
     "importPath": "camino-api/camino-api/tools/knex/migrations/20180521134020_domaines_types_statuts.js",
     "importStyle": "{down}",
     "description": null,
-    "lineNumber": 35,
+    "lineNumber": 39,
     "undocument": true,
     "params": [
       {
@@ -8774,7 +8863,7 @@
     }
   },
   {
-    "__docId__": 470,
+    "__docId__": 472,
     "kind": "file",
     "name": "camino-api/tools/knex/migrations/20180521154020_demarches_etapes.js",
     "content": "exports.up = knex => {\r\n  return knex.schema\r\n    .createTable('demarchesTypes', table => {\r\n      table.string('id', 3).primary()\r\n      table.string('nom').notNullable()\r\n      table.integer('ordre')\r\n      table.boolean('duree')\r\n      table.boolean('points')\r\n      table.boolean('substances')\r\n      table.boolean('titulaires')\r\n      table.boolean('renouvelable')\r\n      table.boolean('exception')\r\n    })\r\n    .createTable('demarchesTypes__types', table => {\r\n      table\r\n        .string('typeId', 3)\r\n        .references('types.id')\r\n        .notNullable()\r\n      table\r\n        .string('demarcheTypeId', 3)\r\n        .references('demarchesTypes.id')\r\n        .notNullable()\r\n      table.integer('dureeMax')\r\n      table.boolean('acceptationImplicite')\r\n      table.string('delaiImplicite')\r\n      table.string('delaiRecours')\r\n      table.string('legalRef')\r\n      table.string('legalLien')\r\n      table.date('dateDebut')\r\n      table.date('dateFin')\r\n      table.primary(['demarcheTypeId', 'typeId'])\r\n    })\r\n    .createTable('demarchesStatuts', table => {\r\n      table.string('id', 3).primary()\r\n      table.string('nom', 32).notNullable()\r\n      table.string('couleur', 16).notNullable()\r\n    })\r\n    .createTable('demarchesTypes__demarchesStatuts', table => {\r\n      table\r\n        .string('demarcheTypeId', 3)\r\n        .references('demarchesTypes.id')\r\n        .notNullable()\r\n      table\r\n        .string('demarcheStatutId', 3)\r\n        .references('demarchesStatuts.id')\r\n        .notNullable()\r\n      table.integer('ordre')\r\n      table.primary(['demarcheTypeId', 'demarcheStatutId'])\r\n    })\r\n    .createTable('phasesStatuts', table => {\r\n      table.string('id', 3).primary()\r\n      table.string('nom', 32).notNullable()\r\n      table.string('couleur', 16).notNullable()\r\n    })\r\n    .createTable('etapesTypes', table => {\r\n      table.string('id', 3).primary()\r\n      table.string('nom', 128)\r\n      table.boolean('acceptationAuto')\r\n      table.string('legalRef')\r\n      table.string('legalLien')\r\n      table.date('dateDebut')\r\n      table.date('dateFin')\r\n    })\r\n    .createTable('demarchesTypes__etapesTypes', table => {\r\n      table\r\n        .string('demarcheTypeId', 7)\r\n        .references('demarchesTypes.id')\r\n        .notNullable()\r\n      table\r\n        .string('etapeTypeId', 3)\r\n        .references('etapesTypes.id')\r\n        .notNullable()\r\n      table\r\n        .string('typeId', 3)\r\n        .references('types.id')\r\n        .notNullable()\r\n      table.integer('ordre')\r\n      table.primary(['demarcheTypeId', 'etapeTypeId', 'typeId'])\r\n    })\r\n    .createTable('etapesStatuts', table => {\r\n      table.string('id', 3).primary()\r\n      table.string('nom', 32).notNullable()\r\n      table.string('couleur', 16).notNullable()\r\n    })\r\n    .createTable('etapesTypes__etapesStatuts', table => {\r\n      table\r\n        .string('etapeTypeId', 7)\r\n        .references('etapesTypes.id')\r\n        .notNullable()\r\n      table\r\n        .string('etapeStatutId', 3)\r\n        .references('etapesStatuts.id')\r\n        .notNullable()\r\n      table.integer('ordre')\r\n      table.primary(['etapeTypeId', 'etapeStatutId'])\r\n    })\r\n}\r\n\r\nexports.down = knex => {\r\n  return knex.schema\r\n    .dropTable('etapesTypes__etapesStatuts')\r\n    .dropTable('etapesStatuts')\r\n    .dropTable('demarchesTypes__etapesTypes')\r\n    .dropTable('etapesTypes')\r\n    .dropTable('demarchesTypes__demarchesStatuts')\r\n    .dropTable('demarchesStatuts')\r\n    .dropTable('demarchesTypes__types')\r\n    .dropTable('demarchesTypes')\r\n    .dropTable('phasesStatuts')\r\n}\r\n",
@@ -8785,7 +8874,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 471,
+    "__docId__": 473,
     "kind": "function",
     "name": "up",
     "memberof": "camino-api/tools/knex/migrations/20180521154020_demarches_etapes.js",
@@ -8815,7 +8904,7 @@
     }
   },
   {
-    "__docId__": 472,
+    "__docId__": 474,
     "kind": "function",
     "name": "down",
     "memberof": "camino-api/tools/knex/migrations/20180521154020_demarches_etapes.js",
@@ -8845,7 +8934,7 @@
     }
   },
   {
-    "__docId__": 473,
+    "__docId__": 475,
     "kind": "file",
     "name": "camino-api/tools/knex/migrations/20180521162125_substances.js",
     "content": "exports.up = knex => {\r\n  return knex.schema\r\n    .createTable('substancesLegalesCodes', table => {\r\n      table.string('id').primary()\r\n      table.string('nom').notNullable()\r\n      table.string('description')\r\n      table.string('lien').notNullable()\r\n    })\r\n    .createTable('substancesLegales', table => {\r\n      table.string('id').primary()\r\n      table.string('nom').notNullable()\r\n      table\r\n        .string('domaineId', 1)\r\n        .notNullable()\r\n        .references('domaines.id')\r\n      table.string('description')\r\n      table\r\n        .string('substanceLegaleCodeId')\r\n        .references('substancesLegalesCodes.id')\r\n        .notNullable()\r\n    })\r\n    .createTable('substances', table => {\r\n      table.string('id', 4).primary()\r\n      table.string('nom').notNullable()\r\n      table.string('symbole')\r\n      table.integer('gerep')\r\n      table.string('description', 2048)\r\n    })\r\n    .createTable('substances__substancesLegales', table => {\r\n      table\r\n        .string('substanceId')\r\n        .references('substances.id')\r\n        .notNullable()\r\n        .onDelete('CASCADE')\r\n      table\r\n        .string('substanceLegaleId')\r\n        .references('substancesLegales.id')\r\n        .notNullable()\r\n      table.primary(['substanceId', 'substanceLegaleId'])\r\n    })\r\n}\r\n\r\nexports.down = knex => {\r\n  return knex.schema\r\n    .dropTable('substances__substancesLegales')\r\n    .dropTable('substances')\r\n    .dropTable('substancesLegales')\r\n    .dropTable('substancesLegalesCodes')\r\n}\r\n",
@@ -8856,7 +8945,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 474,
+    "__docId__": 476,
     "kind": "function",
     "name": "up",
     "memberof": "camino-api/tools/knex/migrations/20180521162125_substances.js",
@@ -8886,7 +8975,7 @@
     }
   },
   {
-    "__docId__": 475,
+    "__docId__": 477,
     "kind": "function",
     "name": "down",
     "memberof": "camino-api/tools/knex/migrations/20180521162125_substances.js",
@@ -8916,7 +9005,7 @@
     }
   },
   {
-    "__docId__": 476,
+    "__docId__": 478,
     "kind": "file",
     "name": "camino-api/tools/knex/migrations/20180521162130_repertoire.js",
     "content": "exports.up = knex => {\r\n  return knex.schema\r\n    .createTable('entreprises', table => {\r\n      table.string('id', 64).primary()\r\n      table.string('nom')\r\n      table.string('raisonSociale')\r\n      table.string('paysId')\r\n      table.string('legalSiren')\r\n      table.string('legalEtranger')\r\n      table.string('legalForme')\r\n      table.string('voieNumero')\r\n      table.string('voieType')\r\n      table.string('voieNom')\r\n      table.string('adresseComplement')\r\n      table.string('codePostal')\r\n      table.string('ville')\r\n      table.string('cedex')\r\n      table.string('localite')\r\n      table.string('insee')\r\n      table.string('url')\r\n      table.string('email')\r\n      table.string('telephone')\r\n    })\r\n    .createTable('administrations', table => {\r\n      table.string('id', 64).primary()\r\n      table.string('nom').notNullable()\r\n      table.string('service')\r\n      table.string('site')\r\n      table.string('email')\r\n      table.string('telephone')\r\n      table.string('adresse1')\r\n      table.string('adresse2')\r\n      table.string('ville')\r\n      table.string('codePostal')\r\n      table.string('cedex')\r\n    })\r\n    .createTable('permissions', table => {\r\n      table.string('id', 12).primary()\r\n      table.string('nom').notNullable()\r\n      table.integer('ordre')\r\n    })\r\n    .createTable('utilisateurs', table => {\r\n      table.string('id').primary()\r\n      table.string('email').notNullable()\r\n      table.string('motDePasse').notNullable()\r\n      table.string('nom')\r\n      table.string('prenom')\r\n      table\r\n        .string('administrationId', 64)\r\n        .references('administrations.id')\r\n        .onDelete('CASCADE')\r\n      table\r\n        .string('entrepriseId', 64)\r\n        .references('entreprises.id')\r\n        .onDelete('CASCADE')\r\n      table.string('telephoneFixe')\r\n      table.string('telephoneMobile')\r\n      table\r\n        .string('permissionId', 12)\r\n        .references('permissions.id')\r\n        .notNullable()\r\n        .onDelete('CASCADE')\r\n      table.json('preferences')\r\n    })\r\n}\r\n\r\nexports.down = knex => {\r\n  return knex.schema\r\n    .dropTable('utilisateurs')\r\n    .dropTable('permissions')\r\n    .dropTable('entreprises')\r\n    .dropTable('administrations')\r\n}\r\n",
@@ -8927,7 +9016,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 477,
+    "__docId__": 479,
     "kind": "function",
     "name": "up",
     "memberof": "camino-api/tools/knex/migrations/20180521162130_repertoire.js",
@@ -8957,7 +9046,7 @@
     }
   },
   {
-    "__docId__": 478,
+    "__docId__": 480,
     "kind": "function",
     "name": "down",
     "memberof": "camino-api/tools/knex/migrations/20180521162130_repertoire.js",
@@ -8987,7 +9076,7 @@
     }
   },
   {
-    "__docId__": 479,
+    "__docId__": 481,
     "kind": "file",
     "name": "camino-api/tools/knex/migrations/20180521171034_titres.js",
     "content": "exports.up = knex => {\r\n  return knex.schema.createTable('titres', table => {\r\n    table.string('id', 128).primary()\r\n    table.string('nom').notNullable()\r\n    table.string('typeId', 3).notNullable()\r\n    table.string('domaineId', 1).notNullable()\r\n    table.string('statutId', 3).notNullable()\r\n    table.json('references')\r\n  })\r\n}\r\n\r\nexports.down = knex => {\r\n  return knex.schema.dropTable('titres')\r\n}\r\n",
@@ -8998,7 +9087,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 480,
+    "__docId__": 482,
     "kind": "function",
     "name": "up",
     "memberof": "camino-api/tools/knex/migrations/20180521171034_titres.js",
@@ -9028,7 +9117,7 @@
     }
   },
   {
-    "__docId__": 481,
+    "__docId__": 483,
     "kind": "function",
     "name": "down",
     "memberof": "camino-api/tools/knex/migrations/20180521171034_titres.js",
@@ -9058,7 +9147,7 @@
     }
   },
   {
-    "__docId__": 482,
+    "__docId__": 484,
     "kind": "file",
     "name": "camino-api/tools/knex/migrations/20180522134857_titres_demarches_etapes.js",
     "content": "exports.up = knex => {\r\n  return knex.schema\r\n    .createTable('titresDemarches', table => {\r\n      table.string('id', 128).primary()\r\n      table\r\n        .string('titreId', 128)\r\n        .references('titres.id')\r\n        .notNullable()\r\n        .onDelete('CASCADE')\r\n      table\r\n        .string('typeId', 3)\r\n        .notNullable()\r\n        .references('demarchesTypes.id')\r\n      table\r\n        .string('statutId', 3)\r\n        .notNullable()\r\n        .references('demarchesStatuts.id')\r\n      table.integer('ordre')\r\n      table.string('annulationDemarcheId', 128).references('id')\r\n    })\r\n    .createTable('titresPhases', table => {\r\n      table\r\n        .string('titreDemarcheId', 128)\r\n        .primary()\r\n        .references('titresDemarches.id')\r\n        .onDelete('CASCADE')\r\n      table\r\n        .string('statutId', 3)\r\n        .notNullable()\r\n        .references('phasesStatuts.id')\r\n      table.date('dateDebut')\r\n      table.date('dateFin')\r\n    })\r\n    .createTable('titresEtapes', table => {\r\n      table.string('id', 128).primary()\r\n      table\r\n        .string('titreDemarcheId', 128)\r\n        .references('titresDemarches.id')\r\n        .notNullable()\r\n        .onDelete('CASCADE')\r\n      table\r\n        .string('typeId', 3)\r\n        .notNullable()\r\n        .references('etapesTypes.id')\r\n      table\r\n        .string('statutId', 3)\r\n        .notNullable()\r\n        .references('etapesStatuts.id')\r\n      table.integer('ordre')\r\n      table.date('date').notNullable()\r\n      table.date('dateDebut')\r\n      table.date('dateFin')\r\n      table.integer('duree')\r\n      table.float('surface')\r\n      table.float('volume')\r\n      table.string('volumeUnite')\r\n      table.specificType('visas', 'text[]')\r\n      table.float('engagement')\r\n      table.string('engagementDevise')\r\n      table.boolean('sourceIndisponible')\r\n    })\r\n    .alterTable('titres', table => {\r\n      table\r\n        .string('pointsTitreEtapeId', 128)\r\n        .references('titresEtapes.id')\r\n        .onDelete('CASCADE')\r\n      table\r\n        .string('titulairesTitreEtapeId', 128)\r\n        .references('titresEtapes.id')\r\n        .onDelete('CASCADE')\r\n      table\r\n        .string('amodiatairesTitreEtapeId', 128)\r\n        .references('titresEtapes.id')\r\n        .onDelete('CASCADE')\r\n      table\r\n        .string('administrationsTitreEtapeId', 128)\r\n        .references('titresEtapes.id')\r\n        .onDelete('CASCADE')\r\n      table\r\n        .string('surfaceTitreEtapeId', 128)\r\n        .references('titresEtapes.id')\r\n        .onDelete('CASCADE')\r\n      table\r\n        .string('volumeTitreEtapeId', 128)\r\n        .references('titresEtapes.id')\r\n        .onDelete('CASCADE')\r\n      table\r\n        .string('substancesTitreEtapeId', 128)\r\n        .references('titresEtapes.id')\r\n        .onDelete('CASCADE')\r\n    })\r\n}\r\n\r\nexports.down = knex => {\r\n  return knex.schema\r\n    .alterTable('titres', table => {\r\n      table.dropColumn('substancesTitreEtapeId')\r\n      table.dropColumn('pointsTitreEtapeId')\r\n      table.dropColumn('titulairesTitreEtapeId')\r\n      table.dropColumn('amodiatairesTitreEtapeId')\r\n      table.dropColumn('administrationsTitreEtapeId')\r\n      table.dropColumn('surfaceTitreEtapeId')\r\n      table.dropColumn('volumeTitreEtapeId')\r\n    })\r\n    .dropTable('titresEtapes')\r\n    .dropTable('titresPhases')\r\n    .dropTable('titresDemarches')\r\n}\r\n",
@@ -9069,7 +9158,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 483,
+    "__docId__": 485,
     "kind": "function",
     "name": "up",
     "memberof": "camino-api/tools/knex/migrations/20180522134857_titres_demarches_etapes.js",
@@ -9099,7 +9188,7 @@
     }
   },
   {
-    "__docId__": 484,
+    "__docId__": 486,
     "kind": "function",
     "name": "down",
     "memberof": "camino-api/tools/knex/migrations/20180522134857_titres_demarches_etapes.js",
@@ -9129,7 +9218,7 @@
     }
   },
   {
-    "__docId__": 485,
+    "__docId__": 487,
     "kind": "file",
     "name": "camino-api/tools/knex/migrations/20180522174715_titres_etapes_substances_emprises.js",
     "content": "exports.up = (knex, Promise) => {\r\n  return knex.schema\r\n    .createTable('titresSubstances', table => {\r\n      table\r\n        .string('titreEtapeId', 128)\r\n        .references('titresEtapes.id')\r\n        .notNullable()\r\n        .onDelete('CASCADE')\r\n      table\r\n        .string('substanceId', 4)\r\n        .references('substances.id')\r\n        .notNullable()\r\n      table.boolean('connexe')\r\n      table.integer('ordre')\r\n      table.primary(['titreEtapeId', 'substanceId'])\r\n    })\r\n    .createTable('titresEmprises', table => {\r\n      table\r\n        .string('titreEtapeId', 128)\r\n        .notNullable()\r\n        .references('titresEtapes.id')\r\n        .onDelete('CASCADE')\r\n      table\r\n        .string('empriseId', 3)\r\n        .notNullable()\r\n        .references('emprises.id')\r\n      table.primary(['titreEtapeId', 'empriseId'])\r\n    })\r\n}\r\n\r\nexports.down = (knex, Promise) => {\r\n  return knex.schema.dropTable('titresSubstances').dropTable('titresEmprises')\r\n}\r\n",
@@ -9140,7 +9229,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 486,
+    "__docId__": 488,
     "kind": "function",
     "name": "up",
     "memberof": "camino-api/tools/knex/migrations/20180522174715_titres_etapes_substances_emprises.js",
@@ -9176,7 +9265,7 @@
     }
   },
   {
-    "__docId__": 487,
+    "__docId__": 489,
     "kind": "function",
     "name": "down",
     "memberof": "camino-api/tools/knex/migrations/20180522174715_titres_etapes_substances_emprises.js",
@@ -9212,7 +9301,7 @@
     }
   },
   {
-    "__docId__": 488,
+    "__docId__": 490,
     "kind": "file",
     "name": "camino-api/tools/knex/migrations/20180522174720_titres_etapes_utilisateurs_titulaires_amodiataires_administrations.js",
     "content": "exports.up = (knex, Promise) => {\r\n  return knex.schema\r\n    .createTable('titresTitulaires', table => {\r\n      table\r\n        .string('titreEtapeId', 128)\r\n        .references('titresEtapes.id')\r\n        .notNullable()\r\n        .onDelete('CASCADE')\r\n      table\r\n        .string('entrepriseId', 64)\r\n        .references('entreprises.id')\r\n        .notNullable()\r\n      table.primary(['titreEtapeId', 'entrepriseId'])\r\n    })\r\n    .createTable('titres_amodiataires', table => {\r\n      table\r\n        .string('titreEtapeId', 128)\r\n        .references('titresEtapes.id')\r\n        .notNullable()\r\n        .onDelete('CASCADE')\r\n      table\r\n        .string('entrepriseId', 64)\r\n        .references('entreprises.id')\r\n        .notNullable()\r\n      table.primary(['titreEtapeId', 'entrepriseId'])\r\n    })\r\n    .createTable('titres_administrations', table => {\r\n      table\r\n        .string('titreEtapeId', 128)\r\n        .references('titresEtapes.id')\r\n        .notNullable()\r\n        .onDelete('CASCADE')\r\n      table\r\n        .string('administrationId', 4)\r\n        .references('administrations.id')\r\n        .notNullable()\r\n      table.primary(['titreEtapeId', 'administrationId'])\r\n    })\r\n}\r\n\r\nexports.down = (knex, Promise) => {\r\n  return knex.schema\r\n    .dropTable('titresAdministrations')\r\n    .dropTable('titresAmodiataires')\r\n    .dropTable('titresTitulaires')\r\n}\r\n",
@@ -9223,7 +9312,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 489,
+    "__docId__": 491,
     "kind": "function",
     "name": "up",
     "memberof": "camino-api/tools/knex/migrations/20180522174720_titres_etapes_utilisateurs_titulaires_amodiataires_administrations.js",
@@ -9259,7 +9348,7 @@
     }
   },
   {
-    "__docId__": 490,
+    "__docId__": 492,
     "kind": "function",
     "name": "down",
     "memberof": "camino-api/tools/knex/migrations/20180522174720_titres_etapes_utilisateurs_titulaires_amodiataires_administrations.js",
@@ -9295,7 +9384,7 @@
     }
   },
   {
-    "__docId__": 491,
+    "__docId__": 493,
     "kind": "file",
     "name": "camino-api/tools/knex/migrations/20180522232605_titres_etapes_points.js",
     "content": "exports.up = knex => {\r\n  return knex.schema\r\n    .createTable('titresPoints', table => {\r\n      table.string('id').primary()\r\n      table\r\n        .string('titreEtapeId', 128)\r\n        .references('titresEtapes.id')\r\n        .notNullable()\r\n        .onDelete('CASCADE')\r\n      table.specificType('coordonnees', 'POINT').notNullable()\r\n      table.integer('groupe').notNullable()\r\n      table.integer('contour').notNullable()\r\n      table.integer('point').notNullable()\r\n      table.string('nom').notNullable()\r\n      table.string('description')\r\n      table.boolean('securite')\r\n    })\r\n    .createTable('titresPointsReferences', table => {\r\n      table.string('id').primary()\r\n      table\r\n        .string('titrePointId')\r\n        .references('titresPoints.id')\r\n        .onDelete('CASCADE')\r\n      table.string('systeme', 128).notNullable()\r\n      table.specificType('coordonnees', 'POINT').notNullable()\r\n    })\r\n}\r\n\r\nexports.down = knex => {\r\n  return knex.schema\r\n    .dropTable('titresPointsReferences')\r\n    .dropTable('titresPoints')\r\n}\r\n",
@@ -9306,7 +9395,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 492,
+    "__docId__": 494,
     "kind": "function",
     "name": "up",
     "memberof": "camino-api/tools/knex/migrations/20180522232605_titres_etapes_points.js",
@@ -9336,7 +9425,7 @@
     }
   },
   {
-    "__docId__": 493,
+    "__docId__": 495,
     "kind": "function",
     "name": "down",
     "memberof": "camino-api/tools/knex/migrations/20180522232605_titres_etapes_points.js",
@@ -9366,7 +9455,7 @@
     }
   },
   {
-    "__docId__": 494,
+    "__docId__": 496,
     "kind": "file",
     "name": "camino-api/tools/knex/migrations/20180522232610_titres_etapes_documents.js",
     "content": "exports.up = knex => {\r\n  return knex.schema.createTable('titresDocuments', table => {\r\n    table.string('id').primary()\r\n    table\r\n      .string('titreEtapeId', 128)\r\n      .references('titresEtapes.id')\r\n      .notNullable()\r\n      .onDelete('CASCADE')\r\n    table.string('type', 16).notNullable()\r\n    table.string('nom', 1024).notNullable()\r\n    table.string('jorf', 32)\r\n    table.string('nor', 32)\r\n    table.string('url')\r\n    table.string('uri')\r\n    table.string('fichier')\r\n  })\r\n}\r\n\r\nexports.down = knex => {\r\n  return knex.schema.dropTable('titresDocuments')\r\n}\r\n",
@@ -9377,7 +9466,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 495,
+    "__docId__": 497,
     "kind": "function",
     "name": "up",
     "memberof": "camino-api/tools/knex/migrations/20180522232610_titres_etapes_documents.js",
@@ -9407,7 +9496,7 @@
     }
   },
   {
-    "__docId__": 496,
+    "__docId__": 498,
     "kind": "function",
     "name": "down",
     "memberof": "camino-api/tools/knex/migrations/20180522232610_titres_etapes_documents.js",
@@ -9437,7 +9526,7 @@
     }
   },
   {
-    "__docId__": 497,
+    "__docId__": 499,
     "kind": "file",
     "name": "camino-api/tools/knex/migrations/20180522232620_titres_etapes_erreurs.js",
     "content": "exports.up = knex => {\r\n  return knex.schema.createTable('titresErreurs', table => {\r\n    table\r\n      .string('titreEtapeId', 128)\r\n      .primary()\r\n      .references('titresEtapes.id')\r\n      .onDelete('CASCADE')\r\n    table.boolean('date')\r\n    table.boolean('dateDebut')\r\n    table.boolean('dateFin')\r\n    table.boolean('duree')\r\n    table.boolean('surface')\r\n    table.boolean('points')\r\n    table.boolean('pointsSecurite')\r\n    table.boolean('substances')\r\n    table.boolean('titulaires')\r\n    table.boolean('amodiataires')\r\n    table.boolean('administrations')\r\n  })\r\n}\r\n\r\nexports.down = knex => {\r\n  return knex.schema.dropTable('titresErreurs')\r\n}\r\n",
@@ -9448,7 +9537,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 498,
+    "__docId__": 500,
     "kind": "function",
     "name": "up",
     "memberof": "camino-api/tools/knex/migrations/20180522232620_titres_etapes_erreurs.js",
@@ -9478,7 +9567,7 @@
     }
   },
   {
-    "__docId__": 499,
+    "__docId__": 501,
     "kind": "function",
     "name": "down",
     "memberof": "camino-api/tools/knex/migrations/20180522232620_titres_etapes_erreurs.js",
@@ -9508,7 +9597,7 @@
     }
   },
   {
-    "__docId__": 500,
+    "__docId__": 502,
     "kind": "file",
     "name": "camino-api/tools/knex/migrations/20181106210542_travaux_rapports.js",
     "content": "exports.up = knex => {\n  return knex.schema.createTable('titresTravauxRapports', table => {\n    table.string('id').primary()\n    table\n      .string('titreId', 128)\n      .references('titres.id')\n      .onDelete('CASCADE')\n    table.date('date')\n    table.boolean('confirmation')\n    table.jsonb('contenu')\n  })\n}\n\nexports.down = knex => {\n  return knex.schema.dropTable('titresTravauxRapports')\n}\n",
@@ -9519,7 +9608,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 501,
+    "__docId__": 503,
     "kind": "function",
     "name": "up",
     "memberof": "camino-api/tools/knex/migrations/20181106210542_travaux_rapports.js",
@@ -9549,7 +9638,7 @@
     }
   },
   {
-    "__docId__": 502,
+    "__docId__": 504,
     "kind": "function",
     "name": "down",
     "memberof": "camino-api/tools/knex/migrations/20181106210542_travaux_rapports.js",
@@ -9579,7 +9668,7 @@
     }
   },
   {
-    "__docId__": 503,
+    "__docId__": 505,
     "kind": "file",
     "name": "camino-api/tools/knex/seeds/1-metas.js",
     "content": "const domaines = require('../../sources/domaines.json')\nconst types = require('../../sources/types.json')\nconst domaines_types = require('../../sources/domaines--types.json')\nconst statuts = require('../../sources/statuts.json')\nconst phasesStatuts = require('../../sources/phases-statuts.json')\nconst demarchesTypes = require('../../sources/demarches-types.json')\nconst demarchesTypes_types = require('../../sources/demarches-types--types.json')\nconst demarchesStatuts = require('../../sources/demarches-statuts.json')\nconst demarchesTypes_DemarchesStatuts = require('../../sources/demarches-types--demarches-statuts.json')\nconst etapesTypes = require('../../sources/etapes-types.json')\nconst demarchesTypes_EtapesTypes = require('../../sources/demarches-types--etapes-types.json')\nconst etapesStatuts = require('../../sources/etapes-statuts.json')\nconst etapesTypes_EtapesStatuts = require('../../sources/etapes-types--etapes-statuts.json')\nconst emprises = require('../../sources/emprises.json')\n\nexports.seed = (knex, Promise) =>\n  Promise.all([\n    knex('domaines__types').del(),\n    knex('demarchesTypes__types').del(),\n    knex('demarchesTypes__etapesTypes').del(),\n    knex('demarchesTypes__demarchesStatuts').del(),\n    knex('etapesTypes__etapesStatuts').del(),\n    knex('statuts').del(),\n    knex('emprises').del()\n  ])\n    .then(() =>\n      Promise.all([\n        knex('phasesStatuts').del(),\n        knex('demarchesTypes').del(),\n        knex('etapesTypes').del(),\n        knex('demarchesStatuts').del(),\n        knex('etapesStatuts').del()\n      ])\n    )\n    .then(() => Promise.all([knex('domaines').del(), knex('types').del()]))\n    .then(() =>\n      Promise.all([\n        knex('domaines').insert(domaines),\n        knex('types').insert(types),\n        knex('statuts').insert(statuts),\n        knex('phasesStatuts').insert(phasesStatuts),\n        knex('demarchesTypes').insert(demarchesTypes),\n        knex('etapesTypes').insert(etapesTypes),\n        knex('emprises').insert(emprises),\n        knex('demarchesStatuts').insert(demarchesStatuts),\n        knex('etapesStatuts').insert(etapesStatuts)\n      ])\n    )\n    .then(() =>\n      Promise.all([\n        knex('domaines__types').insert(domaines_types),\n        knex('demarchesTypes__types').insert(demarchesTypes_types),\n        knex('demarchesTypes__demarchesStatuts').insert(\n          demarchesTypes_DemarchesStatuts\n        ),\n        knex('demarchesTypes__etapesTypes').insert(demarchesTypes_EtapesTypes),\n        knex('etapesTypes__etapesStatuts').insert(etapesTypes_EtapesStatuts)\n      ])\n    )\n",
@@ -9590,7 +9679,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 504,
+    "__docId__": 506,
     "kind": "function",
     "name": "seed",
     "memberof": "camino-api/tools/knex/seeds/1-metas.js",
@@ -9622,7 +9711,7 @@
     "return": null
   },
   {
-    "__docId__": 505,
+    "__docId__": 507,
     "kind": "file",
     "name": "camino-api/tools/knex/seeds/2-substances.js",
     "content": "const substances = require('../../sources/substances.json')\nconst substancesLegales = require('../../sources/substances-legales.json')\nconst substancesLegalesCodes = require('../../sources/substances-legales-codes.json')\nconst substancesSubstancesLegales = require('../../sources/substances--substances-legales.json')\n\nexports.seed = (knex, Promise) =>\n  knex('substances')\n    .del()\n    .then(() => knex('substances__substancesLegales').del())\n    .then(() => knex('substancesLegales').del())\n    .then(() => knex('substancesLegalesCodes').del())\n    .then(() => knex('substancesLegalesCodes').insert(substancesLegalesCodes))\n    .then(() => knex('substancesLegales').insert(substancesLegales))\n    .then(() => knex('substances').insert(substances))\n    .then(() =>\n      knex('substances__substancesLegales').insert(substancesSubstancesLegales)\n    )\n",
@@ -9633,7 +9722,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 506,
+    "__docId__": 508,
     "kind": "function",
     "name": "seed",
     "memberof": "camino-api/tools/knex/seeds/2-substances.js",
@@ -9665,7 +9754,7 @@
     "return": null
   },
   {
-    "__docId__": 507,
+    "__docId__": 509,
     "kind": "file",
     "name": "camino-api/tools/knex/seeds/3-repertoire.js",
     "content": "const entreprisesC = require('../../sources/entreprises-c.json')\nconst entreprisesF = require('../../sources/entreprises-f.json')\nconst entreprisesG = require('../../sources/entreprises-g.json')\nconst entreprisesH = require('../../sources/entreprises-h.json')\nconst entreprisesM = require('../../sources/entreprises-m.json')\nconst entreprisesM973 = require('../../sources/entreprises-m973.json')\nconst entreprisesR = require('../../sources/entreprises-r.json')\nconst entreprisesS = require('../../sources/entreprises-s.json')\nconst entreprisesW = require('../../sources/entreprises-w.json')\nconst administrations = require('../../sources/administrations.json')\n\nconst entreprises = [\n  ...entreprisesC,\n  ...entreprisesF,\n  ...entreprisesG,\n  ...entreprisesH,\n  ...entreprisesM,\n  ...entreprisesM973,\n  ...entreprisesR,\n  ...entreprisesS,\n  ...entreprisesW\n]\n\nconst findup = (array, key1) =>\n  array.reduce((res, el) => {\n    if (res.find(e => e[key1] === el[key1])) {\n      console.log(\n        'entreprise en doublon (à supprimer dans la source): ',\n        el[key1],\n        el\n      )\n      return res\n    } else {\n      return [...res, el]\n    }\n  }, [])\n\nconst entr = findup(entreprises, 'id')\n\nexports.seed = (knex, Promise) =>\n  Promise.all([knex('entreprises').del(), knex('administrations').del()]).then(\n    () =>\n      Promise.all([\n        knex('entreprises').insert(entr),\n        knex('administrations').insert(administrations)\n      ])\n  )\n",
@@ -9676,7 +9765,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 508,
+    "__docId__": 510,
     "kind": "variable",
     "name": "entreprises",
     "memberof": "camino-api/tools/knex/seeds/3-repertoire.js",
@@ -9697,7 +9786,7 @@
     "ignore": true
   },
   {
-    "__docId__": 509,
+    "__docId__": 511,
     "kind": "function",
     "name": "findup",
     "memberof": "camino-api/tools/knex/seeds/3-repertoire.js",
@@ -9730,7 +9819,7 @@
     "ignore": true
   },
   {
-    "__docId__": 510,
+    "__docId__": 512,
     "kind": "variable",
     "name": "entr",
     "memberof": "camino-api/tools/knex/seeds/3-repertoire.js",
@@ -9751,7 +9840,7 @@
     "ignore": true
   },
   {
-    "__docId__": 511,
+    "__docId__": 513,
     "kind": "function",
     "name": "seed",
     "memberof": "camino-api/tools/knex/seeds/3-repertoire.js",
@@ -9783,7 +9872,7 @@
     "return": null
   },
   {
-    "__docId__": 512,
+    "__docId__": 514,
     "kind": "file",
     "name": "camino-api/tools/knex/seeds/4-utilisateurs.js",
     "content": "const utilisateurs = require('../../sources/utilisateurs.json')\nconst permissions = require('../../sources/permissions.json')\n\nexports.seed = (knex, Promise) =>\n  Promise.all([knex('utilisateurs').del(), knex('permissions').del()])\n    .then(() => knex('permissions').insert(permissions))\n    .then(() => knex('utilisateurs').insert(utilisateurs))\n",
@@ -9794,7 +9883,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 513,
+    "__docId__": 515,
     "kind": "function",
     "name": "seed",
     "memberof": "camino-api/tools/knex/seeds/4-utilisateurs.js",
@@ -9826,7 +9915,7 @@
     "return": null
   },
   {
-    "__docId__": 514,
+    "__docId__": 516,
     "kind": "file",
     "name": "camino-api/tools/knex/seeds/5-titres.js",
     "content": "const decamelize = require('decamelize')\nconst domaineIds = ['c', 'f', 'g', 'h', 'm', 'm973', 'r', 's', 'w']\nconst files = [\n  'titres',\n  'titresDemarches',\n  'titresEtapes',\n  'titresEmprises',\n  'titresPoints',\n  'titresPointsReferences',\n  'titresDocuments',\n  'titresSubstances',\n  'titresTitulaires',\n  'titresAmodiataires',\n  'titresErreurs'\n]\n\nconst datas = files.reduce(\n  (d, file) =>\n    Object.assign(d, {\n      [file]: domaineIds.reduce((res, domaineId) => {\n        const fileName = decamelize(`titres-${domaineId}-${file}`, '-')\n        return [...res, ...require(`../../sources/${fileName}.json`)]\n      }, [])\n    }),\n  {}\n)\n\nexports.seed = (knex, Promise) =>\n  Promise.all([\n    knex('titresEmprises').del(),\n    knex('titresSubstances').del(),\n    knex('titresPointsReferences').del(),\n    knex('titresTitulaires').del(),\n    knex('titresAmodiataires').del(),\n    knex('titresErreurs').del(),\n    knex('titresDocuments').del()\n  ])\n    .then(() => knex('titresPoints').del())\n    .then(() =>\n      Promise.all([knex('titresEtapes').del(), knex('titresPhases').del()])\n    )\n    .then(() => knex('titresDemarches').del())\n    .then(() => knex('titres').del())\n    .then(() => knex('titres').insert(datas.titres))\n    .then(() => knex('titresDemarches').insert(datas.titresDemarches))\n    .then(() => knex('titresEtapes').insert(datas.titresEtapes))\n    .then(() =>\n      Promise.all([\n        knex('titresSubstances').insert(datas.titresSubstances),\n        knex('titresPoints').insert(datas.titresPoints),\n        knex('titresEmprises').insert(datas.titresEmprises),\n        knex('titresTitulaires').insert(datas.titresTitulaires),\n        knex('titresAmodiataires').insert(datas.titresAmodiataires),\n        knex('titresErreurs').insert(datas.titresErreurs),\n        knex('titresDocuments').insert(datas.titresDocuments)\n      ])\n    )\n    .then(() =>\n      knex('titresPointsReferences').insert(datas.titresPointsReferences)\n    )\n",
@@ -9837,7 +9926,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 515,
+    "__docId__": 517,
     "kind": "variable",
     "name": "domaineIds",
     "memberof": "camino-api/tools/knex/seeds/5-titres.js",
@@ -9858,7 +9947,7 @@
     "ignore": true
   },
   {
-    "__docId__": 516,
+    "__docId__": 518,
     "kind": "variable",
     "name": "files",
     "memberof": "camino-api/tools/knex/seeds/5-titres.js",
@@ -9879,7 +9968,7 @@
     "ignore": true
   },
   {
-    "__docId__": 517,
+    "__docId__": 519,
     "kind": "variable",
     "name": "datas",
     "memberof": "camino-api/tools/knex/seeds/5-titres.js",
@@ -9900,7 +9989,7 @@
     "ignore": true
   },
   {
-    "__docId__": 518,
+    "__docId__": 520,
     "kind": "function",
     "name": "seed",
     "memberof": "camino-api/tools/knex/seeds/5-titres.js",
@@ -9932,7 +10021,7 @@
     "return": null
   },
   {
-    "__docId__": 519,
+    "__docId__": 521,
     "kind": "file",
     "name": "camino-api/tools/knex/seeds/6-titres-travaux-rapports.js",
     "content": "const dateFormat = require('dateformat')\nconst titresTravauxRapports = require('../../sources/titres-travaux-rapports.json')\n\nexports.seed = (knex, Promise) =>\n  knex('titresTravauxRapports')\n    .del()\n    .then(() =>\n      knex('titresTravauxRapports').insert(\n        titresTravauxRapports.map(tr => {\n          tr.date = dateFormat(tr.date, 'yyyy-mm-dd')\n          return tr\n        })\n      )\n    )\n",
@@ -9943,7 +10032,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 520,
+    "__docId__": 522,
     "kind": "function",
     "name": "seed",
     "memberof": "camino-api/tools/knex/seeds/6-titres-travaux-rapports.js",
@@ -9975,7 +10064,7 @@
     "return": null
   },
   {
-    "__docId__": 521,
+    "__docId__": 523,
     "kind": "file",
     "name": "camino-api/tools/mailer/batch.js",
     "content": "const mailer = require('./index')\n\nconst emailsBatch = async (emails, subject, html) => {\n  try {\n    emails.forEach(email => {\n      mailer(email, subject, html)\n    })\n  } catch (e) {\n    console.log(\"erreur lors de l'envoi d'email\")\n  }\n}\n\nmodule.exports = emailsBatch\n",
@@ -9986,7 +10075,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 522,
+    "__docId__": 524,
     "kind": "function",
     "name": "emailsBatch",
     "memberof": "camino-api/tools/mailer/batch.js",
@@ -10024,7 +10113,7 @@
     "return": null
   },
   {
-    "__docId__": 523,
+    "__docId__": 525,
     "kind": "file",
     "name": "camino-api/tools/mailer/index.js",
     "content": "const nodemailer = require('nodemailer')\nconst htmlToText = require('nodemailer-html-to-text').htmlToText\n// const smtpTransport = require('nodemailer-smtp-transport')\n\n// const smtpTransportConfig = smtpTransport({\n//   service: process.env.EMAIL_SERVICE,\n//   auth: {\n//     user: process.env.EMAIL_USER,\n//     pass: process.env.EMAIL_PASSWORD\n//   }\n// })\n\nconst smtpTransportConfig = `smtps://${process.env.EMAIL_API_KEY}:${\n  process.env.EMAIL_API_PASSWORD\n}@${process.env.EMAIL_SMTP_SERVER}`\n\nconst from = process.env.EMAIL_USER\n\nconst transport = nodemailer.createTransport(smtpTransportConfig)\n\n// https://www.npmjs.com/package/html-to-text\n// const htmlToTextOptions = {}\n\ntransport.use('compile', htmlToText())\n\nconst mailer = async (to, subject, html) => {\n  const mail = { from, to, subject, html }\n\n  // si on est pas sur le serveur de prod\n  // l'adresse email du destinataire est remplacée\n  if (\n    !process.env.NODE_ENV ||\n    process.env.NODE_ENV !== 'production' ||\n    process.env.ENV !== 'prod' ||\n    !process.env.ENV\n  ) {\n    mail.subject = `\n${mail.subject} | env: ${process.env.ENV} | node: ${process.env.NODE_ENV} | \ndest: ${mail.to}`\n    mail.to = process.env.ADMIN_EMAIL\n  }\n\n  try {\n    const res = await transport.sendMail(mail)\n    console.log(`Message sent: ${mail.to}, ${mail.subject}, ${res.response}`)\n    transport.close()\n  } catch (e) {\n    console.log(e)\n  }\n}\n\nmodule.exports = mailer\n",
@@ -10035,7 +10124,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 524,
+    "__docId__": 526,
     "kind": "variable",
     "name": "smtpTransportConfig",
     "memberof": "camino-api/tools/mailer/index.js",
@@ -10056,7 +10145,7 @@
     "ignore": true
   },
   {
-    "__docId__": 525,
+    "__docId__": 527,
     "kind": "variable",
     "name": "from",
     "memberof": "camino-api/tools/mailer/index.js",
@@ -10077,7 +10166,7 @@
     "ignore": true
   },
   {
-    "__docId__": 526,
+    "__docId__": 528,
     "kind": "variable",
     "name": "transport",
     "memberof": "camino-api/tools/mailer/index.js",
@@ -10098,7 +10187,7 @@
     "ignore": true
   },
   {
-    "__docId__": 527,
+    "__docId__": 529,
     "kind": "function",
     "name": "mailer",
     "memberof": "camino-api/tools/mailer/index.js",
@@ -10136,7 +10225,7 @@
     "return": null
   },
   {
-    "__docId__": 528,
+    "__docId__": 530,
     "kind": "file",
     "name": "camino-api/tools/utils/database/demarches-by-titre.js",
     "content": "require('dotenv').config()\nrequire('../../../database/index')\n\nconst fileCreate = require('../../import/_utils/file-create.js')\n\nconst {\n  titresDemarchesGet\n} = require('../../../database/queries/titres-demarches')\n\nasync function main() {\n  const res = await titresDemarchesGet({\n    titresIds: ['h-cxx-courdemanges-1988'],\n    demarchesIds: undefined\n  })\n\n  await fileCreate('test.json', JSON.stringify(res, null, 2))\n\n  console.log(res)\n\n  process.exit()\n}\n\nmain()\n",
@@ -10147,7 +10236,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 529,
+    "__docId__": 531,
     "kind": "function",
     "name": "main",
     "memberof": "camino-api/tools/utils/database/demarches-by-titre.js",
@@ -10167,7 +10256,7 @@
     "ignore": true
   },
   {
-    "__docId__": 530,
+    "__docId__": 532,
     "kind": "file",
     "name": "camino-api/tools/utils/database/demarches-types.js",
     "content": "require('dotenv').config()\nrequire('../../../database/index')\n\nconst fileCreate = require('../../import/_utils/file-create.js')\n\nconst { demarchesTypesGet } = require('../../../database/queries/metas')\n\nasync function main() {\n  const res = await demarchesTypesGet()\n\n  await fileCreate('test.json', JSON.stringify(res, null, 2))\n\n  console.log(res)\n\n  process.exit()\n}\n\nmain()\n",
@@ -10178,7 +10267,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 531,
+    "__docId__": 533,
     "kind": "function",
     "name": "main",
     "memberof": "camino-api/tools/utils/database/demarches-types.js",
@@ -10198,7 +10287,7 @@
     "ignore": true
   },
   {
-    "__docId__": 532,
+    "__docId__": 534,
     "kind": "file",
     "name": "camino-api/tools/utils/database/demarches-with-no-points.js",
     "content": "require('dotenv').config()\nrequire('../../../database/index')\n\nconst {\n  titresDemarchesGet\n} = require('../../../database/queries/titres-demarches')\n\nasync function main() {\n  let res = await titresDemarchesGet({ demarchesIds: ['abr', 'ren', 'ret'] })\n\n  res = res.filter(({ typeId, etapes }) => {\n    if (typeId === 'ren') {\n      return !etapes.find(te => te.points.length)\n    }\n    return true\n  })\n\n  console.log(res.map(({ id, statutId }) => ({ id, statutId })))\n\n  process.exit()\n}\n\nmain()\n",
@@ -10209,7 +10298,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 533,
+    "__docId__": 535,
     "kind": "function",
     "name": "main",
     "memberof": "camino-api/tools/utils/database/demarches-with-no-points.js",
@@ -10229,7 +10318,7 @@
     "ignore": true
   },
   {
-    "__docId__": 534,
+    "__docId__": 536,
     "kind": "file",
     "name": "camino-api/tools/utils/database/utilisateurs-by-titre.js",
     "content": "require('dotenv').config()\nrequire('../../../database/index')\n\nconst { utilisateursGet } = require('../../../database/queries/utilisateurs')\nconst { titreGet } = require('../../../database/queries/titres')\n\nasync function main() {\n  const titre = await titreGet('m-pxm-esperance-1993')\n\n  const entrepriseIds = titre.titulaires.map(t => t.id)\n\n  console.log('titre.titulaires', titre.titulaires)\n  console.log('entrepriseIds', entrepriseIds)\n\n  const utilisateurs = await utilisateursGet({\n    entrepriseIds,\n    noms: undefined,\n    administrationIds: undefined,\n    permissionIds: undefined\n  })\n\n  console.log('utilisateurs', utilisateurs)\n\n  process.exit()\n}\n\nmain()\n",
@@ -10240,7 +10329,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 535,
+    "__docId__": 537,
     "kind": "function",
     "name": "main",
     "memberof": "camino-api/tools/utils/database/utilisateurs-by-titre.js",
@@ -10260,7 +10349,7 @@
     "ignore": true
   },
   {
-    "__docId__": 536,
+    "__docId__": 538,
     "kind": "file",
     "name": "camino-api/tools/utils/graphql-dsl-to-query-convert.js",
     "content": "const fetch = require('node-fetch')\nconst { introspectionQuery } = require('graphql')\nconst fs = require('fs')\nconst url = `http://localhost:4000`\n\nfetch(url, {\n  method: 'POST',\n  headers: { 'Content-Type': 'application/json' },\n  body: JSON.stringify({ query: introspectionQuery })\n})\n  .then(res => res.json())\n  .then(res =>\n    fs.writeFileSync(\n      'docs/graphql/schema.json',\n      JSON.stringify(res.data, null, 2)\n    )\n  )\n",
@@ -10271,7 +10360,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 537,
+    "__docId__": 539,
     "kind": "variable",
     "name": "url",
     "memberof": "camino-api/tools/utils/graphql-dsl-to-query-convert.js",
@@ -10292,7 +10381,7 @@
     "ignore": true
   },
   {
-    "__docId__": 538,
+    "__docId__": 540,
     "kind": "file",
     "name": "camino-api/tools/utils/index.js",
     "content": "const dedup = (...arrays) =>\n  arrays.reduce(\n    (result, array) =>\n      array.reduce(\n        (res, el) =>\n          !res.find(e => el.id && e.id === el.id) ? [...res, el] : res,\n        result\n      ),\n    []\n  )\n\nconst findup = (array, key1, key2) =>\n  array.reduce(\n    (res, el) =>\n      res.find(e => e[key1] === el[key1] && e[key2] === el[key2])\n        ? res\n        : [...res, el],\n    []\n  )\n\nmodule.exports = {\n  dedup,\n  findup\n}\n",
@@ -10303,7 +10392,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 539,
+    "__docId__": 541,
     "kind": "function",
     "name": "dedup",
     "memberof": "camino-api/tools/utils/index.js",
@@ -10331,7 +10420,7 @@
     "ignore": true
   },
   {
-    "__docId__": 540,
+    "__docId__": 542,
     "kind": "function",
     "name": "findup",
     "memberof": "camino-api/tools/utils/index.js",
@@ -10370,7 +10459,7 @@
     "ignore": true
   },
   {
-    "__docId__": 541,
+    "__docId__": 543,
     "kind": "file",
     "name": "camino-api/tools/utils/json/error-find.js",
     "content": "const entreprisesR = require('../sources/repertoire-entreprises-r.json')\nconst entreprisesC = require('../sources/repertoire-entreprises-c.json')\nconst entreprisesF = require('../sources/repertoire-entreprises-f.json')\nconst entreprisesG = require('../sources/repertoire-entreprises-g.json')\nconst entreprisesH = require('../sources/repertoire-entreprises-h.json')\nconst entreprisesM = require('../sources/repertoire-entreprises-m.json')\nconst entreprisesM973 = require('../sources/repertoire-entreprises-m973.json')\nconst entreprisesS = require('../sources/repertoire-entreprises-s.json')\nconst entreprisesW = require('../sources/repertoire-entreprises-w.json')\n\nconst entreprises = [\n  ...entreprisesC,\n  ...entreprisesF,\n  ...entreprisesG,\n  ...entreprisesH,\n  ...entreprisesM,\n  ...entreprisesM973,\n  ...entreprisesR,\n  ...entreprisesS,\n  ...entreprisesW\n]\n\nconst titulairesR = require('../sources/titres-r-titulaires.json')\nconst titulairesC = require('../sources/titres-c-titulaires.json')\nconst titulairesF = require('../sources/titres-f-titulaires.json')\nconst titulairesG = require('../sources/titres-g-titulaires.json')\nconst titulairesH = require('../sources/titres-h-titulaires.json')\nconst titulairesM = require('../sources/titres-m-titulaires.json')\nconst titulairesM973 = require('../sources/titres-m973-titulaires.json')\nconst titulairesS = require('../sources/titres-s-titulaires.json')\nconst titulairesW = require('../sources/titres-w-titulaires.json')\n\nconst titulaires = [\n  ...titulairesR,\n  ...titulairesC,\n  ...titulairesF,\n  ...titulairesG,\n  ...titulairesH,\n  ...titulairesM,\n  ...titulairesM973,\n  ...titulairesS,\n  ...titulairesW\n]\n\n// demarches.forEach(d => {\n//   const ti = titres.find(t => t.id === d.titre_id)\n//   if (!ti) console.log(d.titre_id)\n// })\n\ntitulaires.forEach(t => {\n  const d = entreprises.find(e => e.id === t.entreprise_id)\n  if (!d) {\n    console.log(t.titre_etape_id, t.entreprise_id)\n  }\n})\n",
@@ -10381,7 +10470,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 542,
+    "__docId__": 544,
     "kind": "variable",
     "name": "entreprises",
     "memberof": "camino-api/tools/utils/json/error-find.js",
@@ -10402,7 +10491,7 @@
     "ignore": true
   },
   {
-    "__docId__": 543,
+    "__docId__": 545,
     "kind": "variable",
     "name": "titulaires",
     "memberof": "camino-api/tools/utils/json/error-find.js",
@@ -10424,7 +10513,7 @@
   },
   {
     "kind": "index",
-    "content": "# Camino API\n\n[![Build Status](https://travis-ci.org/MTES-MCT/camino-api.svg?branch=master)](https://travis-ci.org/MTES-MCT/camino-api)\n\n> API GraphQL de [Camino](http://camino.beta.gouv.fr/): [api.camino.beta.gouv.fr](https://api.camino.beta.gouv.fr)\n\n---\n\n## Technologies\n\n- [Node.js](https://nodejs.org/)\n- [Express.js](http://expressjs.com)\n- [PostgreSQL](https://www.postgresql.org/)\n- [Express-GraphQL](https://github.com/graphql/express-graphql)\n- [Knex.js](https://knexjs.org/)\n- [Objection.js](http://vincit.github.io/objection.js/)\n- [Eslint](https://eslint.org/)\n- [Prettier](https://prettier.io/)\n- [Standardjs](https://standardjs.com/)\n- [Docker](https://www.docker.com/)\n\n---\n\n## Environnement\n\nPour que l'application fonctionne, sont requis:\n\n- Node.js (v.10 ou plus) et npm\n- Une base de données PostgreSQL (v.10 ou plus)\n\n---\n\n## Configuration et imports des données\n\n- Créer une base de données `camino`.\n- Renommer le fichier `.env.example` en `.env` et le compléter.\n\n```bash\n# installe les dépendances\nnpm install\n\n# importe les données au format .json\n# depuis google spreadsheets vers './tools/sources'\nnpm run import\n\n# crée les tables dans la base de données\n# et importe les données depuis './tools/sources'\nnpm run migrate\n\n# met à jour les données\nnpm run daily\n```\n\n---\n\n## Développement\n\n```bash\n# démarre le serveur avec nodemon\nnpm run dev\n```\n\n---\n\n## Tests\n\n```bash\n# lance les tests\nnpm run test\n```\n\n---\n\n## Docker\n\n### Environnement de développement\n\nPour développer sans installer PostgreSQL localement.\n\n```bash\n# démarre l'application et la base de données dans des conteneurs Docker\n# en mode `development`\n# accessible à http://localhost:NODE_PORT\ndocker-compose -f ./docker-compose.localhost.yml up --build\n```\n\n### Environnement de test\n\nPour tester l'application en local dans un environnement de production\n\nPré-requis:\n\n- une installation locale active de https://github.com/jwilder/nginx-proxy\n- un certificat ssl auto-signé\n- [instructions](https://medium.com/@francoisromain/set-a-local-web-development-environment-with-custom-urls-and-https-3fbe91d2eaf0)\n\n```bash\n# démarre l'application et la base de données dans des containers Docker\n# en mode `production`\n# accessible à https://api.camino.local\ndocker-compose -f ./docker-compose.local.yml up --build\n```\n\n### Environnement de production\n\nPré-requis:\n\n- une installation active de https://github.com/jwilder/nginx-proxy\n- [instructions](https://medium.com/@francoisromain/host-multiple-websites-with-https-inside-docker-containers-on-a-single-server-18467484ab95)\n\n```bash\n# démarre l'application et la base de données dans des containers Docker\n# en mode `production`\n# accessible à http://api.camino.beta.gouv.fr\ndocker-compose -f ./docker-compose.prod.yml up -d --build\n```\n\n---\n\n## Structure des fichiers\n\n```bash\n.\n├── index.js                    # `point d'entrée`\n│\n├── api                         # `API graphql`\n│   ├── resolvers               # `liens entre l'API et la base de données`\n│   ├── schemas                 # `description des nœuds de l'API`\n│   └── types                   # `types graphQl customs`\n│\n├── config                      #\n│   ├── index.js                # `variables globales`\n│   └── knex.js                 # `connexion à la base de données`\n│\n├── database                    # `base de données PostgresQL`\n│   ├── models                  # `modèles de la base de données (knex.js / objection.js)`\n│   └── queries                 # `requêtes à la base de données (knex.js / objection.js)`\n│\n├── docs                        # `documentation et exemples`\n│\n├── tasks                       # `logique métier`\n│   ├── _utils                  # `scripts de mise à jour de la base de données`\n│   ├── daily                   # `scripts quotidiens (npm run daily)`\n│   └── etape-update            # `script effectués lors de la mise à jour d'une étape`\n│\n└── tools                       # `outils`\n    ├── export                  # `exportation de la base de données vers des spreadsheets (npm run export)`\n    ├── import                  # `import de spreadsheets vers des fichiers json dans /sources (npm run import)`\n    ├── knex                    # `scripts de création et d'import de la base de données (npm run migrate)`\n    │   ├── migrations          # `création de la base de données`\n    │   └── seeds               # `import depuis les fichier /sources vers la base de données`\n    ├── mailer                  # `utilitaire d'envoi d'email (Nodemailer)`\n    ├── sources                 # `données sources sous forme de fichiers json`\n    └── utils                   #\n\n```\n\n---\n\n## PostgreSQL\n\n![camino database schema](docs/db/camino-db.png)\n\n---\n\n## Contribution\n\nVoir [contributing.md](contributing.md) (en anglais) pour plus d'infos.\n\n---\n\n## Crédits\n\n### Production\n\n- [La Fabrique Numérique, Ministère de la transition écologique et solidaire](https://www.ecologique-solidaire.gouv.fr/inauguration-fabrique-numerique-lincubateur-des-ministeres-charges-lecologie-et-des-territoires)\n\n### Équipe\n\n- Guillaume Levieux, intrapreneur\n- Joeffrey Arruyer, coach\n- [François Romain](http://francoisromain.com), développeur\n\n---\n\n## Licence\n\nCamino API, le cadastre minier numérique ouvert\n\n[AGPL 3 ou plus récent](https://spdx.org/licenses/AGPL-3.0-or-later.html)\n",
+    "content": "# Camino API\n\n[![Build Status](https://travis-ci.org/MTES-MCT/camino-api.svg?branch=master)](https://travis-ci.org/MTES-MCT/camino-api)\n\n> API GraphQL de [Camino](http://camino.beta.gouv.fr/): [api.camino.beta.gouv.fr](https://api.camino.beta.gouv.fr)\n\n---\n\n## Technologies\n\n- [Node.js](https://nodejs.org/)\n- [Express.js](http://expressjs.com)\n- [PostgreSQL](https://www.postgresql.org/)\n- [Express-GraphQL](https://github.com/graphql/express-graphql)\n- [Knex.js](https://knexjs.org/)\n- [Objection.js](http://vincit.github.io/objection.js/)\n- [Eslint](https://eslint.org/)\n- [Prettier](https://prettier.io/)\n- [Standardjs](https://standardjs.com/)\n- [Docker](https://www.docker.com/)\n\n---\n\n## Environnement\n\nPour que l'application fonctionne, sont requis:\n\n- Node.js (v.10 ou plus) et npm\n- Une base de données PostgreSQL (v.10 ou plus)\n\n---\n\n## Configuration et imports des données\n\n- Créer une base de données `camino`.\n- Renommer le fichier `.env.example` en `.env` et le compléter.\n\n```bash\n# installe les dépendances\nnpm install\n\n# importe les données au format .json\n# depuis google spreadsheets vers './tools/sources'\nnpm run import\n\n# crée les tables dans la base de données\n# et importe les données depuis './tools/sources'\nnpm run migrate\n\n# met à jour les données\nnpm run daily\n```\n\n---\n\n## Développement\n\n```bash\n# démarre le serveur avec nodemon\nnpm run dev\n```\n\n---\n\n## Tests\n\n```bash\n# lance les tests\nnpm run test\n```\n\n---\n\n## Docker\n\n### Environnement de développement\n\nPour développer sans installer PostgreSQL localement.\n\n```bash\n# démarre l'application et la base de données dans des conteneurs Docker\n# en mode `development`\n# accessible à http://localhost:NODE_PORT\ndocker-compose -f ./docker-compose.localhost.yml up --build\n```\n\n### Environnement de test\n\nPour tester l'application en local dans un environnement de production\n\nPré-requis:\n\n- une installation locale active de https://github.com/jwilder/nginx-proxy\n- un certificat ssl auto-signé\n- [instructions](https://medium.com/@francoisromain/set-a-local-web-development-environment-with-custom-urls-and-https-3fbe91d2eaf0)\n\n```bash\n# démarre l'application et la base de données dans des containers Docker\n# en mode `production`\n# accessible à https://api.camino.local\ndocker-compose -f ./docker-compose.local.yml up --build\n```\n\n### Environnement de production\n\nPré-requis:\n\n- une installation active de https://github.com/jwilder/nginx-proxy\n- [instructions](https://medium.com/@francoisromain/host-multiple-websites-with-https-inside-docker-containers-on-a-single-server-18467484ab95)\n\n```bash\n# démarre l'application et la base de données dans des containers Docker\n# en mode `production`\n# accessible à http://api.camino.beta.gouv.fr\ndocker-compose -f ./docker-compose.prod.yml up -d --build\n```\n\n---\n\n## Structure des fichiers\n\n```bash\n.\n├── index.js                    # `point d'entrée`\n│\n├── api                         # `API graphql`\n│   ├── resolvers               # `liens entre l'API et la base de données`\n│   ├── schemas                 # `description des nœuds de l'API`\n│   └── types                   # `types graphQl customs`\n│\n├── config                      #\n│   ├── index.js                # `variables globales`\n│   └── knex.js                 # `connexion à la base de données`\n│\n├── database                    # `base de données PostgresQL`\n│   ├── models                  # `modèles de la base de données (knex.js / objection.js)`\n│   └── queries                 # `requêtes à la base de données (knex.js / objection.js)`\n│\n├── docs                        # `documentation et exemples`\n│\n├── tasks                       # `logique métier`\n│   ├── _utils                  # `scripts de mise à jour de la base de données`\n│   ├── daily                   # `scripts quotidiens (npm run daily)`\n│   └── etape-update            # `script effectués lors de la mise à jour d'une étape`\n│\n└── tools                       # `outils`\n    ├── export                  # `exportation de la base de données vers des spreadsheets (npm run export)`\n    ├── import                  # `import de spreadsheets vers des fichiers json dans /sources (npm run import)`\n    ├── knex                    # `scripts de création et d'import de la base de données (npm run migrate)`\n    │   ├── migrations          # `création de la base de données`\n    │   └── seeds               # `import depuis les fichier /sources vers la base de données`\n    ├── mailer                  # `utilitaire d'envoi d'email (Nodemailer)`\n    ├── sources                 # `données sources sous forme de fichiers json`\n    └── utils                   #\n\n```\n\n---\n\n## PostgreSQL\n\n![camino database schema](manual/db/camino-db.png)\n\n---\n\n## Contribution\n\nVoir [contributing.md](contributing.md) (en anglais) pour plus d'infos.\n\n---\n\n## Crédits\n\n### Production\n\n- [La Fabrique Numérique, Ministère de la transition écologique et solidaire](https://www.ecologique-solidaire.gouv.fr/inauguration-fabrique-numerique-lincubateur-des-ministeres-charges-lecologie-et-des-territoires)\n\n### Équipe\n\n- Guillaume Levieux, intrapreneur\n- Joeffrey Arruyer, coach\n- [François Romain](http://francoisromain.com), développeur\n\n---\n\n## Licence\n\nCamino API, le cadastre minier numérique ouvert\n\n[AGPL 3 ou plus récent](https://spdx.org/licenses/AGPL-3.0-or-later.html)\n",
     "longname": "/Volumes/fr-work/Sites/camino-api/README.md",
     "name": "./README.md",
     "static": true,
@@ -10432,7 +10521,7 @@
   },
   {
     "kind": "packageJSON",
-    "content": "{\n  \"name\": \"camino-api\",\n  \"version\": \"0.7.0\",\n  \"description\": \"Camino api\",\n  \"license\": \"AGPL-3.0-or-later\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/MTES-MCT/camino-api.git\"\n  },\n  \"author\": {\n    \"name\": \"François Romain\",\n    \"email\": \"francoisromain@gmail.com\",\n    \"url\": \"https://francoisromain.com\"\n  },\n  \"homepage\": \"https://github.com/MTES-MCT/camino-api\",\n  \"main\": \"index.js\",\n  \"scripts\": {\n    \"import\": \"node ./tools/import/index.js\",\n    \"export\": \"node ./tools/export/index.js\",\n    \"export:users\": \"node ./tools/export/utilisateurs.js\",\n    \"export:rapports\": \"node ./tools/export/titres-travaux-rapports.js\",\n    \"migrate:rollback\": \"npx knex --knexfile=./tools/knex/config.js migrate:rollback\",\n    \"migrate:latest\": \"npx knex --knexfile=./tools/knex/config.js migrate:latest\",\n    \"seed:run\": \"npx npx knex --knexfile=./tools/knex/config.js seed:run\",\n    \"migrate\": \"npm run migrate:rollback && npm run migrate:latest && npm run seed:run\",\n    \"migrate-prog\": \"node ./tools/knex/index.js\",\n    \"daily\": \"node ./tasks/daily/index.js\",\n    \"start\": \"node ./index.js\",\n    \"dev\": \"nodemon ./index.js\",\n    \"user-add\": \"node ./tasks/utilisateur-add.js\",\n    \"graphql:schema\": \"node ./tools/utils/graphql-dsl-to-query-convert.js\",\n    \"test\": \"jest --verbose\",\n    \"commit\": \"npx git-cz\",\n    \"release\": \"standard-version && git push --follow-tags origin master && conventional-github-releaser\",\n    \"doc\": \"npx esdoc\"\n  },\n  \"dependencies\": {\n    \"@sentry/node\": \"^4.5.3\",\n    \"bcrypt\": \"^3.0.3\",\n    \"chalk\": \"^2.4.2\",\n    \"compression\": \"^1.7.3\",\n    \"cors\": \"^2.8.5\",\n    \"crypto-random-string\": \"^1.0.0\",\n    \"dateformat\": \"^3.0.3\",\n    \"decamelize\": \"^2.0.0\",\n    \"dotenv\": \"^6.2.0\",\n    \"email-regex\": \"^3.0.0\",\n    \"express\": \"^4.16.4\",\n    \"express-graphql\": \"^0.7.1\",\n    \"express-jwt\": \"^5.3.1\",\n    \"fs-extra\": \"^7.0.1\",\n    \"google-spreadsheet\": \"^2.0.7\",\n    \"google-spreadsheet-to-json\": \"^1.0.0\",\n    \"graphql\": \"^14.1.1\",\n    \"graphql-iso-date\": \"^3.6.1\",\n    \"jsonwebtoken\": \"^8.4.0\",\n    \"knex\": \"0.16.3\",\n    \"nodemailer\": \"^5.1.1\",\n    \"nodemailer-html-to-text\": \"^3.0.0\",\n    \"nodemailer-smtp-transport\": \"^2.7.4\",\n    \"objection\": \"^1.5.3\",\n    \"p-queue\": \"^3.0.0\",\n    \"pg\": \"^7.8.0\"\n  },\n  \"devDependencies\": {\n    \"commitizen\": \"^3.0.5\",\n    \"cz-conventional-changelog\": \"^2.1.0\",\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-ecmascript-proposal-plugin\": \"^1.0.0\",\n    \"esdoc-integrate-manual-plugin\": \"^1.0.0\",\n    \"esdoc-node\": \"^1.0.4\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"eslint\": \"^5.12.1\",\n    \"eslint-config-prettier\": \"^3.6.0\",\n    \"eslint-config-standard\": \"^12.0.0\",\n    \"eslint-plugin-compat\": \"^2.6.3\",\n    \"eslint-plugin-import\": \"^2.15.0\",\n    \"eslint-plugin-jest\": \"^22.1.3\",\n    \"eslint-plugin-jsdoc\": \"^4.0.1\",\n    \"eslint-plugin-node\": \"^8.0.1\",\n    \"eslint-plugin-promise\": \"^4.0.1\",\n    \"eslint-plugin-standard\": \"^4.0.0\",\n    \"jest\": \"^23.6.0\",\n    \"node-fetch\": \"^2.3.0\",\n    \"nodemon\": \"^1.18.9\",\n    \"standard-version\": \"^4.4.0\"\n  },\n  \"eslintConfig\": {\n    \"extends\": [\n      \"standard\",\n      \"prettier\",\n      \"prettier/standard\"\n    ],\n    \"env\": {\n      \"node\": true,\n      \"jest/globals\": true\n    },\n    \"plugins\": [\n      \"jest\",\n      \"jsdocs\"\n    ],\n    \"rules\": {\n      \"jsdoc/check-examples\": 1,\n      \"jsdoc/check-param-names\": 1,\n      \"jsdoc/check-tag-names\": 1,\n      \"jsdoc/check-types\": 1,\n      \"jsdoc/newline-after-description\": 1,\n      \"jsdoc/no-undefined-types\": 1,\n      \"jsdoc/require-description\": 1,\n      \"jsdoc/require-description-complete-sentence\": 1,\n      \"jsdoc/require-example\": 1,\n      \"jsdoc/require-hyphen-before-param-description\": 1,\n      \"jsdoc/require-param\": 1,\n      \"jsdoc/require-param-description\": 1,\n      \"jsdoc/require-param-name\": 1,\n      \"jsdoc/require-param-type\": 1,\n      \"jsdoc/require-returns\": 1,\n      \"jsdoc/require-returns-description\": 1,\n      \"jsdoc/require-returns-type\": 1,\n      \"jsdoc/valid-types\": 1\n    }\n  },\n  \"config\": {\n    \"commitizen\": {\n      \"path\": \"./node_modules/cz-conventional-changelog\"\n    }\n  },\n  \"esdoc\": {\n    \"source\": \"./\",\n    \"destination\": \"./docs\",\n    \"plugins\": [\n      {\n        \"name\": \"esdoc-standard-plugin\"\n      },\n      {\n        \"name\": \"esdoc-node\"\n      },\n      {\n        \"name\": \"esdoc-ecmascript-proposal-plugin\",\n        \"option\": {\n          \"objectRestSpread\": true\n        }\n      },\n      {\n        \"name\": \"esdoc-integrate-manual-plugin\",\n        \"option\": {\n          \"index\": \"./manual/infos.md\",\n          \"asset\": \"./manual/asset\",\n          \"files\": [\n            \"./manual/docker.md\"\n          ]\n        }\n      }\n    ],\n    \"excludes\": [\n      \"(node_modules|docs)\"\n    ]\n  }\n}\n",
+    "content": "{\n  \"name\": \"camino-api\",\n  \"version\": \"0.7.0\",\n  \"description\": \"Camino api\",\n  \"license\": \"AGPL-3.0-or-later\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/MTES-MCT/camino-api.git\"\n  },\n  \"author\": {\n    \"name\": \"François Romain\",\n    \"email\": \"francoisromain@gmail.com\",\n    \"url\": \"https://francoisromain.com\"\n  },\n  \"homepage\": \"https://github.com/MTES-MCT/camino-api\",\n  \"main\": \"index.js\",\n  \"scripts\": {\n    \"import\": \"node ./tools/import/index.js\",\n    \"export\": \"node ./tools/export/index.js\",\n    \"export:users\": \"node ./tools/export/utilisateurs.js\",\n    \"export:rapports\": \"node ./tools/export/titres-travaux-rapports.js\",\n    \"migrate:rollback\": \"npx knex --knexfile=./tools/knex/config.js migrate:rollback\",\n    \"migrate:latest\": \"npx knex --knexfile=./tools/knex/config.js migrate:latest\",\n    \"seed:run\": \"npx npx knex --knexfile=./tools/knex/config.js seed:run\",\n    \"migrate\": \"npm run migrate:rollback && npm run migrate:latest && npm run seed:run\",\n    \"migrate-prog\": \"node ./tools/knex/index.js\",\n    \"daily\": \"node ./tasks/daily/index.js\",\n    \"start\": \"node ./index.js\",\n    \"dev\": \"nodemon ./index.js\",\n    \"user-add\": \"node ./tasks/utilisateur-add.js\",\n    \"graphql:schema\": \"node ./tools/utils/graphql-dsl-to-query-convert.js\",\n    \"test\": \"jest --verbose\",\n    \"commit\": \"npx git-cz\",\n    \"release\": \"standard-version && git push --follow-tags origin master && conventional-github-releaser\",\n    \"doc\": \"npx esdoc\"\n  },\n  \"dependencies\": {\n    \"@sentry/node\": \"^4.5.3\",\n    \"bcrypt\": \"^3.0.3\",\n    \"chalk\": \"^2.4.2\",\n    \"compression\": \"^1.7.3\",\n    \"cors\": \"^2.8.5\",\n    \"crypto-random-string\": \"^1.0.0\",\n    \"dateformat\": \"^3.0.3\",\n    \"decamelize\": \"^2.0.0\",\n    \"dotenv\": \"^6.2.0\",\n    \"email-regex\": \"^3.0.0\",\n    \"express\": \"^4.16.4\",\n    \"express-graphql\": \"^0.7.1\",\n    \"express-jwt\": \"^5.3.1\",\n    \"fs-extra\": \"^7.0.1\",\n    \"google-spreadsheet\": \"^2.0.7\",\n    \"google-spreadsheet-to-json\": \"^1.0.0\",\n    \"graphql\": \"^14.1.1\",\n    \"graphql-iso-date\": \"^3.6.1\",\n    \"jsonwebtoken\": \"^8.4.0\",\n    \"knex\": \"0.16.3\",\n    \"nodemailer\": \"^5.1.1\",\n    \"nodemailer-html-to-text\": \"^3.0.0\",\n    \"nodemailer-smtp-transport\": \"^2.7.4\",\n    \"objection\": \"^1.5.3\",\n    \"p-queue\": \"^3.0.0\",\n    \"pg\": \"^7.8.0\"\n  },\n  \"devDependencies\": {\n    \"commitizen\": \"^3.0.5\",\n    \"cz-conventional-changelog\": \"^2.1.0\",\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-ecmascript-proposal-plugin\": \"^1.0.0\",\n    \"esdoc-integrate-manual-plugin\": \"^1.0.0\",\n    \"esdoc-node\": \"^1.0.4\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"eslint\": \"^5.12.1\",\n    \"eslint-config-prettier\": \"^3.6.0\",\n    \"eslint-config-standard\": \"^12.0.0\",\n    \"eslint-plugin-compat\": \"^2.6.3\",\n    \"eslint-plugin-import\": \"^2.15.0\",\n    \"eslint-plugin-jest\": \"^22.1.3\",\n    \"eslint-plugin-jsdoc\": \"^4.0.1\",\n    \"eslint-plugin-node\": \"^8.0.1\",\n    \"eslint-plugin-promise\": \"^4.0.1\",\n    \"eslint-plugin-standard\": \"^4.0.0\",\n    \"jest\": \"^23.6.0\",\n    \"node-fetch\": \"^2.3.0\",\n    \"nodemon\": \"^1.18.9\",\n    \"standard-version\": \"^4.4.0\"\n  },\n  \"eslintConfig\": {\n    \"extends\": [\n      \"standard\",\n      \"prettier\",\n      \"prettier/standard\"\n    ],\n    \"env\": {\n      \"node\": true,\n      \"jest/globals\": true\n    },\n    \"plugins\": [\n      \"jest\",\n      \"jsdocs\"\n    ],\n    \"rules\": {\n      \"jsdoc/check-examples\": 1,\n      \"jsdoc/check-param-names\": 1,\n      \"jsdoc/check-tag-names\": 1,\n      \"jsdoc/check-types\": 1,\n      \"jsdoc/newline-after-description\": 1,\n      \"jsdoc/no-undefined-types\": 1,\n      \"jsdoc/require-description\": 1,\n      \"jsdoc/require-description-complete-sentence\": 1,\n      \"jsdoc/require-example\": 1,\n      \"jsdoc/require-hyphen-before-param-description\": 1,\n      \"jsdoc/require-param\": 1,\n      \"jsdoc/require-param-description\": 1,\n      \"jsdoc/require-param-name\": 1,\n      \"jsdoc/require-param-type\": 1,\n      \"jsdoc/require-returns\": 1,\n      \"jsdoc/require-returns-description\": 1,\n      \"jsdoc/require-returns-type\": 1,\n      \"jsdoc/valid-types\": 1\n    }\n  },\n  \"config\": {\n    \"commitizen\": {\n      \"path\": \"./node_modules/cz-conventional-changelog\"\n    }\n  },\n  \"esdoc\": {\n    \"source\": \"./\",\n    \"destination\": \"./docs\",\n    \"plugins\": [\n      {\n        \"name\": \"esdoc-standard-plugin\",\n        \"option\": {\n          \"manual\": {\n            \"index\": \"./manual/infos.md\",\n            \"asset\": \"./manual/asset\",\n            \"files\": [\n              \"./manual/docker.md\"\n            ]\n          }\n        }\n      },\n      {\n        \"name\": \"esdoc-node\"\n      },\n      {\n        \"name\": \"esdoc-ecmascript-proposal-plugin\",\n        \"option\": {\n          \"objectRestSpread\": true\n        }\n      }\n    ],\n    \"excludes\": [\n      \"(node_modules|docs)\"\n    ]\n  }\n}\n",
     "longname": "/Volumes/fr-work/Sites/camino-api/package.json",
     "name": "package.json",
     "static": true,

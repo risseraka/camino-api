@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <base data-ice="baseUrl" href="../../../../">
-  <title data-ice="title">camino-api/tasks/_utils/titre-demarche-date-fin-duree-find.test.js | camino-api</title>
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">camino-api/tasks/index.js | camino-api</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -162,16 +162,16 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">camino-api/tasks/_utils/titre-demarche-date-fin-duree-find.test.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const titreDemarcheDateFinAndDureeFind = require(&apos;./titre-demarche-date-fin-duree-find&apos;)
-const titreDemarches = require(&apos;./__mocks__/titre-demarches&apos;)
-
-test(&quot;trouve la date de fin et la dur&#xE9;e d&apos;une d&#xE9;marche&quot;, () =&gt; {
-  expect(titreDemarcheDateFinAndDureeFind(titreDemarches, 2)).toEqual({
-    dateFin: &apos;2013-03-12&apos;,
-    duree: 25
-  })
-})
+<div class="content" data-ice="content"><h1 data-ice="title">camino-api/tasks/index.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+ * @typedef {Object} titreDemarche
+ * @property {!String} id id de la d&#xE9;marche
+ * @property {!string} titreId id du titre minier
+ * @property {!string} typeId id du type de la d&#xE9;marche
+ * @property {!string} statutId id du statut de la d&#xE9;marche
+ * @property {number} ordre ordre chronologique de la d&#xE9;marche au sein du titre
+ * @property {boolean} annulationDemarcheId si la d&#xE9;marche est une annulation, cette id identifie la d&#xE9;marche annul&#xE9;e
+ */
 </code></pre>
 
 </div>
